@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 export enum Role {
-  // TODO: Cambiar los nombres de los roles
-    User = 'user',
+    Cliente = 'cliente',
     Admin = 'admin',
+    Entrenador = 'entrenador',
+    Nutricionista = 'nutricionista',
   }

@@ -14,8 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: process.env.SECRETKEY,
     });
   }
-// TODO: Cambiar los parametros de la funcion de validar
   async validate(payload: any) {
-    return { id: payload.id, name: payload.name, email: payload.email, roles: payload.rol };
+    return { id: payload.id, email: payload.email, roles: payload.rol };
   }
 }

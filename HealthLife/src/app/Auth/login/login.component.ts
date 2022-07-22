@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   credenciales= {"correo":"","clave":""}
   loguear(){
-    this.conexion.get("").subscribe(res=>{
+    this.conexion.get("session/login").subscribe(res=>{
       let aux:any = Object.assign({},res)
       console.log(res)
       sessionStorage.setItem("token_id",aux.token) 

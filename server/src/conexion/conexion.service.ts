@@ -7,7 +7,6 @@ require('dotenv').config();
 @Injectable()
 export class ConexionService {
     private readonly database;
-
     constructor() {
         this.database = new Pool({
             user: process.env.DB_USER,
@@ -16,6 +15,10 @@ export class ConexionService {
             password: process.env.DB_PASSWORD,
             port: process.env.DB_PORT || 5432,
         });
+        if(this.database.connect())
+            console.log('Conexion exitosa');
+        else
+            console.log('Conexion fallida');
     }
 
     private async queryWithValues(query: string, params: any[]): Promise<any> {

@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ClienteDto } from './dtos/cliente.dto';
+import { ProfesionalDto } from './dtos/profesional.dto';
 import { usuarioDto } from './dtos/usuario.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { SessionService } from './session.service';
@@ -12,9 +14,14 @@ export class SessionController {
     constructor(private servicio: SessionService) {
     }
 
-    @Post('registrar')
-    async registrarUsuario(@Body() usuario: usuarioDto) {
-        return this.servicio.registrarUsuario(usuario);
+    @Post('registrar/profesional')
+    async registrarProfesional(@Body() usuario: ProfesionalDto) {
+        return this.servicio.registrarProfesional(usuario);
+    }
+
+    @Post('registrar/cliente')
+    async registrarCliente(@Body() usuario: ClienteDto) {
+        return this.servicio.registrarCliente(usuario);
     }
 
     @Post('login')
