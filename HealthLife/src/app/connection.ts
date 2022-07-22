@@ -1,7 +1,6 @@
 import { environment } from "src/environments/environment";
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -15,14 +14,12 @@ export class Connection {
 
     get(route: string) {
         try {
-            let opciones = {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'Accept': "/",
-                    'Authorizationorization': 'Bearer ' + sessionStorage.getItem("token_id")
-                })
-            };
-            return this.clientHttp.get(this.api + route, opciones);
+            
+            return this.clientHttp.get(this.api + route, {headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+                'Authorization': 'Bearer ' + (sessionStorage.getItem("token_id")? sessionStorage.getItem("token_id") : "")
+            })})
 
         } catch (error) {
             throw new Error("error");
@@ -35,7 +32,7 @@ export class Connection {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
                     'Accept': "/",
-                    'Authorizationorization': 'Bearer ' + sessionStorage.getItem("token_id")?.toString()
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("token_id")?.toString()
                 })
             };
             return this.clientHttp.post(this.api + route, data, opciones)
