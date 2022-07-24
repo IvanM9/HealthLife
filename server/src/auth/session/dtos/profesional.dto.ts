@@ -6,9 +6,9 @@ import { usuarioDto } from "./usuario.dto";
 export class ProfesionalDto extends usuarioDto {
     @ApiProperty()
     readonly descripcion: string;
-    @ApiProperty()
+    @ApiProperty({isArray:true, type:String})
     readonly links: string[];
-    @ApiProperty()
+    @ApiProperty({examples:['entrenador','nutricionista']})
     @IsString()
     readonly rol: string;
 }

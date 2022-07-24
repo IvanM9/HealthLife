@@ -12,34 +12,45 @@ export class SessionService {
     constructor(private conexion: ConexionService, private jwt: JwtService) {
 
     }
-    async registrarUsuario(datos: usuarioDto, rol:string) {
+
+    async registrarUsuario(datos: usuarioDto, rol: string) {
         console.log(datos, rol);
         datos.clave = await hash(datos.clave, 10);
-        const retorno = (await this.conexion.executeProcedure('insert_usuario', [
+        const retorno = await this.conexion.executeProcedure('insert_usuario', [
             datos.nombres,
             datos.apellidos,
             datos.correo,
             datos.clave,
             rol
-        ]));
-        if (!retorno) throw new HttpException('Error al registrar', 400);
+        ]);
         console.log(retorno);
+        if (!retorno) throw new HttpException('Error al registrar el usuario', 400);
         return retorno;
     }
 
-    async registrarProfesional (datos:ProfesionalDto) {
-        // TODO: Crear función en la bdd para registrar un profesional
-        if(datos.rol != "entrenador" &&  datos.rol != "nutricionista") throw new HttpException('Rol incorrecto', 400);
+    async registrarProfesional(datos: ProfesionalDto) {
+        if (datos.rol != "entrenador" && datos.rol != "nutricionista") throw new HttpException('Rol incorrecto', 400);
         const id = await this.registrarUsuario(datos, datos.rol);
         console.log(id);
-        return {datos};
+        if (!id || id == null) throw new HttpException('Error al registrar', 400);
+        const retorno = await this.conexion.executeProcedure('insert_profesional', [id, datos.descripcion,datos.links]);
+        if(!retorno) throw new HttpException('Error al registrar el profesional', 400);
+        return { mensaje: "Profesional registrado correctamente" };
     }
 
-    async registrarCliente (datos:ClienteDto) {
-        // TODO: Crear función en la bdd para registrar un cliente
+    async registrarCliente(datos: ClienteDto) {
         const id = await this.registrarUsuario(datos, "cliente");
-        console.log(id);
-        return {datos};
+        if (!id || id == null) throw new HttpException('Error al registrar', 400);
+        const retorno = await this.conexion.executeProcedure('insert_cliente', [
+            datos.talla,
+            datos.peso,
+            datos.habitos,
+            datos.alergias,
+            datos.enfermedades,
+            datos.detalles_extras,
+            id]);
+        if (!retorno) throw new HttpException('Error al registrar el cliente', 400);
+        return { mensaje: "Cliente registrado correctamente" };
     }
 
     async login(datos: usuarioDto) {
