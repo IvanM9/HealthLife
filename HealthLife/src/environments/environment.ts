@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   // api:""
-  api:"https://postman-echo.com/headers"
-
-
+  api:"http://localhost:3000/"
 };
 
 /*
