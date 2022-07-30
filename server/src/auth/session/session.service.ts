@@ -55,11 +55,10 @@ export class SessionService {
 
     async login(datos: usuarioDto) {
         const retorno = await this.conexion.executeProcedure('login', [datos.correo]);
-        if (!retorno) throw new HttpException('Usuario no existe', 400);
-        console.log(retorno);
+        if (retorno.clave == undefined) throw new HttpException('Usuario no existe', 400);
         const valido = await compare(datos.clave, retorno.clave);
         if (!valido) throw new HttpException('Clave incorrecta', 400);
-        const token_id = this.jwt.sign({ id: retorno.id_usuario.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
+        const token_id = this.jwt.sign({ id: retorno.id.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
         //* Para verificar el token, se debe envíar por medio del auth bearer el token
         return { "mensaje": "Usuario logueado correctamente", token_id };
     }
