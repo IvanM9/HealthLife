@@ -10,7 +10,30 @@ export class ActividadesService {
 
     async obtenerPlanesCreados(idProfesional: number) {
         try {
-            await this.conexion.executeProcedure("getPlanes", [idProfesional]);
+           const resultado = await this.conexion.executeProcedure("get_planes", [idProfesional]);
+            if(!resultado || resultado == null) 
+                throw new HttpException("No se pudo obtener los planes", 500);
+           return resultado;
+        } catch (error) {
+            throw new HttpException(error, 500);
+        }
+    }
+
+    async obtenerPlan(idProfesional: number) {
+        try {
+            const resultado = await this.conexion.executeProcedure("get_planes", [idProfesional]);
+            if (!resultado || resultado == null) throw new HttpException("No se pudo obtener los planes", 500);
+            return resultado;
+        } catch (error) {
+            throw new HttpException(error, 500);
+        }
+    }
+
+    async obtenerActividades(idPlan: number) {
+        try {
+            const resultado = await this.conexion.executeProcedure("get_actividades", [idPlan]);
+            if (!resultado || resultado == null) throw new HttpException("No se pudo obtener las actividades", 500);
+            return resultado;
         } catch (error) {
             throw new HttpException(error, 500);
         }

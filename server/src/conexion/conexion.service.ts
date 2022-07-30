@@ -41,6 +41,7 @@ export class ConexionService {
                 }
                 this.retorno = (await this.queryWithValues(`select ${name} (${element.join(', ')})`, params)).rows;
             }
+ 
             if (this.retorno.length > 1) {
                 const aux = [];
                 this.retorno.forEach(elemento => {
@@ -52,7 +53,7 @@ export class ConexionService {
                 return this.retorno[0][name];
             return this.retorno
         } catch (error) {
-            console.log(`error: ${error.menssage}`);
+            console.log(error);
             return null;
         }
 
