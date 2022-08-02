@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, OmitType } from "@nestjs/swagger";
 class Actividades {
     @ApiProperty()
     titulo: string;
@@ -17,6 +17,7 @@ export class PlanesDto {
     objetivos: string;
     @ApiProperty({isArray: true, type: Actividades})
     actividades: Actividades[];
+}
 
-
+export class UpdatePlanesDto extends OmitType(PlanesDto, ['actividades']) {
 }

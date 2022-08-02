@@ -45,7 +45,6 @@ export class ConexionService {
             if (this.retorno.length > 1) {
                 const aux = [];
                 this.retorno.forEach(elemento => {
-                    console.log(elemento)
                     aux.push(elemento[name]);
                 });
                 return aux;
