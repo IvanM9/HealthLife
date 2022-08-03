@@ -7,8 +7,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  @Redirect('/api')
+  @Redirect()
   getHello() {
-    return {url: 'http://localhost:3000/api'};
+    return {url: '/api'};
   }
 }

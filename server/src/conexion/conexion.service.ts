@@ -3,18 +3,38 @@
 import { Injectable } from '@nestjs/common';
 import { Pool } from 'pg';
 import { Cruddata } from './cruddata';
+import * as url from 'url';
 require('dotenv').config();
 @Injectable()
 export class ConexionService {
     private readonly database;
+    private config:any;
     constructor() {
-        this.database = new Pool({
-            user: process.env.DB_USER,
-            host: process.env.DB_HOST,
-            database: process.env.DB_NAME,
-            password: process.env.DB_PASSWORD,
-            port: process.env.DB_PORT || 5432,
-        });
+        if (process.env.DATABASE_URL) {
+            const params = url.parse(process.env.DATABASE_URL);
+            const auth = params.auth.split(':');
+    
+            this.config = {
+                user: auth[0],
+                password: auth[1],
+                host: params.hostname,
+                port: params.port,
+                database: params.pathname.split('/')[1],
+                ssl: {
+                    rejectUnauthorized: false
+                }
+            };
+        }
+        else {
+            this.config = {
+                user: process.env.DB_USER,
+                host: process.env.DB_HOST,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+                port: '5432'
+            }
+        }
+        this.database = new Pool(this.config);
         if(this.database.connect())
             console.log('Conexion exitosa');
         else

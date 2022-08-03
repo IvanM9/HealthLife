@@ -24,14 +24,14 @@ export class ActividadesController {
         return this.servicio.crearPlan(plan, req.user.id);
     }
 
-    @Get('obtener_planes/:id')
-    async obtenerPlan(@Param('id') id:number, @Req() req) {
+    @Get('obtener_planes/:idprofesional')
+    async obtenerPlan(@Param('idprofesional') id:number, @Req() req) {
         const identficador = req.user.rol == Role.Entrenador || req.user.rol== Role.Nutricionista || req.user.rol == Role.Admin ? req.user.id : id; 
         return this.servicio.obtenerPlan(identficador);
     }
 
-    @Get('obtener_actividades/:id')
-    async obtenerActividades(@Param('id') id:number) {
+    @Get('obtener_actividades/:idplan')
+    async obtenerActividades(@Param('idplan') id:number) {
         return this.servicio.obtenerActividades(id);
     }
 
@@ -41,11 +41,11 @@ export class ActividadesController {
     }
 
     // TODO: Realizar funciones de eliminar planes
-    @Put('modificar_plan/:id')
+    @Put('modificar_plan/:idplan')
     @Roles(Role.Entrenador)
     @Roles(Role.Nutricionista)
     @Roles(Role.Admin)
-    async modificarPlan(@Param('id') id:number, @Body() plan:UpdatePlanesDto) {
+    async modificarPlan(@Param('idplan') id:number, @Body() plan:UpdatePlanesDto) {
         return this.servicio.modificarPlan(plan, id);
     }
 
