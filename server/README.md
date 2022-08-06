@@ -29,34 +29,28 @@
 ## Installation
 
 ```bash
-$ npm install
+  $ npm install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+  $ npm run start
 
 # watch mode
-$ npm run start:dev
+  $ npm run start:dev
 
 # production mode
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+## Variables de entorno necesarias
+DB_USER
+DB_HOST
+DB_NAME
+DB_PASSWORD
+SECRETKEY
 
 ## Support
 
