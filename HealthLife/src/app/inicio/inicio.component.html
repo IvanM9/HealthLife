@@ -17,8 +17,8 @@
             <li><a href="#testimonios">Testimonios</a></li>
             <li id="empiezaYa" class="dropdown"><a><span>¡Empieza ya! <fa-icon [icon]="faFlechaAbajo"></fa-icon></span></a>
               <ul>
-                <li><a href="#">Iniciar sesión</a></li>
-                <li><a href="#">Registrarme</a></li>
+                <li><a (click)="abrirLogin()" routerLink="/login">Iniciar sesión</a></li>
+                <!--<li><a href="#">Registrarme</a></li>-->
               </ul>
             </li>
           </ul>
@@ -47,7 +47,7 @@
               <div class="col-lg-8 text-center text-lg-start">
                 <h1 data-aos="fade-right">¡La mejor aplicación web para la salud!</h1>
                 <p class="mb-5" data-aos="fade-right" data-aos-delay="100">HealthLife es la aplicación web ideal para poder llevar una salud alimenticia adecuada acompañada de rutinas de ejercicios. ¡Esta es tu mejor opción!</p>
-                <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="#" class="btn btn-outline-white">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a></p>
+                <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a routerLink="/login" class="btn btn-outline-white">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a></p>
               </div>
               <div class="col-lg-4 iphone-wrap">
                 <img src="../../assets/img/inicio/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right">
@@ -120,21 +120,21 @@
           </div>
   
           <div class="row">
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="850">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="750">
               <div class="step">
                 <span class="number"><fa-icon [icon]="faRevisar"></fa-icon></span>
                 <h3>Revisa los planes</h3>
                 <p>Al empezar en HealthLife se te asignará un plan según tu condición física. También puedes elegir entre los que tenemos a disposición.</p>
               </div>
             </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="1050">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="950">
               <div class="step">
                 <span class="number"><fa-icon [icon]="faLista"></fa-icon></span>
                 <h3>Cumple las tareas</h3>
                 <p>En cada plan se especifica lo que debes comer  o la rutina de ejercicios a realizar, estas son consideradas tareas que debes cumplir.</p>
               </div>
             </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="1250">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="1150">
               <div class="step">
                 <span class="number"><fa-icon [icon]="faPremios"></fa-icon></span>
                 <h3>Gana premios</h3>
@@ -159,17 +159,17 @@
               </div>
 
               <div class="caja-beneficios">
-                <h5 data-aos="fade-right" data-aos-delay="800"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Tomar cursos garantizados y verificados.</h5>
-                <h5 data-aos="fade-right" data-aos-delay="800"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Complementar los recursos con fuentes externas.</h5>
-                <h5 data-aos="fade-right" data-aos-delay="800"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Revisar los cursos en cualquier momento.</h5>
-                <h5 data-aos="fade-right" data-aos-delay="800"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Obtener resultados en un corto tiempo.</h5>
-                <h5 data-aos="fade-right" data-aos-delay="800"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Tener ayuda directa de profesionales.</h5>
+                <h5 data-aos="fade-right" data-aos-delay="600"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Tomar cursos garantizados y verificados.</h5>
+                <h5 data-aos="fade-right" data-aos-delay="600"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Complementar los recursos con fuentes externas.</h5>
+                <h5 data-aos="fade-right" data-aos-delay="600"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Revisar los cursos en cualquier momento.</h5>
+                <h5 data-aos="fade-right" data-aos-delay="600"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Obtener resultados en un corto tiempo.</h5>
+                <h5 data-aos="fade-right" data-aos-delay="600"><fa-icon id="icono" [icon]="faRevisar"></fa-icon> Tener ayuda directa de profesionales.</h5>
                 <br/>
-                <a href="#" class="btn btn-primary" data-aos="fade-right" data-aos-delay="800">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a>
+                <a routerLink="/login" class="btn btn-primary" data-aos="fade-right" data-aos-delay="600">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a>
               </div>
               
             </div>
-            <div class="col-md-6" data-aos="fade-left" data-aos-delay="800">
+            <div class="col-md-6" data-aos="fade-left" data-aos-delay="600">
               <img src="../../assets/img/inicio/img-beneficio-usuarios.svg" alt="Image" class="img-fluid">
             </div>
           </div>
@@ -236,7 +236,7 @@
               nutrición y por el área de ejercicios, cada profesional pone a disposición planes totalmente únicos y que garantizan buenos resultados
               a todos los usuarios que decidan formar parte de HealthLife.
             </p>
-            <p><a href="#" class="btn btn-primary">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a></p>
+            <p><a routerLink="/login" class="btn btn-primary">Empezar ahora <fa-icon [icon]="faFlechaEmpezar"></fa-icon></a></p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
             <img src="../../assets/img/inicio/img-profesionales.svg" alt="Image" class="img-fluid" data-aos="fade-right" data-aos-delay="1000">

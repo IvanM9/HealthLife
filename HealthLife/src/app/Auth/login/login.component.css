@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #77dd77;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caja-exterior {
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  height: 590px;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+.caja-interior {
+  position: absolute;
+  width: calc(100% - 4.1rem);
+  height: calc(100% - 4.1rem);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contenido-form {
+    position: absolute;
+    height: 100%;
+    width: 45%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: 0.8s ease-in-out;
+}
+
+form {
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transition: opacity 0.02s 0.4s;
+} 
+
+.logo{
+    display:flex;
+    justify-content: center;
+}
+
+.logo img{
+    width: 80px;
+    margin: 0.3rem;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #707070;
+}
+
+.heading h2 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #151111;
+    align-items: center;
+}
+  
+.heading h6 {
+    color: rgb(153, 153, 153);
+    font-weight: 400;
+    font-size: 0.76rem;
+    display: inline;
+}
+
+.toggle {
+    color: #151111;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+.heading a:hover {
+    color: #6853f1;
+}
+
+.entrada-textos{
+    position: relative;
+    height: 37px;
+    margin-bottom: 2rem;
+}
+
+
+.campo-entrada{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bbb;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #151111;
+    transition: 0.4s;
+}
+
+label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: rgb(156, 156, 156);
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.campo-entrada.active {
+    border-bottom-color: #151111;
+}
+  
+.campo-entrada.active + label {
+    font-size: 0.75rem;
+    top: -2px;
+}
+
+.btn-ingresar, .btnUsuario, .btnProfesional{
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+}
+  
+.btn-ingresar:hover {
+    background-color: #5dc460;
+}
+
+.btnUsuario:hover {
+    background-color: #5dc460;
+}
+
+.btnProfesional:hover {
+    background-color: #5dc460;
+}
+.text {
+    color: rgb(153, 153, 153);
+    font-size: 0.76rem;
+    text-align: center;
+}
+
+  
+.text a {
+    color: rgb(156, 156, 156);
+    transition: 0.3s;
+    color: #707070;;
+}
+  
+.text a:hover {
+    color: #6853f1;
+}
+
+main.sign-up-mode form.formulario-iniciar-sesion{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Preguntar rol*/
+form.preguntar-rol{
+    opacity: 0;
+    pointer-events: none;
+}
+
+main.sign-up-mode form.preguntar-rol{
+    opacity: 1;
+    pointer-events: all;
+}
+
+/*Agregado*/
+main.sign-up-mode-usuario form.preguntar-rol{
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease-out;
+}
+
+main.sign-up-mode-profesional form.preguntar-rol{
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease-out;
+}
+
+.texto-registro{
+    text-align: center;
+}
+
+
+/*Registro*/
+form.formulario-registro{
+    opacity: 0;
+    pointer-events: none;
+}
+
+form.formulario-registro2{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.botones-registro-usuario{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+}
+
+.botones-registro-usuario .btnUsuario{
+    margin-right: 20px;
+}
+
+/*form.formulario-registro{
+    display: none;
+}
+
+/*main.sign-up-mode form.formulario-registro{
+    opacity: 1;
+    pointer-events: all;
+}*/
+
+main.sign-up-mode-usuario form.formulario-registro{
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.4s ease-in;
+}
+
+main.sign-up-mode-profesional form.formulario-registro2{
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.4s ease-in;
+}
+
+.entrada-textos{
+    border-radius: 10px;
+}
+
+/*--------------------------------------------------*/
+main.sign-up-mode .contenido-form{
+    left: 55%;
+}
+
+main.sign-up-mode .carousel{
+    left: 0%;
+}
+
+.carousel {
+    position: absolute;
+    height: 100%;
+    width: 55%;
+    left: 45%;
+    top: 0;
+    background-color: #a5eea0;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-bottom: 2rem;
+    overflow: hidden;
+    transition: 0.8s ease-in-out;
+}
+  
+.images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+  
+.image {
+    margin-top: 20px;
+    width: 65%;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s;
+    margin-left: 17%;
+}
+  
+.img-1 {
+    transform: translate(0, -50px);
+    width: 65%;
+}
+  
+.img-2 {
+    transform: scale(0.4, 0.5);
+    width: 65%;
+}
+  
+.img-3 {
+    transform: translate(0, -50px);
+    width: 68%;
+}
+  
+.image.show {
+    opacity: 1;
+    transform: none;
+}
+  
+.text-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+  
+.text-wrap {
+    max-height: 2.2rem;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+  
+.text-group {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transform: translateY(0);
+    transition: 0.5s;
+}
+  
+.text-group h2 {
+    line-height: 2.2rem;
+    font-weight: 600;
+    font-size: 20px;
+}
+  
+.bullets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.bullets span {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgb(143, 143, 143);
+    margin: 0 0.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.bullets span.active {
+    width: 1.1rem;
+    background-color: #151111;
+    border-radius: 1rem;
+}
+
+
+@media (max-width: 850px) {
+    .caja-exterior {
+      height: auto;
+      max-width: 550px;
+      overflow: hidden;
+    }
+  
+    .caja-interior {
+      position: static;
+      transform: none;
+      width: revert;
+      height: revert;
+      padding: 2rem;
+    }
+  
+    .contenido-form {
+      position: revert;
+      width: 100%;
+      height: auto;
+    }
+
+    .logo img{
+        width: 110px;
+        justify-items: center;
+    }
+  
+    form {
+      max-width: revert;
+      padding: 1.5rem 2.5rem 2rem;
+      transition: transform 0.8s ease-in-out, opacity 0.45s linear;
+    }
+  
+    .heading {
+      margin: 2rem 0;
+    }
+  
+    form.formulario-registro {
+      transform: translateX(100%);
+    }
+
+    form.formulario-registro2 {
+        transform: translateX(100%);
+      }
+  
+    main.sign-up-mode form.formulario-iniciar-sesion {
+      transform: translateX(-100%);
+    }
+  
+    main.sign-up-mode form.formulario-registro {
+      transform: translateX(0%);
+    }
+
+    main.sign-up-mode form.formulario-registro2 {
+        transform: translateX(0%);
+      }
+  
+    .carousel {
+      position: revert;
+      height: auto;
+      width: 100%;
+      padding: 3rem 2rem;
+      display: flex;
+    }
+  
+    .images-wrapper {
+      display: none;
+    }
+  
+    .text-slider {
+      width: 100%;
+    }
+
+    .text{
+        text-align: center;
+        font-size: 13px;
+    }
+    
+    .heading h6{
+        font-size: 14px;
+    }
+
+    .heading a{
+        font-size: 14px;
+    }
+
+    .text-slider .text-wrap .text-group h2{
+        font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 530px) {
+    
+    main {
+      padding: 1rem;
+    }
+
+    .caja-exterior {
+      border-radius: 2rem;
+    }
+  
+    .caja-interior {
+      padding: 1rem;
+    }
+  
+    .carousel {
+      padding: 1.5rem 1rem;
+      border-radius: 1.6rem;
+    }
+  
+    .text-wrap {
+      margin-bottom: 1rem;
+    }
+  
+    .text-group h2 {
+      font-size: 1.2rem;
+    }
+  
+    form {
+      padding: 1rem 2rem 1.5rem;
+    }
+  }

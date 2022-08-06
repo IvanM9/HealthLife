@@ -32,7 +32,7 @@ export class Connection {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
                     'Accept': "/",
-                    'Authorization': 'Bearer ' + sessionStorage.getItem("token_id")?.toString()
+                    'Authorization': 'Bearer ' + (sessionStorage.getItem("token_id")? sessionStorage.getItem("token_id") : "")
                 })
             };
             return this.clientHttp.post(this.api + route, data, opciones)
@@ -50,7 +50,7 @@ export class Connection {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
                     'Accept': "/",
-                    'Authorization': 'Bearer ' + sessionStorage.getItem("token_id")?.toString()
+                    'Authorization': 'Bearer ' + (sessionStorage.getItem("token_id")? sessionStorage.getItem("token_id") : "")
                 })
             };
             return this.clientHttp.put(this.api + route, data, opciones)
@@ -66,7 +66,7 @@ export class Connection {
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',
                     'Accept': "/",
-                    'Authorization': 'Bearer ' + sessionStorage.getItem("token_id")?.toString()
+                    'Authorization': 'Bearer ' + (sessionStorage.getItem("token_id")? sessionStorage.getItem("token_id") : "")
                 })
             };
             return this.clientHttp.delete(this.api + route, opciones)
