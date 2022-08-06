@@ -1,0 +1,259 @@
+<body>
+  <main>
+    <div class="caja-exterior">
+      <div class="caja-interior">
+        <div class="contenido-form">
+          <!--Formulario para los datos de inicio de sesión-->
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" autocomplete="off" class="formulario-iniciar-sesion">
+            <div class="logo">
+              <img src="../../../assets/img/inicio/PS_Logo_Proyecto.jpeg" alt="logoHealthLife-login">
+              <!--<h3>HealthLife</h3>-->
+            </div>
+
+            <!--Encabezado-->
+            <div class="heading">
+              <h2>Bienvenido! <fa-icon [icon]="faManos"></fa-icon></h2>
+              <h6>¿Aún no tienes una cuenta? </h6>
+              <a class="toggle"> Regístrate</a>
+            </div>
+
+            <div class="actual-form">
+              <!--Campo para ingresar el usuario-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  minlength="4" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="correo"/>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
+              </div>
+              
+              <!--Campo para ingresar la contraseña-->
+              <div class="entrada-textos">
+                <input 
+                  type="password" 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="clave"/>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
+              </div>
+              
+              <!--Botón para el envío de los datos-->
+              <input type="submit" value="Ingresar" class="btn-ingresar"> 
+
+              <!--Texto por si olvidó la contraseña-->
+              <p class="text">
+                ¿Olvidaste tu contraseña?
+                <a href="#">Obtener ayuda</a>
+              </p>
+            </div>
+          </form>
+
+          <!--Formulario para saber si el que se registra es usuario o profesional (Rol)-->
+          <form action="index.html" autocomplete="off" class="preguntar-rol" id="preguntar-rol">
+            <div class="logo">
+              <img src="../../../assets/img/inicio/PS_Logo_Proyecto.jpeg" alt="logoHealthLife-login">
+              <!--<h3>HealthLife</h3>-->
+            </div>
+
+            <!--Encabezado-->
+            <div class="heading">
+              <h2>Empecemos! <fa-icon [icon]="faPersona"></fa-icon></h2>
+              <h6>¿Ya tienes una cuenta? </h6>
+              <a class="toggle"> Inicia sesión</a>
+            </div>
+
+            <div class="texto-registro">
+              <span>Selecciona tu rol para poder registrarte: </span>
+            </div>
+            
+            <div class="botones-registro">
+              <input type="submit" value="Soy usuario" class="btnUsuario">
+              <input type="submit" value="Soy profesional " class="btnProfesional">
+            </div>
+          </form>
+
+          <!--Formulario de registro usuarios-->
+          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)" autocomplete="off" class="formulario-registro" id="formulario-registro">
+            <div class="heading">
+              <h2>Empecemos!<fa-icon [icon]="faCorazon"></fa-icon></h2>
+            </div>
+
+            <div class="actual-form">
+              <br/>
+              <!--Campo para ingresar nombres-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="nombres"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍Nombres</label>
+              </div>
+
+              <!--Campo para ingresar apellidos-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="apellidos"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Apellidos</label>
+              </div>
+
+              <!--Campo para ingresar email-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="correo"/>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
+              </div>
+              
+              <!--Campo para ingresar contraseña-->
+              <div class="entrada-textos">
+                <input 
+                  type="password" 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="clave"/>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
+              </div>
+              
+              <!--Opción de aceptar los términos y condiciones-->
+              <p class="text">
+                <input type="checkbox"> He leído y acepto las 
+                <a href="#"> Políticas de privacidad para usuarios</a>
+              </p>
+              <br/>
+
+              <!--Botones para volver o para registrarse-->
+              <div class="botones-registro-usuario">
+                <input type="submit" value="Atrás" class="btnUsuario">
+                <input type="submit" value="Registrarme" class="btn-ingresar"> 
+              </div>
+            </div>
+          </form>
+
+          <!--Formulario para el registro de profesionales-->
+          <form [formGroup]="registroProfesionalesForm" (ngSubmit)="registrarProfesionales(registroProfesionalesForm.value)" autocomplete="off" class="formulario-registro2" id="formulario-registro2">
+            <div class="heading">
+              <h2>Empecemos! <fa-icon [icon]="faCorazon"></fa-icon></h2>
+            </div>
+
+            <div class="actual-form">
+              <br/>
+              <!--Campo para seleccionar el tipo de profesional-->
+              <div class="entrada-textos">
+                <select 
+                  name="rol-profesional"
+                  class="campo-entrada"
+                  formControlName="rol">
+                  <option selected disabled>--- Seleccione su rol ---</option>
+                  <option value="nutricionista">Nutricionista</option>
+                  <option value="entrenador">Entrenador</option>
+                  </select>
+              </div>
+
+              <!--Campo para ingresar nombres-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="nombres"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Nombres</label>
+              </div>
+
+              <!--Campo para ingresar Apellidos-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="apellidos"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Apellidos</label>
+              </div>
+
+              <!--Campo para ingresar Email-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="correo"/>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
+              </div>
+              
+              <!--Campo para ingresar Contraseña-->
+              <div class="entrada-textos">
+                <input 
+                  type="password" 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="clave"/>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
+              </div>
+              
+              <!--Opción para aceptar los términos y condiciones-->
+              <p class="text">
+                <input type="checkbox"> He leído y acepto las 
+                <a href="#"> Políticas de privacidad para profesionales</a>
+              </p>
+              <br/>
+
+              <!--Botones para regresar o registrarse-->
+              <div class="botones-registro-usuario">
+                <input type="button" value="Atrás" class="btnProfesional">
+                <input type="submit" value="Registrarme" class="btn-ingresar"> 
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <!--Contenedor carrusel para mostrar la parte de las imágenes con la información-->
+        <div class="carousel">
+          <div class="images-wrapper">
+            <img src="../../../assets/img/login/img1.svg" class="image img-1 show" alt="" />
+            <img src="../../../assets/img/login/img2.svg" class="image img-2" alt="" />
+            <img src="../../../assets/img/login/img3.svg" class="image img-3" alt="" />
+          </div>
+
+          <!--Texto del carousel-->
+          <div class="text-slider">
+            <div class="text-wrap">
+              <div class="text-group">
+                <h2>Crea tu perfil según tu físico y hábitos <fa-icon [icon]="faRevisar"></fa-icon></h2>
+                <h2>Sigue los planes a tu propio ritmo <fa-icon [icon]="faReloj"></fa-icon></h2>
+                <h2>Obtén asesoría de los profesionales <fa-icon [icon]="faManos"></fa-icon></h2>
+              </div>
+            </div>
+
+            <!--Indicadores del caroulsel--> 
+            <div class="bullets">
+              <span class="active" data-value="1"></span>
+              <span data-value="2"></span>
+              <span data-value="3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
