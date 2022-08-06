@@ -3,7 +3,7 @@ import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common'
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ClienteDto } from './dtos/cliente.dto';
 import { ProfesionalDto } from './dtos/profesional.dto';
-import { usuarioDto } from './dtos/usuario.dto';
+import { LoginDto, usuarioDto } from './dtos/usuario.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { SessionService } from './session.service';
 
@@ -25,7 +25,7 @@ export class SessionController {
     }
 
     @Post('login')
-    async login(@Body() usuario: usuarioDto) {
+    async login(@Body() usuario: LoginDto) {
         return this.servicio.login(usuario);
     }
 

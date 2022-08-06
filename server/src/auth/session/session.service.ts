@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConexionService } from 'src/conexion/conexion.service';
-import { usuarioDto } from './dtos/usuario.dto';
+import { LoginDto, usuarioDto } from './dtos/usuario.dto';
 import { hash, compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ProfesionalDto } from './dtos/profesional.dto';
@@ -53,14 +53,14 @@ export class SessionService {
         return { mensaje: "Cliente registrado correctamente" };
     }
 
-    async login(datos: usuarioDto) {
+    async login(datos: LoginDto) {
         const retorno = await this.conexion.executeProcedure('login', [datos.correo]);
         if (retorno.clave == undefined) throw new HttpException('Usuario no existe', 400);
         const valido = await compare(datos.clave, retorno.clave);
         if (!valido) throw new HttpException('Clave incorrecta', 400);
         const token_id = this.jwt.sign({ id: retorno.id.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
         //* Para verificar el token, se debe envíar por medio del auth bearer el token
-        return { "mensaje": "Usuario logueado correctamente", token_id };
+        return { "mensaje": retorno.rol.toString().trim()+' logueado correctamente', token_id };
     }
 
     // TODO: Reubicar esta funcion en un servicio aparte

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, OmitType } from '@nestjs/swagger';
 import { IsString, IsEmail } from 'class-validator'
 export class usuarioDto {
     @ApiProperty()
@@ -7,9 +7,11 @@ export class usuarioDto {
     @ApiProperty()
     apellidos: string;
     @ApiProperty()
-    @IsString()
-    clave: string;
-    @ApiProperty()
     @IsEmail()
     readonly correo: string;
+    @ApiProperty()
+    @IsString()
+    clave: string;
 }
+
+export class LoginDto extends OmitType(usuarioDto, ['nombres','apellidos']){}
