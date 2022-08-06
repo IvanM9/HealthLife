@@ -27,7 +27,7 @@
                   autocomplete="off" 
                   required
                   formControlName="correo"/>
-                  <label>Usuario</label>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
               </div>
               
               <!--Campo para ingresar la contraseña-->
@@ -39,7 +39,7 @@
                   autocomplete="off" 
                   required
                   formControlName="clave"/>
-                  <label>Contraseña</label>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
               </div>
               
               <!--Botón para el envío de los datos-->
@@ -78,7 +78,7 @@
           </form>
 
           <!--Formulario de registro usuarios-->
-          <form action="index.html" autocomplete="off" class="formulario-registro" id="formulario-registro">
+          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)" autocomplete="off" class="formulario-registro" id="formulario-registro">
             <div class="heading">
               <h2>Empecemos!<fa-icon [icon]="faCorazon"></fa-icon></h2>
             </div>
@@ -91,8 +91,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Nombres</label>
+                  required
+                  formControlName="nombres"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍Nombres</label>
               </div>
 
               <!--Campo para ingresar apellidos-->
@@ -101,8 +102,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Apellidos</label>
+                  required
+                  formControlName="apellidos"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Apellidos</label>
               </div>
 
               <!--Campo para ingresar email-->
@@ -111,8 +113,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Email</label>
+                  required
+                  formControlName="correo"/>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
               </div>
               
               <!--Campo para ingresar contraseña-->
@@ -122,8 +125,9 @@
                   minlength="8" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Contraseña</label>
+                  required
+                  formControlName="clave"/>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
               </div>
               
               <!--Opción de aceptar los términos y condiciones-->
@@ -142,7 +146,7 @@
           </form>
 
           <!--Formulario para el registro de profesionales-->
-          <form action="index.html" autocomplete="off" class="formulario-registro2" id="formulario-registro2">
+          <form [formGroup]="registroProfesionalesForm" (ngSubmit)="registrarProfesionales(registroProfesionalesForm.value)" autocomplete="off" class="formulario-registro2" id="formulario-registro2">
             <div class="heading">
               <h2>Empecemos! <fa-icon [icon]="faCorazon"></fa-icon></h2>
             </div>
@@ -153,10 +157,11 @@
               <div class="entrada-textos">
                 <select 
                   name="rol-profesional"
-                  class="campo-entrada">
+                  class="campo-entrada"
+                  formControlName="rol">
                   <option selected disabled>--- Seleccione su rol ---</option>
-                  <option>Nutricionista</option>
-                  <option>Entrenador</option>
+                  <option value="nutricionista">Nutricionista</option>
+                  <option value="entrenador">Entrenador</option>
                   </select>
               </div>
 
@@ -166,8 +171,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Nombres</label>
+                  required
+                  formControlName="nombres"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Nombres</label>
               </div>
 
               <!--Campo para ingresar Apellidos-->
@@ -176,8 +182,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Apellidos</label>
+                  required
+                  formControlName="apellidos"/>
+                  <label><fa-icon [icon]="faUsuario"></fa-icon>  ‍‍‍‍‍Apellidos</label>
               </div>
 
               <!--Campo para ingresar Email-->
@@ -186,8 +193,9 @@
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Email</label>
+                  required
+                  formControlName="correo"/>
+                  <label><fa-icon [icon]="faEmail"></fa-icon>  ‍‍‍‍‍Email</label>
               </div>
               
               <!--Campo para ingresar Contraseña-->
@@ -197,8 +205,9 @@
                   minlength="8" 
                   class="campo-entrada" 
                   autocomplete="off" 
-                  required/>
-                  <label>Contraseña</label>
+                  required
+                  formControlName="clave"/>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
               </div>
               
               <!--Opción para aceptar los términos y condiciones-->
@@ -210,7 +219,7 @@
 
               <!--Botones para regresar o registrarse-->
               <div class="botones-registro-usuario">
-                <input type="submit" value="Atrás" class="btnProfesional">
+                <input type="button" value="Atrás" class="btnProfesional">
                 <input type="submit" value="Registrarme" class="btn-ingresar"> 
               </div>
             </div>

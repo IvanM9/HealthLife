@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService) {
-    _cargarScripts.CargarJSDashboardCliente(["cliente/animacionmenu"]);
+    _cargarScripts.CargarJS(["cliente/animacionmenu"]);
   }
 
 
