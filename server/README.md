@@ -36,21 +36,26 @@
 
 ```bash
 # development
-  $ npm run start
+$ npm run start
 
 # watch mode
-  $ npm run start:dev
+$ npm run start:dev
 
 # production mode
 $ npm run start:prod
 ```
 
+
+<h3>Base de datos: PostgreSql</h3>
+
 ## Variables de entorno necesarias
-DB_USER
-DB_HOST
-DB_NAME
-DB_PASSWORD
-SECRETKEY
+- DB_USER
+- DB_HOST
+- DB_NAME
+- DB_PASSWORD
+- SECRETKEY
+
+
 
 ## Support
 

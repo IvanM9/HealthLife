@@ -11,15 +11,12 @@ import { PlanesDto, UpdatePlanesDto } from './dtos/planes.dto';
 @ApiBearerAuth()
 @ApiTags('actividades')
 @Controller('actividades')
-@UseGuards(JwtAuthGuard)
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class ActividadesController {
     constructor(private servicio:ActividadesService) {}
 
     @Post('crearPlan')
-    @Roles(Role.Entrenador)
-    @Roles(Role.Nutricionista)
-    @Roles(Role.Admin)
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async crearActividad(@Body() plan:PlanesDto, @Req() req) {
         return this.servicio.crearPlan(plan, req.user.id);
     }
@@ -42,9 +39,7 @@ export class ActividadesController {
 
     // TODO: Realizar funciones de eliminar planes
     @Put('modificar_plan/:idplan')
-    @Roles(Role.Entrenador)
-    @Roles(Role.Nutricionista)
-    @Roles(Role.Admin)
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async modificarPlan(@Param('idplan') id:number, @Body() plan:UpdatePlanesDto) {
         return this.servicio.modificarPlan(plan, id);
     }

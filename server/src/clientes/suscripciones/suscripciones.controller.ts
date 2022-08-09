@@ -11,8 +11,7 @@ import { SuscripcionesService } from './suscripciones.service';
 @ApiBearerAuth()
 @Controller('suscripciones')
 @ApiTags('Suscripciones')
-@UseGuards(JwtAuthGuard)
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class SuscripcionesController {
     constructor(private servicio:SuscripcionesService){}
 

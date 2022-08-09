@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { IsString, IsEmail } from 'class-validator'
+import { IsString, IsEmail, IsNotEmpty } from 'class-validator'
 export class usuarioDto {
     @ApiProperty()
     nombres: string;
@@ -10,7 +10,7 @@ export class usuarioDto {
     @IsEmail()
     readonly correo: string;
     @ApiProperty()
-    @IsString()
+    @IsNotEmpty()
     clave: string;
 }
 
