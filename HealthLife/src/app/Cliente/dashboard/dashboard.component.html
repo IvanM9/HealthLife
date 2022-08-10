@@ -2,37 +2,44 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span>HealthLife</span></h2>
+            <h2> <img src="../../../assets/img/inicio/PS_Logo_Proyecto.jpeg"> <span>HealthLife</span></h2>
         </div>
         
         <!--Opciones del menú lateral-->
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="" class="active"> <span class="fas fa-home"></span>
-                    <span>Inicio</span> </a>
+                    <a href="" > <fa-icon [icon]="faHome"></fa-icon>
+                    <span>  &nbsp;Inicio</span> </a>
                 </li>
                 <li>
-                    <a href=""> <span class="fas fa-chart-bar"></span>
-                    <span>Mis cursos</span></a>
+                    <a href=""> <fa-icon [icon]="faPlanAlimenticio"></fa-icon>
+                    <span>  &nbsp;Planes Alimenticios</span></a>
                 </li>
                 <li>
-                    <a href=""> <span class="fas fa-users"></span>
-                    <span>Chat</span></a>
+                    <a href=""> <fa-icon [icon]="faPlanEjercicio"></fa-icon>
+                    <span>  &nbsp;Planes estadísticos</span></a>
                 </li>
                 <li>
-                    <a href=""> <span class="fas fa-comments"></span>
-                    <span>Estadísticas</span></a>
+                    <a href=""> <fa-icon [icon]="faProfesionales"></fa-icon>
+                    <span>  &nbsp;Profesionales</span></a>
                 </li>
                 <li>
-                    <a href=""> <span class="fas fa-crown"></span>
-                    <span>Mis logros</span></a>
+                    <a href=""> <fa-icon [icon]="faEstadisticas"></fa-icon>
+                    <span>  &nbsp;Estadísticas</span></a>
                 </li>
                 <li>
-                    <a href=""> <span class="fas fa-sign-out-alt"></span>
-                    <span>Cerrar sesión</span></a>
+                    <a href=""> <fa-icon [icon]="faChat"></fa-icon>
+                    <span>  &nbsp;Chat</span></a>
+                </li>
+                <li>
+                    <a href=""> <fa-icon [icon]="faExperiencias"></fa-icon>
+                    <span>  &nbsp;Experiencias</span></a>
                 </li>
             </ul>
+            <div class="derechos-reservados">
+                <p>HealthLife © 2022</p>
+            </div>
         </div>
     </div>
 
@@ -41,23 +48,33 @@
         <header>
             <h2>
                 <label for="nav-toggle">
-                    <span class="fas fa-bars" id="logo-menu"></span>
+                    <fa-icon [icon]="faBars" id="logo-menu"></fa-icon>
                 </label> 
             </h2>
 
-            <div class="user-wrapper">
+            <div class="user-wrapper me-sm-3">
+                <fa-icon [icon]="faNotificacion" id="iconNotificacion"></fa-icon>
                  <!--La imagen que aparece aquí debe ser traida de la BD con el usuario logueado-->
                 <img src="../../../assets/img/inicio/person_2.jpg" width="40px" height="40px" alt="foto-usuario-logueado">
-                <div>
+                <div class="user-name">
                     <!--El nombres que aparecerá en este h4 debe ser traido de la BD con el usuario logueado-->
-                    <h4>Jordan Vera</h4>
+                    <ul>
+                        <li id="empiezaYa" class="dropdown"><a><span> Jordan Vera <fa-icon [icon]="faFlechaAbajo"></fa-icon></span></a>
+                            <ul>
+                                <li><a routerLink="/perfil"><fa-icon [icon]="faUserPerfil"></fa-icon>  &nbsp;Mi perfil</a></li>
+                                <li><a routerLink="/configuracion"><fa-icon [icon]="faConfiguracion"></fa-icon>  &nbsp;Configuración</a></li>
+                                <li><a routerLink="/login"><fa-icon [icon]="faCerrarSesion"></fa-icon>  &nbsp;Cerrar sesión</a></li>
+                                <!--<li><a href="#">Registrarme</a></li>-->
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </header>
 
         <main>
             <!--Fila 1 de los módulos-->
-            <div class="tarjetas">
+            <!--<div class="tarjetas">
                 <div class="tarjetas-simples">
                     <div>
                         <h1>Piernas</h1>
@@ -87,62 +104,7 @@
                         <span class="fas fa-redo-alt"></span>
                     </div>
                 </div>
-            </div>
-
-            <!--Tablas-->
-            <div class="recent-grind">
-                <div class="projects">
-                    <div class="tarjeta">
-                        <div class="tarjeta-header">
-                            <h3>Módulos recientes</h3>
-
-                            <button>Mostrar todo <span class="fas fa-arrow-right">
-                            </span></button>
-                        </div>
-
-                        <div class="tarjeta-body">                            
-                            <div class="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>Nombre</td>
-                                            <td>Apellido</td>
-                                            <td>Estado</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--Aquí van los datos traidos de la BD-->
-                                        <tr>
-                                            <td>Jordan Fabian</td>
-                                            <td>Vera Coello</td>
-                                            <td>
-                                                <span class="status green"></span>Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jordan Fabian</td>
-                                            <td>Vera Coello</td>
-                                            <td>
-                                                <span class="status red"></span>Malo
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jordan Fabian</td>
-                                            <td>Vera Coello</td>
-                                            <td>
-                                                <span class="status yellow"></span>Intermedio
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+            </div>-->
         </main>
-
     </div>
 </body>
