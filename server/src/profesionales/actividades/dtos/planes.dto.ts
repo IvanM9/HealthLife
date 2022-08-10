@@ -11,8 +11,8 @@ class Actividades {
 export class PlanesDto {
     @ApiProperty()
     nombre: string;
-    @ApiProperty()
-    estado: boolean;
+    @ApiProperty({default: false})
+    publico: boolean;
     @ApiProperty()
     objetivos: string;
     @ApiProperty({isArray: true, type: Actividades})

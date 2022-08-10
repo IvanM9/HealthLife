@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .addBearerAuth()
     .setTitle('Documentación de la API de HealthLife')
-    .setExternalDoc('Repositorio en GitHub', 'https://github.com/IvanM9/HealthLife')
+    .setContact('HealthLife team', 'https://github.com/IvanM9/HealthLife',null)
     .setExternalDoc("Click aquí para ir a la aplicación para usuarios finales","https://healthlifeuteq.herokuapp.com")
     .setVersion('2.0')
     .build();

@@ -18,12 +18,13 @@ export class ActividadesController {
     @Post('crearPlan')
     @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async crearActividad(@Body() plan:PlanesDto, @Req() req) {
-        return this.servicio.crearPlan(plan, req.user.id);
+        plan.publico = req.user.roles[0] == Role.Admin ? true : plan.publico;
+        return this.servicio.crearPlan(plan, req.user.roles[0] == Role.Admin ? null : req.user.id);
     }
 
     @Get('obtener_planes/:idprofesional')
     async obtenerPlan(@Param('idprofesional') id:number, @Req() req) {
-        const identficador = req.user.rol == Role.Entrenador || req.user.rol== Role.Nutricionista || req.user.rol == Role.Admin ? req.user.id : id; 
+        const identficador = req.user.roles[0] == Role.Entrenador || req.user.roles[0] == Role.Nutricionista || req.user.roles[0] == Role.Admin ? req.user.id : id; 
         return this.servicio.obtenerPlan(identficador);
     }
 

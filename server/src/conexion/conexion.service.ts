@@ -72,8 +72,8 @@ export class ConexionService {
                 return this.retorno[0][name];
             return this.retorno
         } catch (error) {
-            console.log(error);
-            return null;
+            console.error(error);
+            throw new Error("Error: "+error);
         }
 
     }
