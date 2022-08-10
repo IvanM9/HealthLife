@@ -19,15 +19,29 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fagraduation = iconos.faGraduationCap;
-  fahome = iconos.faHome;
+  //Iconos para el menú de la parte superior
+  faBars = iconos.faBars;
+  faFlechaAbajo = iconos.faAngleDown;
+  faUserPerfil = iconos.faUser;
+  faConfiguracion = iconos.faGear;
+  faCerrarSesion = iconos.faSignOut;
+  faNotificacion = iconos.faBell;
+
+  //Iconos para el menu de la parte izquierda
+  faHome = iconos.faHome;
+  faPlanAlimenticio = iconos.faAppleWhole;
+  faPlanEjercicio = iconos.faDumbbell;
+  faProfesionales = iconos.faUserTie;
+  faEstadisticas = iconos.faChartSimple;
+  faExperiencias = iconos.faUsersLine;
+  faChat = iconos.faComments;
+
+
   fachart = iconos.faChartBar;
-  fauser = iconos.faUser;
-  facomments = iconos.faComments;
   facrown = iconos.faCrown;
   fasignoutalt = iconos.faSignOutAlt;
-  fabars = iconos.faBars;
   fasearch = iconos.faSearch;
+
   //modulos
   fainfocircle = iconos.faInfoCircle;
   facheckcircle = iconos.faCheckCircle;
