@@ -31,7 +31,6 @@ export class SessionService {
     async registrarProfesional(datos: ProfesionalDto) {
         if (datos.rol != "entrenador" && datos.rol != "nutricionista") throw new HttpException('Rol incorrecto', 400);
         const id = await this.registrarUsuario(datos, datos.rol);
-        console.log(id);
         if (!id || id == null) throw new HttpException('Error al registrar', 400);
         const retorno = await this.conexion.executeProcedure('insert_profesional', [id, datos.descripcion,datos.links]);
         if(!retorno) throw new HttpException('Error al registrar el profesional', 400);

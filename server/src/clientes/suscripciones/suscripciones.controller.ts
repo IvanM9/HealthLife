@@ -1,18 +1,17 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/session/jwt-auth.guard';
 import { Role } from 'src/auth/session/role.enum';
 import { Roles } from 'src/auth/session/roles.decorator';
 import { RolesGuard } from 'src/auth/session/roles.guard';
-import { SuscripcionDto } from './dtos/suscripcion.dto';
+import { ModificarSuscripcionDto, SuscripcionDto } from './dtos/suscripcion.dto';
 import { SuscripcionesService } from './suscripciones.service';
 
 @ApiBearerAuth()
 @Controller('suscripciones')
 @ApiTags('Suscripciones')
-@UseGuards(JwtAuthGuard)
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class SuscripcionesController {
     constructor(private servicio:SuscripcionesService){}
 
@@ -25,6 +24,11 @@ export class SuscripcionesController {
     @Get('obtener_planes_generales')
     async obtenerPlanesGenerales(){
         return this.servicio.obtenerPlanesGenerales();
+    }
+
+    @Put('modificar_suscripcion')
+    async modificarSuscripcion(@Body() datos:ModificarSuscripcionDto, @Req() req:any){
+        return this.servicio.modificar_suscripcion(req.user.id, datos);
     }
 
     // TODO: Realizar funciones de eliminar suscripciones

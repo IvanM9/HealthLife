@@ -30,8 +30,8 @@ export class ActividadesService {
 
     async crearPlan(planes: PlanesDto, idProfesional: number) {
         try {
-            const indice = await this.conexion.executeProcedure("insert_plan", [planes.nombre, idProfesional, planes.estado, planes.objetivos]);
-            if (indice == -1 || indice == null) throw new HttpException("No se pudo crear el plan", 500);
+            const indice = await this.conexion.executeProcedure("insert_plan", [planes.nombre, idProfesional, planes.publico, planes.objetivos]);
+            if (indice == -1 || indice == null) throw new HttpException("No se pudo crear el plan", 400);
             const aux: string[] = [];
             for (const element of planes.actividades) {
                 const insertado = await this.conexion.executeProcedure("insert_actividad", [element.titulo, element.dia, element.detalles, indice]);
@@ -57,8 +57,8 @@ export class ActividadesService {
 
     async modificarPlan(plan:UpdatePlanesDto, id:number){
         try {
-            const retorno = await this.conexion.executeProcedure("update_plan", [ id, plan.nombre, plan.estado, plan.objetivos]);
-            if (!retorno) throw new HttpException("Error al modificar el plan", 500);
+            const retorno = await this.conexion.executeProcedure("update_plan", [ id, plan.nombre, plan.publico, plan.objetivos]);
+            if (!retorno) throw new HttpException("Error al modificar el plan", 400);
             return { mensaje: "Plan modificado correctamente" };
         } catch (error) {
             throw new HttpException(error, 500);

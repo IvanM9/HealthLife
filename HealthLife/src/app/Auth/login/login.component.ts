@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     clave: new FormControl('', Validators.required),
     descripcion: new FormControl(null),
     links: new FormControl(null),
-    rol: new FormControl('', Validators.required)
+    rol: new FormControl('seleccione-rol', Validators.required)
   })
 
 
