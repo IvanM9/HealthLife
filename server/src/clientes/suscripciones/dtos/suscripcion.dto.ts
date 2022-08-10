@@ -1,9 +1,15 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber } from "class-validator";
+import { IsBoolean, IsNumber } from "class-validator";
 
 export class SuscripcionDto {
     @ApiProperty()
     @IsNumber()
     id_plan: number;
+}
+
+export class ModificarSuscripcionDto extends SuscripcionDto{
+    @ApiProperty()
+    @IsBoolean()
+    activo: boolean;
 }

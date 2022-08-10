@@ -11,22 +11,20 @@ import { PlanesDto, UpdatePlanesDto } from './dtos/planes.dto';
 @ApiBearerAuth()
 @ApiTags('actividades')
 @Controller('actividades')
-@UseGuards(JwtAuthGuard)
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class ActividadesController {
     constructor(private servicio:ActividadesService) {}
 
     @Post('crearPlan')
-    @Roles(Role.Entrenador)
-    @Roles(Role.Nutricionista)
-    @Roles(Role.Admin)
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async crearActividad(@Body() plan:PlanesDto, @Req() req) {
-        return this.servicio.crearPlan(plan, req.user.id);
+        plan.publico = req.user.roles[0] == Role.Admin ? true : plan.publico;
+        return this.servicio.crearPlan(plan, req.user.roles[0] == Role.Admin ? null : req.user.id);
     }
 
     @Get('obtener_planes/:idprofesional')
     async obtenerPlan(@Param('idprofesional') id:number, @Req() req) {
-        const identficador = req.user.rol == Role.Entrenador || req.user.rol== Role.Nutricionista || req.user.rol == Role.Admin ? req.user.id : id; 
+        const identficador = req.user.roles[0] == Role.Entrenador || req.user.roles[0] == Role.Nutricionista || req.user.roles[0] == Role.Admin ? req.user.id : id; 
         return this.servicio.obtenerPlan(identficador);
     }
 
@@ -42,9 +40,7 @@ export class ActividadesController {
 
     // TODO: Realizar funciones de eliminar planes
     @Put('modificar_plan/:idplan')
-    @Roles(Role.Entrenador)
-    @Roles(Role.Nutricionista)
-    @Roles(Role.Admin)
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async modificarPlan(@Param('idplan') id:number, @Body() plan:UpdatePlanesDto) {
         return this.servicio.modificarPlan(plan, id);
     }
