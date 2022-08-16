@@ -26,6 +26,12 @@ export class SuscripcionesController {
         return this.servicio.obtenerPlanesGenerales();
     }
 
+    @Get('obtener_planes_recomendados')
+    @Roles(Role.Cliente)
+    async obtenerPlanesRecomendados(@Req() req:any){
+        return this.servicio.obtenerPlanesRecomendados(req.user.id);
+    }
+
     @Put('modificar_suscripcion')
     async modificarSuscripcion(@Body() datos:ModificarSuscripcionDto, @Req() req:any){
         return this.servicio.modificar_suscripcion(req.user.id, datos);

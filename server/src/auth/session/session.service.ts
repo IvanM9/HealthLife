@@ -6,6 +6,7 @@ import { hash, compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ProfesionalDto } from './dtos/profesional.dto';
 import { ClienteDto } from './dtos/cliente.dto';
+import { IMC } from 'src/clientes/IMC';
 
 @Injectable()
 export class SessionService {
@@ -21,7 +22,8 @@ export class SessionService {
             datos.apellidos,
             datos.correo,
             datos.clave,
-            rol
+            rol,
+            datos.sexo
         ]);
         console.log(retorno);
         if (!retorno) throw new HttpException('Error al registrar el usuario', 400);
@@ -50,7 +52,9 @@ export class SessionService {
             datos.detalles_extras,
             id]);
             if (!retorno) throw new HttpException('Error al registrar el cliente', 400);
-        return { mensaje: "Cliente registrado correctamente" };
+        return { 
+            mensaje: "Cliente registrado correctamente", 
+        };
     }
 
     async login(datos: LoginDto) {
@@ -60,7 +64,6 @@ export class SessionService {
         const valido = await compare(datos.clave, retorno.clave);
         if (!valido) throw new HttpException('Clave incorrecta', 400);
         const token_id = this.jwt.sign({ id: retorno.id.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
-        //* Para verificar el token, se debe envíar por medio del auth bearer el token
         return { "mensaje": retorno.rol.toString().trim()+' logueado correctamente', token_id, rol: retorno.rol.toString().trim() };
     }
 

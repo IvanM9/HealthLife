@@ -1,16 +1,16 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsDecimal, IsString } from "class-validator";
 import { usuarioDto } from "./usuario.dto";
 
 export class ClienteDto extends usuarioDto {
-    @ApiProperty()
-    @IsString()
-    talla: string;
+    @ApiProperty({example:'1.70', description:'Talla en metros (m)'})
+    @IsDecimal({maxDecimalPlaces:2})
+    talla: number;
 
-    @ApiProperty()
-    @IsString()
-    peso: string;
+    @ApiProperty({example:'70.00', description:'Peso en kilogramos (kg)'})
+    @IsDecimal({maxDecimalPlaces:2})
+    peso: number;
 
     @ApiProperty()
     @IsString()
