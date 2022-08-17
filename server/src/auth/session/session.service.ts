@@ -9,9 +9,7 @@ import { ClienteDto } from './dtos/cliente.dto';
 
 @Injectable()
 export class SessionService {
-    constructor(private conexion: ConexionService, private jwt: JwtService) {
-
-    }
+    constructor(private conexion: ConexionService, private jwt: JwtService) {}
 
     async registrarUsuario(datos: usuarioDto, rol: string) {
         console.log(datos, rol);
@@ -19,9 +17,10 @@ export class SessionService {
         const retorno = await this.conexion.executeProcedure('insert_usuario', [
             datos.nombres,
             datos.apellidos,
-            datos.correo,
+            datos.correo.toLowerCase().trim(),
             datos.clave,
-            rol
+            rol,
+            datos.sexo
         ]);
         console.log(retorno);
         if (!retorno) throw new HttpException('Error al registrar el usuario', 400);
@@ -32,8 +31,8 @@ export class SessionService {
         if (datos.rol != "entrenador" && datos.rol != "nutricionista") throw new HttpException('Rol incorrecto', 400);
         const id = await this.registrarUsuario(datos, datos.rol);
         if (!id || id == null) throw new HttpException('Error al registrar', 400);
-        const retorno = await this.conexion.executeProcedure('insert_profesional', [id, datos.descripcion,datos.links]);
-        if(!retorno) throw new HttpException('Error al registrar el profesional', 400);
+        const retorno = await this.conexion.executeProcedure('insert_profesional', [id, datos.descripcion, datos.links]);
+        if (!retorno) throw new HttpException('Error al registrar el profesional', 400);
         // TODO: Si el profesional no se registra correctamente, se debe eliminar el usuario
         return { mensaje: "Profesional registrado correctamente" };
     }
@@ -49,19 +48,20 @@ export class SessionService {
             datos.enfermedades,
             datos.detalles_extras,
             id]);
-            if (!retorno) throw new HttpException('Error al registrar el cliente', 400);
-        return { mensaje: "Cliente registrado correctamente" };
+        if (!retorno) throw new HttpException('Error al registrar el cliente', 400);
+        return {
+            mensaje: "Cliente registrado correctamente",
+        };
     }
 
     async login(datos: LoginDto) {
-        const retorno = await this.conexion.executeProcedure('login', [datos.correo]);
+        const retorno = await this.conexion.executeProcedure('login', [datos.correo.toLowerCase().trim()]);
         console.log(retorno.clave)
         if (retorno.clave == undefined || retorno.clave == null) throw new HttpException('Usuario no existe', 400);
         const valido = await compare(datos.clave, retorno.clave);
         if (!valido) throw new HttpException('Clave incorrecta', 400);
         const token_id = this.jwt.sign({ id: retorno.id.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
-        //* Para verificar el token, se debe envíar por medio del auth bearer el token
-        return { "mensaje": retorno.rol.toString().trim()+' logueado correctamente', token_id, rol: retorno.rol.toString().trim() };
+        return { "mensaje": retorno.rol.toString().trim() + ' logueado correctamente', token_id, rol: retorno.rol.toString().trim() };
     }
 
     // TODO: Reubicar esta funcion en un servicio aparte
