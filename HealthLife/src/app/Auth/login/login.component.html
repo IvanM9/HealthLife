@@ -161,7 +161,7 @@
           </form>
 
           <!--Formulario de registro usuarios PARTE 2 (info salud)-->
-          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)" autocomplete="off" class="formulario-registro3" id="formulario-registro3">
+          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value, checkbox.checked)" autocomplete="off" class="formulario-registro3" id="formulario-registro3">
             <div class="heading">
               <h2>Un paso más!<fa-icon [icon]="faZapato"></fa-icon></h2>
             </div>
@@ -170,7 +170,7 @@
               <!--Campo para ingresar nombres-->
               <div class="entrada-textos">
                 <input 
-                  type="text" 
+                  type="number" 
                   class="campo-entrada" 
                   autocomplete="off" 
                   required
@@ -181,7 +181,7 @@
               <!--Campo para ingresar apellidos-->
               <div class="entrada-textos">
                 <input 
-                  type="text" 
+                  type="number" 
                   class="campo-entrada" 
                   autocomplete="off" 
                   required
@@ -232,13 +232,14 @@
               <!--Botones para volver o para registrarse-->
               <div class="botones-registro-usuario">
                 <input type="button" value="Atrás" class="btnUsuario2">
-                <input type="submit" value="Registrarme" class="btn-ingresar"> 
+                <input type="submit" 
+                value="Registrarme" class="btn-ingresar"> 
               </div>
             </div>
           </form>
 
           <!--Formulario para el registro de profesionales-->
-          <form [formGroup]="registroProfesionalesForm" (ngSubmit)="registrarProfesionales(registroProfesionalesForm.value)" autocomplete="off" class="formulario-registro2" id="formulario-registro2">
+          <form [formGroup]="registroProfesionalesForm" (ngSubmit)="registrarProfesionales(registroProfesionalesForm.value, checkbox2.checked)" autocomplete="off" class="formulario-registro2" id="formulario-registro2">
             <div class="heading">
               <h2>Empecemos! <fa-icon [icon]="faCorazon"></fa-icon></h2>
             </div>
@@ -304,7 +305,9 @@
               
               <!--Opción para aceptar los términos y condiciones-->
               <p class="text">
-                <input type="checkbox"> He leído y acepto las 
+                <input 
+                #checkbox2
+                type="checkbox"> He leído y acepto las 
                 <a href="#"> Políticas de privacidad para profesionales</a>
               </p>
               <br/>
