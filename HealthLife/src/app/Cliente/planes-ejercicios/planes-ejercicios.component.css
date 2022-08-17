@@ -1,0 +1,58 @@
+main{
+    margin-top: 85px;
+    padding: 2rem 1.5rem;
+    background: white;
+    min-height: calc(100vh - 90px);
+    text-decoration: none;
+}
+
+main:hover{
+    text-decoration: none;
+}
+
+.tarjetas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 40px;
+}
+
+.tarjetas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 40px;
+    width: 117%;
+}
+
+/*-------------------------------------Modulos (cuadros)--------------------------------*/
+.tarjetas-simples{
+    display: flex;
+    justify-content: space-between;
+    background:wheat;
+    padding: 2rem;
+    border-radius: 15px;
+    color: #1D2231;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+.tarjetas-simples:hover{
+    cursor: pointer;
+}
+
+.tarjetas-simples div:last-child span{
+    font-size: 2.5rem;
+    color: rgb(5, 196, 88);
+}
+
+.tarjetas-simples h1{
+    font-size: 30px;
+}
+
+.tarjetas-simples div:first-child span{
+    color:  #8390A2;
+}

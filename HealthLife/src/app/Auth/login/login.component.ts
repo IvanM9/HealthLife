@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {CargarScriptsJSService} from '../../cargar-scripts-js.service';
 import { Connection } from 'src/app/connection';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
@@ -14,13 +14,15 @@ import Swal from 'sweetalert2'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
 
+export class LoginComponent implements OnInit {
   //Form para loguearse
   loginForm = new FormGroup({
     correo: new FormControl('',Validators.required),
     clave: new FormControl('', Validators.required)
   })
+
+  //@ViewChild("checkbox") public checkbox: ElementRef
 
   //Form para registrar a los clientes
   registroClienteForm = new FormGroup({
@@ -50,23 +52,13 @@ export class LoginComponent implements OnInit {
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private conexion:Connection, private _cargarScripts:CargarScriptsJSService, private ruta:Router) { 
-    _cargarScripts.CargarJSLogin(["login/login"]);
+
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {  
+    this._cargarScripts.CargarJSLogin(["login/login"]);
     AOS.init();
   }
-
-  /*credenciales= {"correo":"","clave":""}
-  loguear(){
-    this.conexion.get("session/login").subscribe(res=>{
-      let aux:any = Object.assign({},res)
-      console.log(res)
-      sessionStorage.setItem("token_id",aux.token) 
-    })
-    console.log(this.credenciales)
-  }*/
-
 
   //Función para loguearse al hacer click
   onLogin(loginForm:any){
@@ -74,8 +66,15 @@ export class LoginComponent implements OnInit {
         const respuesta = Object.assign(res);
         console.log(res)
         sessionStorage.setItem("token_id",respuesta.token_id)
+        //Agregado, falta en la API
+        sessionStorage.setItem("nombreUsuario",respuesta.nombres)
         this.mensaje_OK_Login();
-        this.ruta.navigateByUrl('/dashboard');
+        if(respuesta.rol == 'cliente'){
+          this.ruta.navigateByUrl('/dashboard');
+        }
+        else{
+          this.ruta.navigateByUrl('/inicio');
+        }
     }, error=>{
       console.log(error.error)
       this.mensaje_Error_Login();
@@ -87,8 +86,8 @@ export class LoginComponent implements OnInit {
     this.conexion.post("session/registrar/cliente",registroClienteForm).subscribe(res => {
       const respuesta = Object.assign(res);
       console.log(res)
-      this.mensaje_OK_Registro();
-      this.ruta.navigateByUrl('/dashboard');
+      this.onLogin({correo:registroClienteForm.correo, clave: registroClienteForm.clave})
+      //console.log({correo:registroClienteForm.correo, clave: registroClienteForm.clave})
     }, error=>{
       console.log(error.error)
       this.mensaje_Error_Registro();
@@ -102,13 +101,12 @@ export class LoginComponent implements OnInit {
       const respuesta = Object.assign(res);
       console.log(res)
       this.mensaje_OK_Registro();
-      this.ruta.navigateByUrl('/dashboard');
+      this.ruta.navigateByUrl('/login');
     }, error=>{
       console.log(error.error)
       this.mensaje_Error_Registro();
     })
   }
-
 
   //Mensaje de usuario logueado correctamente
   mensaje_OK_Login() {
@@ -152,6 +150,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  
+  public verificarPassword(password1:string, password2:String){
+    if(password1 != password2){
+      this.mensaje_Password_Diferentes();
+    }
+  }
+
+  mensaje_Password_Diferentes(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Las contraseñas no coinciden, intente otra vez',
+      showConfirmButton: false,
+      timer: 1650
+    })
+  }
+
 
   //Iconos
   faRevisar = iconos.faCircleCheck;
@@ -160,6 +175,12 @@ export class LoginComponent implements OnInit {
   faUsuario = iconos.faUser;
   faCorazon = iconos.faHeartPulse;
   faPersona = iconos.faPersonRunning;
+  faZapato = iconos.faShoePrints;
+  faAltura = iconos.faRuler;
+  faPeso = iconos.faWeightScale;
+  faHabitos = iconos.faAppleWhole;
+  faAlergias = iconos.faHandDots;
+  faEnfermedades = iconos.faBookMedical;
 
   faEmail = iconos.faEnvelope;
   faClave = iconos.faLock;
