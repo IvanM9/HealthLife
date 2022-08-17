@@ -43,7 +43,9 @@
               </div>
               
               <!--Botón para el envío de los datos-->
-              <input type="submit" value="Ingresar" class="btn-ingresar"> 
+              <input type="submit" value="Ingresar" class="btn-ingresar" id="iniciar"> 
+               <!--Botón para regresar al inicio-->
+               <input routerLink="/inicio" type="submit" value="Volver al inicio" class="btn-ingresar"> 
 
               <!--Texto por si olvidó la contraseña-->
               <p class="text">
@@ -77,8 +79,9 @@
             </div>
           </form>
 
-          <!--Formulario de registro usuarios-->
-          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)" autocomplete="off" class="formulario-registro" id="formulario-registro">
+          <!--[formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)"-->
+          <!--Formulario de registro usuarios PARTE 1 (info datos)-->
+          <form [formGroup]="registroClienteForm" autocomplete="off" class="formulario-registro" id="formulario-registro">
             <div class="heading">
               <h2>Empecemos!<fa-icon [icon]="faCorazon"></fa-icon></h2>
             </div>
@@ -121,25 +124,114 @@
               <!--Campo para ingresar contraseña-->
               <div class="entrada-textos">
                 <input 
+                  #clave1
+                  id="clave1"
+                  type="password" 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  />
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
+              </div>
+
+              <!--Campo para confirmar la contraseña-->
+              <div class="entrada-textos">
+                <input
+                  #clave2
+                  id="clave2"
                   type="password" 
                   minlength="8" 
                   class="campo-entrada" 
                   autocomplete="off" 
                   required
                   formControlName="clave"/>
-                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Contraseña</label>
+                  <label><fa-icon [icon]="faClave"></fa-icon>  ‍‍‍‍‍Confirmar contraseña</label>
+              </div>
+              <br/>
+
+              <!--Botones para volver o para registrarse-->
+              <div class="botones-registro-usuario">
+                <input type="button" value="Atrás" class="btnUsuario">
+                <input type="submit" 
+                (click)="verificarPassword(clave1.value, clave2.value)"
+                value="Siguiente" class="btnUsuario2"> 
+              </div>
+            </div>
+          </form>
+
+          <!--Formulario de registro usuarios PARTE 2 (info salud)-->
+          <form [formGroup]="registroClienteForm" (ngSubmit)="registrarUsuario(registroClienteForm.value)" autocomplete="off" class="formulario-registro3" id="formulario-registro3">
+            <div class="heading">
+              <h2>Un paso más!<fa-icon [icon]="faZapato"></fa-icon></h2>
+            </div>
+            <div class="actual-form">
+              <br/>
+              <!--Campo para ingresar nombres-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="talla"/>
+                  <label><fa-icon [icon]="faAltura"></fa-icon>  ‍‍‍Estatura (metros)</label>
+              </div>
+
+              <!--Campo para ingresar apellidos-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="peso"/>
+                  <label><fa-icon [icon]="faPeso"></fa-icon>  ‍‍‍‍‍Peso (Kg)</label>
+              </div>
+
+              <!--Campo para ingresar email-->
+              <div class="entrada-textos">
+                <input 
+                  type="text" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="habitos"/>
+                  <label><fa-icon [icon]="faHabitos"></fa-icon>  ‍‍‍‍‍Hábitos</label>
+              </div>
+              
+              <!--Campo para ingresar contraseña-->
+              <div class="entrada-textos">
+                <input 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="alergias"/>
+                  <label><fa-icon [icon]="faAlergias"></fa-icon>  ‍‍‍‍‍Alergias</label>
+              </div>
+
+              <div class="entrada-textos">
+                <input 
+                  minlength="8" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="enfermedades"/>
+                  <label><fa-icon [icon]="faEnfermedades"></fa-icon>  ‍‍‍‍‍Enfermedades</label>
               </div>
               
               <!--Opción de aceptar los términos y condiciones-->
               <p class="text">
-                <input type="checkbox"> He leído y acepto las 
+                <input #checkbox
+                type="checkbox"> He leído y acepto las 
                 <a href="#"> Políticas de privacidad para usuarios</a>
               </p>
               <br/>
 
               <!--Botones para volver o para registrarse-->
               <div class="botones-registro-usuario">
-                <input type="submit" value="Atrás" class="btnUsuario">
+                <input type="button" value="Atrás" class="btnUsuario2">
                 <input type="submit" value="Registrarme" class="btn-ingresar"> 
               </div>
             </div>

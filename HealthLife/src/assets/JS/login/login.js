@@ -1,10 +1,15 @@
 const inputs = document.querySelectorAll(".campo-entrada");
 const toggle_btn = document.querySelectorAll(".toggle");
-const toggle2_btn = document.querySelectorAll(".btnUsuario");
-const toggle3_btn = document.querySelectorAll(".btnProfesional");
 const main = document.querySelector("main");
 const bullets = document.querySelectorAll(".bullets span");
 const images = document.querySelectorAll(".image");
+//Para ir mostrando las ventanas de datos de registro
+const toggle2_btn = document.querySelectorAll(".btnUsuario");
+const toggle3_btn = document.querySelectorAll(".btnUsuario2");
+const toggle4_btn = document.querySelectorAll(".btnProfesional");
+//Para validar
+const clave1 = document.getElementById("clave1");
+const clave2 = document.getElementById("clave2");
 
 inputs.forEach((inp) => {
   inp.addEventListener("focus", () => {
@@ -23,15 +28,25 @@ toggle_btn.forEach((btn) => {
   });
 });
 
-/*--------Para los botones de rol----------*/
+/*--------Para mostrar la primera parte de registro de usuario----------*/
 toggle2_btn.forEach((btn2) => {
   btn2.addEventListener("click", () => {
     main.classList.toggle("sign-up-mode-usuario");
   });
 });
 
+/*--------Para mostrar la segunda parte de registro de usuario----------*/
 toggle3_btn.forEach((btn3) => {
   btn3.addEventListener("click", () => {
+    if(clave1.value==clave2.value){
+      main.classList.toggle("sign-up-mode-usuario2");
+    }
+  });
+});
+
+/*-------Para mostrar los datos de registro para profesionales----------*/
+toggle4_btn.forEach((btn4) => {
+  btn4.addEventListener("click", () => {
     main.classList.toggle("sign-up-mode-profesional");
   });
 });
@@ -59,3 +74,4 @@ bullets.forEach((bullet) => {
   document.getElementById('formulario-registro').style.display='';
   document.getElementById('preguntar-rol').style.display='none';
 }*/
+

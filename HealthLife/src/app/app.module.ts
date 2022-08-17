@@ -1,4 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { InterceptorService } from './loader/interceptor.service';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,6 +14,11 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
+import { PlanesAlimenticiosComponent } from './Cliente/planes-alimenticios/planes-alimenticios.component';
+import { PlanesEjerciciosComponent } from './Cliente/planes-ejercicios/planes-ejercicios.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ContenidoInicioComponent } from './Cliente/contenido-inicio/contenido-inicio.component';
 
 
 @NgModule({
@@ -21,7 +27,10 @@ import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
     LoginComponent,
     DashboardAdminComponent,
     InicioComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlanesAlimenticiosComponent,
+    PlanesEjerciciosComponent,
+    ContenidoInicioComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +38,12 @@ import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true},
     CargarScriptsJSService
   ],
   bootstrap: [AppComponent]
