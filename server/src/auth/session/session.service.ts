@@ -22,7 +22,6 @@ export class SessionService {
             rol,
             datos.sexo
         ]);
-        console.log(retorno);
         if (!retorno) throw new HttpException('Error al registrar el usuario', 400);
         return retorno;
     }
@@ -56,12 +55,11 @@ export class SessionService {
 
     async login(datos: LoginDto) {
         const retorno = await this.conexion.executeProcedure('login', [datos.correo.toLowerCase().trim()]);
-        console.log(retorno.clave)
         if (retorno.clave == undefined || retorno.clave == null) throw new HttpException('Usuario no existe', 400);
         const valido = await compare(datos.clave, retorno.clave);
         if (!valido) throw new HttpException('Clave incorrecta', 400);
         const token_id = this.jwt.sign({ id: retorno.id.toString().trim(), email: retorno.correo.toString().trim(), rol: [retorno.rol.toString().trim()] });
-        return { "mensaje": retorno.rol.toString().trim() + ' logueado correctamente', token_id, rol: retorno.rol.toString().trim() };
+        return { "mensaje": retorno.rol.toString().trim() + ' logueado correctamente', token_id, rol: retorno.rol.toString().trim(), nombres: retorno.nombres.trim() };
     }
 
     // TODO: Reubicar esta funcion en un servicio aparte
