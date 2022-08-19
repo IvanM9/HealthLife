@@ -57,7 +57,7 @@ export class ActividadesService {
 
     async modificarPlan(plan:UpdatePlanesDto, id:number){
         try {
-            const retorno = await this.conexion.executeProcedure("update_plan", [ id, plan.nombre, plan.publico, plan.objetivos]);
+            const retorno = await this.conexion.executeProcedure("update_plan", [ id, plan.nombre,plan.estado, plan.publico, plan.objetivos]);
             if (!retorno) throw new HttpException("Error al modificar el plan", 400);
             return { mensaje: "Plan modificado correctamente" };
         } catch (error) {

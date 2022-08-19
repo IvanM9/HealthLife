@@ -13,6 +13,7 @@ export class PlanesDto {
     nombre: string;
     @ApiProperty({default: false})
     publico: boolean;
+    
     @ApiProperty()
     objetivos: string;
     @ApiProperty({isArray: true, type: Actividades})
@@ -20,4 +21,6 @@ export class PlanesDto {
 }
 
 export class UpdatePlanesDto extends OmitType(PlanesDto, ['actividades']) {
+    @ApiProperty({default: true})
+    estado: boolean;
 }
