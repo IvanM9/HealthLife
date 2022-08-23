@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+    margin: 0;
+
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    /*background-color: #77dd77;*/
+
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.boton-regresar{
+    margin-top: -35px;
+    background-color:  rgba(146, 146, 146, 0.068);
+    margin-bottom: 15px;
+    text-align: end;
+}
+
+.btn-Volver{
+    display: inline-block;
+    width: 7%;
+    height: 30px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.cabecera-plan{
+    display: flex;
+    width: 100%;
+    background-color: #cfffca;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.portada-curso img{
+    width: 100%;
+    height: 91%;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+.info-cabecera{
+    margin-left: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 90%;
+}
+
+.info-cabecera h3{
+    margin-bottom: 10px;
+}
+
+.info-cabecera p{
+    margin-bottom: 8px;
+}
+
+
+.footer-card{
+    background-color: #77dd77;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.contenedor-boton{
+    text-align: center;
+}
+
+.btn-suscribirse{
+    width: 32.5%;
+    height: 40px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.accordion-button{
+    background-color: rgba(146, 146, 146, 0.123);
+}
+
+
+
+
+

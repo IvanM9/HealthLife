@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
     clave: new FormControl('', Validators.required)
   })
 
-  //@ViewChild("checkbox") public checkbox: ElementRef
-
   //Form para registrar a los clientes
   registroClienteForm = new FormGroup({
     nombres: new FormControl('', Validators.required),
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
     clave: new FormControl('', Validators.required),
     talla: new FormControl('', Validators.required),
     peso: new FormControl('', Validators.required),
-    sexo: new FormControl(''),
+    sexo: new FormControl('seleccione-genero', Validators.required),
     habitos: new FormControl(''),
     alergias: new FormControl(''),
     enfermedades: new FormControl(''),
@@ -45,7 +43,7 @@ export class LoginComponent implements OnInit {
     apellidos: new FormControl('', Validators.required),
     correo: new FormControl('', Validators.required),
     clave: new FormControl('', Validators.required),
-    sexo: new FormControl(''),
+    sexo: new FormControl('seleccione-genero', Validators.required),
     descripcion: new FormControl(null),
     links: new FormControl(null),
     rol: new FormControl('seleccione-rol', Validators.required)
@@ -70,6 +68,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("token_id", respuesta.token_id)
       //Agregado, falta en la API
       sessionStorage.setItem("nombreUsuario", respuesta.nombres)
+      sessionStorage.setItem("rol", respuesta.rol)
       this.mensaje_OK_Login();
       if (respuesta.rol == 'cliente') {
         this.ruta.navigateByUrl('/dashboard');
@@ -160,6 +159,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  public verificarPassword2(password1: string, password2: String) {
+    if (password1 != password2) {
+      this.mensaje_Error("Las contraseñas no son iguales, intente otra vez");
+    }
+  }
+
 
   //Iconos
   faRevisar = iconos.faCircleCheck;
@@ -171,7 +176,7 @@ export class LoginComponent implements OnInit {
   faZapato = iconos.faShoePrints;
   faAltura = iconos.faRuler;
   faPeso = iconos.faWeightScale;
-  faHabitos = iconos.faAppleWhole;
+  //faHabitos = iconos.faAppleWhole;
   faAlergias = iconos.faHandDots;
   faEnfermedades = iconos.faBookMedical;
 

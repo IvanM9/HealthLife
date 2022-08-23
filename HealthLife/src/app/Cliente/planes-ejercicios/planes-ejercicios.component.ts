@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as iconos from '@fortawesome/free-solid-svg-icons';
+import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-planes-ejercicios',
@@ -11,5 +13,10 @@ export class PlanesEjerciciosComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  faVerificado = iconos.faCircleCheck;
+  faReloj = iconos.faClock;
+  faGratis = iconos.faUnlock;
 
 }
