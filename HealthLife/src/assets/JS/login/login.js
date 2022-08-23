@@ -3,13 +3,18 @@ const toggle_btn = document.querySelectorAll(".toggle");
 const main = document.querySelector("main");
 const bullets = document.querySelectorAll(".bullets span");
 const images = document.querySelectorAll(".image");
-//Para ir mostrando las ventanas de datos de registro
+//Usuarios
 const toggle2_btn = document.querySelectorAll(".btnUsuario");
 const toggle3_btn = document.querySelectorAll(".btnUsuario2");
-const toggle4_btn = document.querySelectorAll(".btnProfesional");
-//Para validar
+//Profesional
+const toggle4_btn = document.querySelectorAll(".btnUsuario3");
+const toggle5_btn = document.querySelectorAll(".btnProfesional");
+//Para validar claves iguales del usuario
 const clave1 = document.getElementById("clave1");
 const clave2 = document.getElementById("clave2");
+//Para validar claves iguales del profesional
+const clave3 = document.getElementById("clave3");
+const clave4 = document.getElementById("clave4");
 
 inputs.forEach((inp) => {
   inp.addEventListener("focus", () => {
@@ -44,12 +49,24 @@ toggle3_btn.forEach((btn3) => {
   });
 });
 
-/*-------Para mostrar los datos de registro para profesionales----------*/
+/*-------Para mostrar los datos de registro para profesionales (Parte 1)----------*/
 toggle4_btn.forEach((btn4) => {
   btn4.addEventListener("click", () => {
+    if(clave3.value==clave4.value){
+      main.classList.toggle("sign-up-mode-profesional2");
+    }
+  });
+});
+
+/*-------Para mostrar los datos de registro para profesionales (Parte 2)----------*/
+toggle5_btn.forEach((btn5) => {
+  btn5.addEventListener("click", () => {
     main.classList.toggle("sign-up-mode-profesional");
   });
 });
+
+
+
 
 
 function moveSlider() {
