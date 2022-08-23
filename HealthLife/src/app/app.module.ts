@@ -19,6 +19,7 @@ import { PlanesEjerciciosComponent } from './Cliente/planes-ejercicios/planes-ej
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContenidoInicioComponent } from './Cliente/contenido-inicio/contenido-inicio.component';
+import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ContenidoInicioComponent } from './Cliente/contenido-inicio/contenido-i
     DashboardComponent,
     PlanesAlimenticiosComponent,
     PlanesEjerciciosComponent,
-    ContenidoInicioComponent
+    ContenidoInicioComponent,
+    DetallePlanComponent
   ],
   imports: [
     BrowserModule,

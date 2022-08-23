@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   
   //Atributos
   indice = 0;
-  nomUsuario = "usuario"
+  nomUsuario = "usuario";
+  rolUsuario = "rol";
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService, private ruta:Router) {
@@ -22,11 +23,12 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(sessionStorage.getItem("token_id") == undefined){
+    /*if(sessionStorage.getItem("token_id") == undefined){
       this.ruta.navigateByUrl('/inicio');
-    }
+    }*/
     this._cargarScripts.CargarJS(["cliente/animacionmenu"]);
     this.nomUsuario = sessionStorage.getItem("nombreUsuario")||"usuario2";
+    this.rolUsuario = sessionStorage.getItem("rol") || "Usuario";
   }
 
   //Inidice para mostrar componentes dentro del dashboard
@@ -42,7 +44,7 @@ export class DashboardComponent implements OnInit {
 
   //Iconos para el menú de la parte superior
   faBars = iconos.faBars;
-  faFlechaAbajo = iconos.faAngleDown;
+  faFlechaAbajo = iconos.faCaretDown;
   faUserPerfil = iconos.faUser;
   faConfiguracion = iconos.faGear;
   faCerrarSesion = iconos.faSignOut;
@@ -58,20 +60,5 @@ export class DashboardComponent implements OnInit {
   faChat = iconos.faComments;
 
 
-  fachart = iconos.faChartBar;
-  facrown = iconos.faCrown;
-  fasignoutalt = iconos.faSignOutAlt;
-  fasearch = iconos.faSearch;
-
-  //modulos
-  fainfocircle = iconos.faInfoCircle;
-  facheckcircle = iconos.faCheckCircle;
-  faredoalt = iconos.faRedoAlt;
-  facubes = iconos.faCubes;
-  fahive = iconosfab.faHive;
-  fath = iconos.faTh;
-  fafont = iconos.faFont;
-  fafilealt = iconos.faCode;
-  facode = iconos.faCode;
 
 }

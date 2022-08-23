@@ -1,3 +1,5 @@
+const toggle_btn = document.querySelectorAll(".menu-perfil");
+
 let ubicacionPrincipal = window.pageYOffset; //Empieza midiendo 0
 
 //inicializando las animaciones ventanas
@@ -31,6 +33,10 @@ document.querySelectorAll(".menu")[0].addEventListener("click", function(){
     enlacesMenu.classList.toggle("menudos")
 })
 
+function mostrarMenu(){
+    const menu = document.querySelector('.menu-perfil')
+    menu.classList.toggle('mostrar-menu')
+}
 
 
 

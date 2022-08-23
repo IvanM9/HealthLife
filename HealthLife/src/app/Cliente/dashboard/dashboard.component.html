@@ -52,61 +52,27 @@
                 </label> 
             </h2>
 
-            <div class="user-wrapper me-sm-3">
-                <fa-icon [icon]="faNotificacion" id="iconNotificacion"></fa-icon>
-                 <!--La imagen que aparece aquí debe ser traida de la BD con el usuario logueado-->
-                <img src="../../../assets/img/inicio/person_2.jpg" width="40px" height="40px" alt="foto-usuario-logueado">
-                <div class="user-name">
-                    <!--El nombres que aparecerá en este h4 debe ser traido de la BD con el usuario logueado-->
+            <div class="action">
+                <div class="perfil">
+                    <img src="../../../assets/img/inicio/person_2.jpg" alt="foto-perfil-usuario">
+                </div>
+                <div class="info-usuario"  onclick="mostrarMenu()">
+                    <span>ㅤ{{nomUsuario}} <fa-icon [icon]="faFlechaAbajo"></fa-icon></span>
+                </div>
+
+                <div class="menu-perfil">
+                    <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
-                        <li id="empiezaYa" class="dropdown"><a><span> {{nomUsuario}} <fa-icon [icon]="faFlechaAbajo"></fa-icon></span></a>
-                            <ul>
-                                <li><a routerLink="/perfil"><fa-icon [icon]="faUserPerfil"></fa-icon>  &nbsp;Mi perfil</a></li>
-                                <li><a routerLink="/configuracion"><fa-icon [icon]="faConfiguracion"></fa-icon>  &nbsp;Configuración</a></li>
-                                <li><a (click)="cerrarSesion()"><fa-icon [icon]="faCerrarSesion"></fa-icon>  &nbsp;Cerrar sesión</a></li>
-                                <!--<li><a href="#">Registrarme</a></li>-->
-                            </ul>
-                        </li>
+                        <li><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
+                        <li><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
+                        <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
         <main [ngSwitch]="indice">
-            <!--Fila 1 de los módulos-->
-            <!--<div class="tarjetas">
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Piernas</h1>
-                        <span>Rutina extrema de piernas</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-info-circle"></span>
-                    </div>
-                </div>
-
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Brazos</h1>
-                        <span>Rutina completa de brazos</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-check-circle"></span>
-                    </div>
-                </div>
-
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Desayunos</h1>
-                        <span>Desayunos altos de calorías</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-redo-alt"></span>
-                    </div>
-                </div>
-            </div>-->
-
-            <app-contenido-inicio *ngSwitchDefault></app-contenido-inicio>
+            <app-detalle-plan *ngSwitchDefault></app-detalle-plan>
             <app-planes-alimenticios *ngSwitchCase="1"></app-planes-alimenticios>
             <app-planes-ejercicios *ngSwitchCase="2"></app-planes-ejercicios>
         </main>

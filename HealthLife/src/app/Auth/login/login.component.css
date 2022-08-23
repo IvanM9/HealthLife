@@ -90,7 +90,7 @@ form {
 }
 
 .heading h2 {
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     font-weight: 600;
     color: #151111;
     align-items: center;
@@ -160,7 +160,7 @@ label {
     background-color: #5dc460;
 }
 
-.btn-ingresar, .btnUsuario, .btnProfesional, .btnUsuario2{
+.btn-ingresar, .btnUsuario, .btnProfesional, .btnUsuario2, .btnUsuario3{
     display: inline-block;
     width: 100%;
     height: 43px;
@@ -240,20 +240,24 @@ main.sign-up-mode-profesional form.preguntar-rol{
 }
 
 
-/*Registro*/
+/*Registro usuario parte 1 y 2*/
 form.formulario-registro{
     opacity: 0;
     pointer-events: none;
 }
-/*Profesional*/
+
 form.formulario-registro2{
     opacity: 0;
     pointer-events: none;
 }
 
-/*Agregado*/
-/*Parte 2 del usuario*/
+/*Registro profesional parte 1 y 2*/
 form.formulario-registro3{
+    opacity: 0;
+    pointer-events: none;
+}
+
+form.formulario-registro4{
     opacity: 0;
     pointer-events: none;
 }
@@ -284,7 +288,7 @@ main.sign-up-mode-usuario form.formulario-registro{
 }
 
 /*Agregado 11/08*/
-main.sign-up-mode-usuario.sign-up-mode-usuario2 form.formulario-registro3{
+main.sign-up-mode-usuario.sign-up-mode-usuario2 form.formulario-registro2{
     opacity: 1;
     pointer-events: all;
     transition: 0.4s ease-in;
@@ -295,20 +299,31 @@ main.sign-up-mode-usuario.sign-up-mode-usuario2 form.formulario-registro{
     pointer-events: none;
 }
 
-main.sign-up-mode.sign-up-mode-profesional form.formulario-registro3{
+main.sign-up-mode.sign-up-mode-profesional form.formulario-registro2{
+    opacity: 0;
+    pointer-events: none;
+}
+
+main.sign-up-mode.sign-up-mode-profesional2 form.formulario-registro3{
     opacity: 0;
     pointer-events: none;
 }
 /**/
 
-main.sign-up-mode-profesional form.formulario-registro2{
+main.sign-up-mode-profesional form.formulario-registro3{
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.4s ease-in;
+}
+
+main.sign-up-mode-profesional2 form.formulario-registro4{
     opacity: 1;
     pointer-events: all;
     transition: 0.4s ease-in;
 }
 
 /*Agregago*/
-main.sign-up-mode-profesional form.formulario-registro3{
+main.sign-up-mode-profesional form.formulario-registro2{
     opacity: 1;
     pointer-events: all;
     transition: 0.4s ease-in;
