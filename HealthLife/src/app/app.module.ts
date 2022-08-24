@@ -14,14 +14,13 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
-import { PlanesAlimenticiosComponent } from './Cliente/planes-alimenticios/planes-alimenticios.component';
-import { PlanesEjerciciosComponent } from './Cliente/planes-ejercicios/planes-ejercicios.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContenidoInicioComponent } from './Cliente/contenido-inicio/contenido-inicio.component';
 import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.component';
 import { PerfilUsuarioComponent } from './Cliente/perfil-usuario/perfil-usuario.component';
 import { PlanesComponent } from './Cliente/planes/planes.component';
+import { ProfesionalesComponent } from './Cliente/profesionales/profesionales.component';
 
 
 @NgModule({
@@ -31,12 +30,11 @@ import { PlanesComponent } from './Cliente/planes/planes.component';
     DashboardAdminComponent,
     InicioComponent,
     DashboardComponent,
-    PlanesAlimenticiosComponent,
-    PlanesEjerciciosComponent,
     ContenidoInicioComponent,
     DetallePlanComponent,
     PerfilUsuarioComponent,
-    PlanesComponent
+    PlanesComponent,
+    ProfesionalesComponent
   ],
   imports: [
     BrowserModule,

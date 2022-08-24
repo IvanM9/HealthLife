@@ -36,12 +36,12 @@ export class DashboardComponent implements OnInit {
 
     this.menuOpciones.push({icono:this.faHome, nombre:"Inicio"})
     // if(sessionStorage.getItem("rol") == "cliente"){
-      this.menuOpciones.push({icono:this.faHome, nombre:"Planes alimenticios", habilitado:true})
-      this.menuOpciones.push({icono:this.faPlanAlimenticio, nombre:"Planes ejercicios", habilitado:true})
-      this.menuOpciones.push({icono:this.faPlanEjercicio, nombre:"Profesionales", habilitado:true})
-      this.menuOpciones.push({icono:this.faProfesionales, nombre:"Estadísticas", habilitado:true})
-      this.menuOpciones.push({icono:this.faEstadisticas, nombre:"Chat", habilitado:false})
-      this.menuOpciones.push({icono:this.faChat, nombre:"Experiencias", habilitado:false})
+      this.menuOpciones.push({icono:this.faPlanAlimenticio, nombre:"Planes alimenticios", habilitado:true})
+      this.menuOpciones.push({icono:this.faPlanEjercicio, nombre:"Planes ejercicios", habilitado:true})
+      this.menuOpciones.push({icono:this.faProfesionales, nombre:"Profesionales", habilitado:true})
+      this.menuOpciones.push({icono:this.faEstadisticas, nombre:"Estadísticas", habilitado:true})
+      this.menuOpciones.push({icono:this.faChat, nombre:"Chat", habilitado:false})
+      this.menuOpciones.push({icono:this.faExperiencias, nombre:"Experiencias", habilitado:false})
     // }
   }
 

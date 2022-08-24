@@ -1,0 +1,29 @@
+<body>
+    <div class="box-courses-wrapper">
+
+        <!--Card que muestra el perfil de los profesionales-->
+        <div class="card swiper-slide" *ngFor="let element of profesionales">
+            <div class="image-content">
+                <span class="overlay"></span>
+
+                <div class="card-image">
+                    <img src=".././../../assets/img/inicio/person_1.jpg" class="card-img">
+                </div>
+            </div>
+
+            <div class="card-content">
+                <h2 class="name">David Dell</h2>
+                <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                <button (click)="cambiarComponente(true); cambiarIndice(element.id)" class="button">Ver curso  <fa-icon [icon]="faFlecha" id="logo-menu"></fa-icon> </button>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #detallesplan>
+        <div class="boton-regresar" (click)="cambiarComponente(false)">
+            <input type="submit" value="Volver" class="btn-Volver" id="iniciar"> 
+        </div>
+        <app-detalle-plan [idplan]="indice"></app-detalle-plan>
+    </ng-template>
+</body>

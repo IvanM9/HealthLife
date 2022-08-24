@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CargarScriptsJSService } from 'src/app/cargar-scripts-js.service';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 
@@ -13,12 +13,15 @@ export class PlanesComponent implements OnInit {
   indice = 0;
   planes:any[] =[]
   detalle:boolean=false;
+  @Input() tipo!:number;
 
   constructor(private _cargarScripts:CargarScriptsJSService) {
     _cargarScripts.CargarJS(["cliente/animacionmenu"]);
   }
 
   ngOnInit(): void {
+    // Si es 1 es alimenticios, si es 2 es entrenamientos
+
     this.planes.push({id:0})
     this.planes.push({id:1})
     this.planes.push({id:2})
