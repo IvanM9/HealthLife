@@ -115,6 +115,27 @@ body{
 .button:hover{
   background: #42ab49;
 }
+.boton-regresar{
+  margin-top: -35px;
+  background-color:  rgba(146, 146, 146, 0.068);
+  margin-bottom: 15px;
+  text-align: end;
+}
+
+.btn-Volver{
+  display: inline-block;
+  width: 7%;
+  height: 30px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+}
 
 
 @media screen and (max-width: 768px) {

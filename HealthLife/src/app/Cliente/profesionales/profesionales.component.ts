@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
+import { Connection } from 'src/app/connection';
 
 @Component({
   selector: 'app-profesionales',
@@ -11,16 +12,18 @@ export class ProfesionalesComponent implements OnInit {
   indice = 0;
   nProfesionales = 9
   detalle:boolean = false;
-  profesionales:any[] =[]
+  profesionales:any
 
 
-  constructor() { }
+  constructor(private api:Connection) { }
 
   ngOnInit(): void {
     //Para mostrar el numero de profesionales
-    for(let i=0; i< 10; i++){
-      this.profesionales.push({id:i})
-    }
+    this.api.get("actividades/obtener_profesionales").subscribe( res =>{
+      
+      console.log(res)
+      this.profesionales = res
+    })
   }
 
   //Cambiando el índice
