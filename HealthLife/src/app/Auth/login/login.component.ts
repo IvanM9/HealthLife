@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         this.ruta.navigateByUrl('/dashboard');
       }
       else {
-        this.ruta.navigateByUrl('/inicio');
+        this.ruta.navigateByUrl('/dashboard');
       }
     }, error => {
       console.log(error.error)

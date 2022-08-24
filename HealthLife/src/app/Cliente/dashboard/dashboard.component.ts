@@ -15,11 +15,15 @@ export class DashboardComponent implements OnInit {
   indice = 0;
   nomUsuario = "usuario";
   rolUsuario = "rol";
+  idPlan=0
+
+  menuOpciones: any[] = []
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService, private ruta:Router) {
     
   }
+
 
 
   ngOnInit(): void {
@@ -29,12 +33,28 @@ export class DashboardComponent implements OnInit {
     this._cargarScripts.CargarJS(["cliente/animacionmenu"]);
     this.nomUsuario = sessionStorage.getItem("nombreUsuario")||"usuario2";
     this.rolUsuario = sessionStorage.getItem("rol") || "Usuario";
+
+    this.menuOpciones.push({icono:this.faHome, nombre:"Inicio"})
+    // if(sessionStorage.getItem("rol") == "cliente"){
+      this.menuOpciones.push({icono:this.faHome, nombre:"Planes alimenticios", habilitado:true})
+      this.menuOpciones.push({icono:this.faPlanAlimenticio, nombre:"Planes ejercicios", habilitado:true})
+      this.menuOpciones.push({icono:this.faPlanEjercicio, nombre:"Profesionales", habilitado:true})
+      this.menuOpciones.push({icono:this.faProfesionales, nombre:"Estadísticas", habilitado:true})
+      this.menuOpciones.push({icono:this.faEstadisticas, nombre:"Chat", habilitado:false})
+      this.menuOpciones.push({icono:this.faChat, nombre:"Experiencias", habilitado:false})
+    // }
   }
 
   //Inidice para mostrar componentes dentro del dashboard
   cambiarIndice(indice: any){
     this.indice = indice;
   }
+
+  mostrarDetallePlan(id:number){
+    this.idPlan = id;
+  }
+
+  
 
   //Para cerrar la sesion
   cerrarSesion(){

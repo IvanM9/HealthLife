@@ -8,34 +8,11 @@
         <!--Opciones del menú lateral-->
         <div class="sidebar-menu">
             <ul>
-                <li (click)="cambiarIndice(0)">
-                    <a> <fa-icon [icon]="faHome"></fa-icon>
-                    <span>  &nbsp;Inicio</span> </a>
+                <li *ngFor="let element of menuOpciones; let i = index" (click)="element? cambiarIndice(i) : cambiarIndice(-1)" [ngClass]="!element.habilitado ? 'disable': ''">
+                    <a> <fa-icon [icon]="element.icono"></fa-icon>
+                    <span>  &nbsp;{{element.nombre}}</span> </a>
                 </li>
-                <li (click)="cambiarIndice(1)">
-                    <a> <fa-icon [icon]="faPlanAlimenticio"></fa-icon>
-                    <span>  &nbsp;Planes Alimenticios</span></a>
-                </li>
-                <li (click)="cambiarIndice(2)">
-                    <a> <fa-icon [icon]="faPlanEjercicio"></fa-icon>
-                    <span>  &nbsp;Planes Ejercicios</span></a>
-                </li>
-                <li (click)="cambiarIndice(3)">
-                    <a> <fa-icon [icon]="faProfesionales"></fa-icon>
-                    <span>  &nbsp;Profesionales</span></a>
-                </li>
-                <li (click)="cambiarIndice(4)">
-                    <a> <fa-icon [icon]="faEstadisticas"></fa-icon>
-                    <span>  &nbsp;Estadísticas</span></a>
-                </li>
-                <li (click)="cambiarIndice(5)">
-                    <a> <fa-icon [icon]="faChat"></fa-icon>
-                    <span>  &nbsp;Chat</span></a>
-                </li>
-                <li (click)="cambiarIndice(6)">
-                    <a> <fa-icon [icon]="faExperiencias"></fa-icon>
-                    <span>  &nbsp;Experiencias</span></a>
-                </li>
+            
             </ul>
             <div class="derechos-reservados">
                 <p>HealthLife © 2022</p>
@@ -63,7 +40,7 @@
                 <div class="menu-perfil">
                     <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
-                        <li><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
+                        <li (click)="cambiarIndice(7)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
                         <li><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
                         <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
                     </ul>
@@ -72,9 +49,13 @@
         </header>
 
         <main [ngSwitch]="indice">
-            <app-detalle-plan *ngSwitchDefault></app-detalle-plan>
+            <h1 *ngSwitchDefault>No implementado</h1>
+            <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan>
             <app-planes-alimenticios *ngSwitchCase="1"></app-planes-alimenticios>
             <app-planes-ejercicios *ngSwitchCase="2"></app-planes-ejercicios>
+            <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
+            
+
         </main>
     </div>
 </body>
