@@ -5,6 +5,9 @@ import { ClienteDto } from './dtos/cliente.dto';
 import { ProfesionalDto } from './dtos/profesional.dto';
 import { LoginDto, usuarioDto } from './dtos/usuario.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { Role } from './role.enum';
+import { Roles } from './roles.decorator';
+import { RolesGuard } from './roles.guard';
 import { SessionService } from './session.service';
 
 @ApiBearerAuth()
@@ -29,9 +32,5 @@ export class SessionController {
         return this.servicio.login(usuario);
     }
 
-    @UseGuards(JwtAuthGuard)
-    @Get('perfil')
-    async perfil(@Request() req) {
-        return this.servicio.obtenerPerfil(req.user.email);
-    }
+    
 }

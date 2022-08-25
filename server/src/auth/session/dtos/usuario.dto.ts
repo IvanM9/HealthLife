@@ -15,7 +15,7 @@ export class usuarioDto {
     @IsString()
     clave: string;
 
-    @ApiProperty({examples: ['femenino', 'masculino']})
+    @ApiProperty({examples: ['f = femenino', 'm = masculino']})
     sexo: string;
 }
 

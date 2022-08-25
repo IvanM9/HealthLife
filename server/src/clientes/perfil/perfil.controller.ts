@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/session/jwt-auth.guard';
 import { Role } from 'src/auth/session/role.enum';
@@ -15,8 +15,14 @@ import { PerfilService } from './perfil.service';
 export class PerfilController {
     constructor(private servicio:PerfilService) {}
 
-    @Get('imc')
-    async obtenerIMC(@Req() req){
-        return this.servicio.obtenerIMC(req.user.id);
+    @Get('imc/:talla/:peso')
+    async obtenerIMC(@Param('talla') talla:number, @Param('peso') peso: number){
+        return this.servicio.obtenerIMC(talla, peso);
+    }
+
+    @Roles(Role.Cliente)
+    @Get()
+    async perfil(@Req() req) {
+        return this.servicio.obtenerDatosPerfil(req.user.id);
     }
 }

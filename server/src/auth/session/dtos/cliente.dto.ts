@@ -6,11 +6,11 @@ import { usuarioDto } from "./usuario.dto";
 export class ClienteDto extends usuarioDto {
     @ApiProperty({example:'1.70', description:'Talla en metros (m)'})
     @IsDecimal({maxDecimalPlaces:2})
-    talla: number;
+    talla: string;
 
     @ApiProperty({example:'70.00', description:'Peso en kilogramos (kg)'})
     @IsDecimal({maxDecimalPlaces:2})
-    peso: number;
+    peso: string;
 
     @ApiProperty()
     @IsString()
