@@ -1,0 +1,62 @@
+
+<body>
+    <div class="box-courses-wrapper" *ngIf="!detalle; else detallesplan ">
+       <!--El que se debe esconder al poner el detalle--> 
+        <div class="box-row" *ngFor="let element of planes" data-aos="fade-up" data-aos-duration="1100">
+            <div class="box-info">
+                <div class="course">
+                    <div class="course-img">
+                        <img src="../../../assets/img/cursos/verduras.jpg" alt="">
+                    </div>
+
+                    <div class="course-detail">
+                        <div class="course-title">
+                            <p><a href="#"> <b>Comidas a base de verduras</b></a></p>
+                            </div>
+                        <div class="course-author">
+                            <p><b>Por:</b> Jordan Vera</p>
+                        </div>
+                        <div class="course-desc">
+                            <p>En este curso podrás encontrar recetas de comidad que se pueden hacer desde
+                            casa, con verduras 100% saludables.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-info">
+                        <div class="item">
+                            <fa-icon [icon]="faReloj"></fa-icon> 4 <span class="unit">Semanas</span>
+                        </div>
+                        <div class="item">
+                            <fa-icon [icon]="faVerificado"></fa-icon><span class="unit"> Verificado</span>
+                        </div>
+                        <div class="item">
+                            <fa-icon [icon]="faGratis"></fa-icon><span class="unit"> Gratis</span>
+                        </div>
+                    </div>                 
+                </div>
+
+                <div class="footer-card">
+                    <div class="contenedor-etiquetas">
+                        <p>#Verduras</p>
+                        <p>#Comidas</p>
+                        <p>#Dietas</p>
+                        <p>#Gratis</p>
+                    </div>
+                    <div class="contenedor-boton">
+                        <input (click)="cambiarComponente(true); cambiarIndice(element.id)" type="button" value="Ver curso  ▶" class="btn-verCurso">
+                    </div>       
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <ng-template #detallesplan>
+        <div class="boton-regresar" (click)="cambiarComponente(false)">
+            <input type="submit" value="Volver" class="btn-Volver" id="iniciar"> 
+        </div>
+        <app-detalle-plan [idplan]="indice"></app-detalle-plan>
+    </ng-template>
+
+</body>

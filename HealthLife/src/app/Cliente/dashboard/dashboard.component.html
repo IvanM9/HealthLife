@@ -8,34 +8,11 @@
         <!--Opciones del menú lateral-->
         <div class="sidebar-menu">
             <ul>
-                <li>
-                    <a href="" > <fa-icon [icon]="faHome"></fa-icon>
-                    <span>  &nbsp;Inicio</span> </a>
+                <li *ngFor="let element of menuOpciones; let i = index" (click)="element? cambiarIndice(i) : cambiarIndice(-1)" [ngClass]="!element.habilitado ? 'disable': ''">
+                    <a> <fa-icon [icon]="element.icono"></fa-icon>
+                    <span>  &nbsp;{{element.nombre}}</span> </a>
                 </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faPlanAlimenticio"></fa-icon>
-                    <span>  &nbsp;Planes Alimenticios</span></a>
-                </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faPlanEjercicio"></fa-icon>
-                    <span>  &nbsp;Planes estadísticos</span></a>
-                </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faProfesionales"></fa-icon>
-                    <span>  &nbsp;Profesionales</span></a>
-                </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faEstadisticas"></fa-icon>
-                    <span>  &nbsp;Estadísticas</span></a>
-                </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faChat"></fa-icon>
-                    <span>  &nbsp;Chat</span></a>
-                </li>
-                <li>
-                    <a href=""> <fa-icon [icon]="faExperiencias"></fa-icon>
-                    <span>  &nbsp;Experiencias</span></a>
-                </li>
+            
             </ul>
             <div class="derechos-reservados">
                 <p>HealthLife © 2022</p>
@@ -52,59 +29,34 @@
                 </label> 
             </h2>
 
-            <div class="user-wrapper me-sm-3">
-                <fa-icon [icon]="faNotificacion" id="iconNotificacion"></fa-icon>
-                 <!--La imagen que aparece aquí debe ser traida de la BD con el usuario logueado-->
-                <img src="../../../assets/img/inicio/person_2.jpg" width="40px" height="40px" alt="foto-usuario-logueado">
-                <div class="user-name">
-                    <!--El nombres que aparecerá en este h4 debe ser traido de la BD con el usuario logueado-->
+            <div class="action">
+                <div class="perfil">
+                    <img src="../../../assets/img/inicio/person_2.jpg" alt="foto-perfil-usuario">
+                </div>
+                <div class="info-usuario"  onclick="mostrarMenu()">
+                    <span>ㅤ{{nomUsuario}} <fa-icon [icon]="faFlechaAbajo"></fa-icon></span>
+                </div>
+
+                <div class="menu-perfil">
+                    <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
-                        <li id="empiezaYa" class="dropdown"><a><span> Jordan Vera <fa-icon [icon]="faFlechaAbajo"></fa-icon></span></a>
-                            <ul>
-                                <li><a routerLink="/perfil"><fa-icon [icon]="faUserPerfil"></fa-icon>  &nbsp;Mi perfil</a></li>
-                                <li><a routerLink="/configuracion"><fa-icon [icon]="faConfiguracion"></fa-icon>  &nbsp;Configuración</a></li>
-                                <li><a routerLink="/login"><fa-icon [icon]="faCerrarSesion"></fa-icon>  &nbsp;Cerrar sesión</a></li>
-                                <!--<li><a href="#">Registrarme</a></li>-->
-                            </ul>
-                        </li>
+                        <li (click)="cambiarIndice(7)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
+                        <li (click)="cambiarIndice(8)"><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
+                        <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
-        <main>
-            <!--Fila 1 de los módulos-->
-            <!--<div class="tarjetas">
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Piernas</h1>
-                        <span>Rutina extrema de piernas</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-info-circle"></span>
-                    </div>
-                </div>
+        <main [ngSwitch]="indice">
+            <h1 *ngSwitchDefault>No implementado</h1>
+            <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan>
+            <app-planes *ngSwitchCase="1" [tipo]="1"></app-planes>
+            <app-planes *ngSwitchCase="2" [tipo]="2"></app-planes>
+            <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
 
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Brazos</h1>
-                        <span>Rutina completa de brazos</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-check-circle"></span>
-                    </div>
-                </div>
+            <app-profesionales *ngSwitchCase="3"></app-profesionales>
 
-                <div class="tarjetas-simples">
-                    <div>
-                        <h1>Desayunos</h1>
-                        <span>Desayunos altos de calorías</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-redo-alt"></span>
-                    </div>
-                </div>
-            </div>-->
         </main>
     </div>
 </body>

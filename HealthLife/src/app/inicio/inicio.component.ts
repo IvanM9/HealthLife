@@ -60,18 +60,6 @@ export class InicioComponent implements OnInit {
     AOS.init();
   }
 
-  abrirLogin(){
-    Swal.fire({
-      title: 'Gracias por animarse a formar parte de HealthLife',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-  }
-
   //Iconos
   faUsuarios = iconos.faUsers;
   faLibros = iconos.faBook;
