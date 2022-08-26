@@ -2,9 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
   production: false,
   api:"http://localhost:3000/"
+  // api:"http://192.168.1.8:3000/"
   // api:"https://healthlifeserver.herokuapp.com/"
 
 };

@@ -9,7 +9,6 @@ export class Connection {
     api: string;
     constructor(private clientHttp: HttpClient) {
         this.api = environment.api;
-
     }
 
     get(route: string) {
