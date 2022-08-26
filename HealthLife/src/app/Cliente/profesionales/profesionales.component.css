@@ -36,6 +36,10 @@ body{
 }
 
 .card-content h2{
+  margin-bottom: 4px;
+}
+
+.card-content .rol{
   margin-bottom: 15px;
 }
 

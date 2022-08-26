@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 import {CargarScriptsJSService} from './../../cargar-scripts-js.service'
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-detalle-plan',
@@ -16,6 +17,7 @@ export class DetallePlanComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init();
     // Llamar al método de la API para mostrar los detalles
   }
 

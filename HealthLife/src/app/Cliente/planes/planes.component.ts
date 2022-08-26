@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CargarScriptsJSService } from 'src/app/cargar-scripts-js.service';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
+import * as AOS from 'aos';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class PlanesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    AOS.init();
     // Si es 1 es alimenticios, si es 2 es entrenamientos
 
     this.planes.push({id:0})

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     correo: new FormControl('', Validators.required),
     clave: new FormControl('', Validators.required),
     sexo: new FormControl('seleccione-genero', Validators.required),
-    descripcion: new FormControl(null),
+    descripcion: new FormControl('', Validators.required),
     links: new FormControl(null),
     rol: new FormControl('seleccione-rol', Validators.required)
   })
@@ -176,6 +176,7 @@ export class LoginComponent implements OnInit {
   faZapato = iconos.faShoePrints;
   faAltura = iconos.faRuler;
   faPeso = iconos.faWeightScale;
+  faDescripcionPerfil = iconos.faAddressCard;
   //faHabitos = iconos.faAppleWhole;
   faAlergias = iconos.faHandDots;
   faEnfermedades = iconos.faBookMedical;

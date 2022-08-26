@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import { Connection } from 'src/app/connection';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-profesionales',
@@ -18,6 +19,7 @@ export class ProfesionalesComponent implements OnInit {
   constructor(private api:Connection) { }
 
   ngOnInit(): void {
+    AOS.init();
     //Para mostrar el numero de profesionales
     this.api.get("actividades/obtener_profesionales").subscribe( res =>{
       

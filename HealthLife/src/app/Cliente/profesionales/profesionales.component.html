@@ -5,13 +5,12 @@
         </div>
         <app-planes></app-planes>
     </ng-template>
-    <div *ngIf="!detalle; else detallesplan" class="box-courses-wrapper">
 
+    <div *ngIf="!detalle; else detallesplan" class="box-courses-wrapper">
         <!--Card que muestra el perfil de los profesionales-->
-        <div class="card swiper-slide" *ngFor="let element of profesionales">
+        <div class="card swiper-slide" *ngFor="let element of profesionales" data-aos="fade-up" data-aos-duration="1000">
             <div class="image-content">
                 <span class="overlay"></span>
-
                 <div class="card-image">
                     <img src=".././../../assets/img/inicio/person_1.jpg" class="card-img">
                 </div>
@@ -19,6 +18,7 @@
 
             <div class="card-content">
                 <h2 class="name">{{element.nombres+' '+element.apellidos}}</h2>
+                <p class="rol">{{element.rol}}</p>
                 <p class="description">{{element.descripcion}}</p>
 
                 <button (click)="cambiarComponente(true); cambiarIndice(element.id_profesional)" class="button">Ver curso  <fa-icon [icon]="faFlecha" id="logo-menu"></fa-icon> </button>

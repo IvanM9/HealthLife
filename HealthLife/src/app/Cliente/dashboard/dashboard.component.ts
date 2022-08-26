@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 import {CargarScriptsJSService} from '../../cargar-scripts-js.service';
+import { refresh } from 'aos';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,14 +17,11 @@ export class DashboardComponent implements OnInit {
   nomUsuario = "usuario";
   rolUsuario = "rol";
   idPlan=0
-
   menuOpciones: any[] = []
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService, private ruta:Router) {
-    
   }
-
 
 
   ngOnInit(): void {
