@@ -90,6 +90,7 @@
               <!--Campo para ingresar nombres-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="25"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -101,6 +102,7 @@
               <!--Campo para ingresar apellidos-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="25"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -112,6 +114,7 @@
               <!--Campo para ingresar email-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="30"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -123,6 +126,7 @@
               <!--Campo para ingresar contraseña-->
               <div class="entrada-textos">
                 <input 
+                  [maxLength]="15"
                   #clave1
                   id="clave1"
                   type="password" 
@@ -137,6 +141,7 @@
               <!--Campo para confirmar la contraseña-->
               <div class="entrada-textos">
                 <input
+                [maxLength]="15"
                   #clave2
                   id="clave2"
                   type="password" 
@@ -176,7 +181,6 @@
                   <option value="seleccione-genero" selected disabled>Seleccione su género</option>
                   <option value="masculino">Masculino</option>
                   <option value="femenino">Femenino</option>
-                  <option value="femenino">Maricon</option>
                   </select>
               </div>
 
@@ -205,6 +209,7 @@
               <!--Campo para ingresar las alergias-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="50"
                   minlength="8" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -216,6 +221,7 @@
               <!--Campo para ingresar las enfermedades-->
               <div class="entrada-textos">
                 <input 
+                [maxlength]="50"
                   minlength="8" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -252,6 +258,7 @@
               <!--Campo para ingresar nombres-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="25"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -263,6 +270,7 @@
               <!--Campo para ingresar Apellidos-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="25"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -274,6 +282,7 @@
               <!--Campo para ingresar Email-->
               <div class="entrada-textos">
                 <input 
+                  [maxlength]="30"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -285,6 +294,7 @@
               <!--Campo para ingresar contraseña-->
               <div class="entrada-textos">
                 <input 
+                  [maxLength]="15"
                   #clave3
                   id="clave3"
                   type="password" 
@@ -299,6 +309,7 @@
               <!--Campo para confirmar la contraseña-->
               <div class="entrada-textos">
                 <input
+                  [maxlength]="15"
                   #clave4
                   id="clave4"
                   type="password" 
@@ -352,6 +363,19 @@
                   <option value="nutricionista">Nutricionista</option>
                   <option value="entrenador">Entrenador</option>
                   </select>
+              </div>
+              
+              <!--Campo para ingresar nombres-->
+              <div class="entrada-textos">
+                <textarea 
+                  [maxlength]="150"
+                  type="text"
+                  rows="50" cols="40" 
+                  class="campo-entrada" 
+                  autocomplete="off" 
+                  required
+                  formControlName="descripcion"></textarea>
+                  <label><fa-icon [icon]="faDescripcionPerfil"></fa-icon>  ‍‍‍‍‍Descripción para su perfil</label>
               </div>
 
               <!--Seleccionar los años de experiencia

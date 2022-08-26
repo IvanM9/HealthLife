@@ -1,11 +1,8 @@
+
 <body>
-    <div class="box-courses-wrapper">
-
-        <div class="boton-regresar">
-            <input type="submit" value="Volver" class="btn-Volver" id="iniciar"> 
-        </div>
-
-        <div class="box-row">
+    <div class="box-courses-wrapper" *ngIf="!detalle; else detallesplan ">
+       <!--El que se debe esconder al poner el detalle--> 
+        <div class="box-row" *ngFor="let element of planes" data-aos="fade-up" data-aos-duration="1100">
             <div class="box-info">
                 <div class="course">
                     <div class="course-img">
@@ -46,11 +43,20 @@
                         <p>#Gratis</p>
                     </div>
                     <div class="contenedor-boton">
-                        <input type="button" value="Ver curso  ▶" class="btn-verCurso">
+                        <input (click)="cambiarComponente(true); cambiarIndice(element.id)" type="button" value="Ver curso  ▶" class="btn-verCurso">
                     </div>       
                 </div>
             </div>
         </div>
+
         
     </div>
+
+    <ng-template #detallesplan>
+        <div class="boton-regresar" (click)="cambiarComponente(false)">
+            <input type="submit" value="Volver" class="btn-Volver" id="iniciar"> 
+        </div>
+        <app-detalle-plan [idplan]="indice"></app-detalle-plan>
+    </ng-template>
+
 </body>
