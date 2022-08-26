@@ -7,10 +7,9 @@ import { IMC } from '../IMC';
 export class PerfilService {
     constructor(private conexion:ConexionService) {}
 
-    async obtenerIMC(id:number){
-        const datos = await this.obtenerDatosPerfil(id);
-        if(!datos) throw new HttpException("Erorr en obtener los datos",500);
-        const imc = new IMC(datos.talla, datos.peso)
+    async obtenerIMC(talla:number, peso:number){
+        if(!talla && !peso) throw new HttpException("Erorr en obtener los datos",500);
+        const imc = new IMC(talla, peso)
         return{
             imc: imc.calcularIMC(),
             info: imc.informacion()
