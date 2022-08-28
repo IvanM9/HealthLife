@@ -8,13 +8,21 @@ import { ModificarSuscripcionDto } from './dtos/suscripcion.dto';
 export class SuscripcionesService {
     constructor(private conexion: ConexionService) { }
 
-    async obtenerPlanesGenerales() {
+    verificarRespuesta(respuesta: any): any{
+        const aux = respuesta.length!= undefined && respuesta.length > 0;
+        if(!aux && Object.keys(respuesta).length <=0)   return null;
+        if(!aux) return [respuesta]
+        return respuesta;
+    }
+
+    async obtenerPlanesGenerales(tipo:number) {
         try {
-            const retorno = await this.conexion.executeProcedure('get_planes_generales', null);
-            if (retorno == null) {
+            const retorno = await this.conexion.executeProcedure('get_planes_generales', [tipo]);
+            const aux = this.verificarRespuesta(retorno)
+            if (aux == null) {
                 throw new HttpException('No se encontraron planes', 400);
             }
-            return retorno;
+            return aux;
 
         } catch (error) {
             throw new HttpException("Erorr: " + error, 500)
@@ -49,10 +57,11 @@ export class SuscripcionesService {
         try {
             const datos = await this.conexion.executeProcedure('get_cliente', [id]);
             if (!datos || datos == null) throw new HttpException('Error al cargar los datos del cliente', 500);
-            const imc = new IMC(datos.altura, datos.peso);
+            const imc = new IMC(datos.talla, datos.peso);
             const retorno = await this.conexion.executeProcedure('get_planes_recomendados', [imc.calcularIMC()]);
-            if (retorno[0].id == undefined || !retorno) throw new HttpException('No se encontraron planes', 400);
-            return retorno;
+            const aux = this.verificarRespuesta(retorno)
+            if(aux==null) throw new HttpException('No hay planes recomendados', 400)
+            return aux;
         } catch (error) {
             throw new HttpException("Erorr: " + error, 500)
         }

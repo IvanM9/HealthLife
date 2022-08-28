@@ -8,21 +8,31 @@ export class ActividadesService {
 
     constructor(private conexion: ConexionService) { }
 
+    verificarRespuesta(respuesta: any): any{
+        const aux = respuesta.length!= undefined && respuesta.length > 0;
+        if(!aux && Object.keys(respuesta).length <=0)   return null;
+        if(!aux) return [respuesta]
+        return respuesta;
+    }
     async obtenerPlan(idProfesional: number) {
         try {
             const resultado = await this.conexion.executeProcedure("get_planes", [idProfesional]);
-            if (!resultado || resultado == null) throw new HttpException("No se pudo obtener los planes", 500);
-            return resultado;
+            const respuesta = this.verificarRespuesta(resultado);
+            if(respuesta == null) throw new HttpException("No hay planes",400)
+            return respuesta;
         } catch (error) {
             throw new HttpException(error, 500);
         }
     }
 
+
+
     async obtenerActividades(idPlan: number) {
         try {
             const resultado = await this.conexion.executeProcedure("get_actividades", [idPlan]);
-            if (!resultado || resultado == null) throw new HttpException("No se pudo obtener las actividades", 500);
-            return resultado;
+            const respuesta = this.verificarRespuesta(resultado);
+            if (respuesta == null) throw new HttpException("No se pudo obtener las actividades", 500);
+            return respuesta;
         } catch (error) {
             throw new HttpException(error, 500);
         }
@@ -67,8 +77,9 @@ export class ActividadesService {
     async obtenerProfesionales() {
         try {
             const retorno = await this.conexion.executeProcedure("get_profesionales", null);
-            if (retorno.length <= 0 || retorno == null) throw new HttpException("No se pudo obtener los profesionales", 500);
-            return retorno;
+            const aux = this.verificarRespuesta(retorno);
+            if (aux == null) throw new HttpException("No se pudo obtener los profesionales", 500);
+            return aux;
         } catch (error) {
             throw new HttpException(error, 500);
         }

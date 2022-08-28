@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/session/jwt-auth.guard';
 import { Role } from 'src/auth/session/role.enum';
@@ -21,14 +21,15 @@ export class SuscripcionesController {
        return  this.servicio.suscribirse(req.user.id, datos.id_plan);
     }
 
-    @Get('obtener_planes_generales')
-    async obtenerPlanesGenerales(){
-        return this.servicio.obtenerPlanesGenerales();
+    @Get('obtener_planes_generales/:tipo')
+    async obtenerPlanesGenerales(@Param('tipo') tipo:number){
+        return this.servicio.obtenerPlanesGenerales(tipo);
     }
 
     @Get('obtener_planes_recomendados')
     @Roles(Role.Cliente)
     async obtenerPlanesRecomendados(@Req() req:any){
+        console.log(req.user)
         return this.servicio.obtenerPlanesRecomendados(req.user.id);
     }
 

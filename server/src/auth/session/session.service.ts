@@ -2,7 +2,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConexionService } from 'src/conexion/conexion.service';
 import { LoginDto, usuarioDto } from './dtos/usuario.dto';
-import { hash, compare } from 'bcrypt';
+import { hash, compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { ProfesionalDto } from './dtos/profesional.dto';
 import { ClienteDto } from './dtos/cliente.dto';
