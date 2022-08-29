@@ -39,4 +39,46 @@ function mostrarMenu(){
 }
 
 
+document.getElementById('fecha').textContent='Lunes';
+const fecha = new Date();
+const hoy = fecha.getDay();
+
+switch(hoy){
+    case 1:
+        document.getElementById('fecha').textContent='Lunes';
+        console.log(hoy)
+        break;
+
+    case 2:
+            document.getElementById('fecha').textContent='Martes';
+            console.log(hoy)
+            break;
+
+    case 3:
+        document.getElementById('fecha').textContent='Miercoles';
+        console.log(hoy)
+        break;
+
+    case 4:
+        document.getElementById('fecha').textContent='Jueves';
+        console.log(hoy)
+        break;
+    
+    case 5:
+        document.getElementById('fecha').textContent='Viernes';
+        console.log(hoy)
+        break;
+    
+    case 6:
+        document.getElementById('fecha').textContent='Sabado';
+        console.log(hoy)
+        break;
+    
+    case 7:
+        document.getElementById('fecha').textContent='Domingo';
+        console.log(hoy)
+        break;
+    
+}
+
 
