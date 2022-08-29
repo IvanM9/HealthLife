@@ -1,0 +1,17 @@
+<body>
+    <div *ngFor="let element of actividades" class="box-courses-wrapper">
+        <!--Cabecera del plan-->
+        <div class="cabecera-plan">
+            <div class="info-cabecera">
+                <h5><fa-icon [icon]="faVerificado"></fa-icon><b>&nbsp; Actividad asignada:</b> {{element.titulo}}</h5>
+                <p>A continuación se detalla el proceso de su actividad:</p>
+                <br />
+                <p><b>Descripción:</b></p>
+                <div class="descripcion-curso">
+                    <span>{{element.detalles}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>

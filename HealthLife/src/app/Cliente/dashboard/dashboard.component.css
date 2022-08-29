@@ -115,6 +115,10 @@
     width: 85px;
 }
 
+#fecha{
+    font-size: 20px;
+}
+
 #nav-toggle:checked+.sidebar .sidebar-brand,
 #nav-toggle:checked+.sidebar li{
     padding-left: 0rem;

@@ -21,6 +21,8 @@ import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.compon
 import { PerfilUsuarioComponent } from './Cliente/perfil-usuario/perfil-usuario.component';
 import { PlanesComponent } from './Cliente/planes/planes.component';
 import { ProfesionalesComponent } from './Cliente/profesionales/profesionales.component';
+import { ActividadesComponent } from './Cliente/actividades/actividades.component';
+import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ProfesionalesComponent } from './Cliente/profesionales/profesionales.co
     DetallePlanComponent,
     PerfilUsuarioComponent,
     PlanesComponent,
-    ProfesionalesComponent
+    ProfesionalesComponent,
+    ActividadesComponent,
+    MisPlanesComponent
   ],
   imports: [
     BrowserModule,

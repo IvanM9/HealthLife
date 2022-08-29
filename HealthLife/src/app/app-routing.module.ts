@@ -5,7 +5,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
 import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.component';
 import { ProfesionalesComponent } from './Cliente/profesionales/profesionales.component';
-
+import { ActividadesComponent } from './Cliente/actividades/actividades.component';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"inicio"},
@@ -13,7 +13,8 @@ const routes: Routes = [
   {path:"inicio", component:InicioComponent},
   {path:"dashboard", component:DashboardComponent},
   {path: "detalle-plan", component:DetallePlanComponent},
-  {path: "profesionales", component:ProfesionalesComponent}
+  {path: "profesionales", component:ProfesionalesComponent},
+  {path: "actividades", component:ActividadesComponent}
 ];
 
 @NgModule({

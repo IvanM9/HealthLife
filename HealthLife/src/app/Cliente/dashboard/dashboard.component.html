@@ -26,6 +26,7 @@
             <h2>
                 <label for="nav-toggle">
                     <fa-icon [icon]="faBars" id="logo-menu"></fa-icon>
+                    <span id ="fecha">ㅤfecha</span>
                 </label> 
             </h2>
 
@@ -49,13 +50,21 @@
         </header>
 
         <main [ngSwitch]="indice">
+            <!--*ngIf="rolUsuario == 'cliente'; else profesional"-->
+            <div *ngIf="this.rolUsuario == 'cliente'; else profesional">
+                <h1 *ngSwitchDefault>No implementado</h1>
+                <!-- <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan> -->
+                <app-planes *ngSwitchCase="1" [tipo]="1"></app-planes>
+                <app-planes *ngSwitchCase="2" [tipo]="2"></app-planes>
+                <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
+                <app-profesionales *ngSwitchCase="3"></app-profesionales>
+                <app-actividades *ngSwitchCase="4"></app-actividades>
+            </div> 
+            
+            <ng-template #profesional>
+                <h1 *ngSwitchCase="0"> Profesionales </h1>
+            </ng-template>
             <h1 *ngSwitchDefault>No implementado</h1>
-            <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan>
-            <app-planes *ngSwitchCase="1" [tipo]="1"></app-planes>
-            <app-planes *ngSwitchCase="2" [tipo]="2"></app-planes>
-            <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
-
-            <app-profesionales *ngSwitchCase="3"></app-profesionales>
 
         </main>
     </div>

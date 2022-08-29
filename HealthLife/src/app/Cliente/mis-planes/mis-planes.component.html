@@ -2,7 +2,7 @@
 <body>
     <div class="box-courses-wrapper" *ngIf="!detalle; else detallesplan ">
        <!--El que se debe esconder al poner el detalle--> 
-        <div class="box-row" *ngFor="let element of planes" data-aos="fade-up" data-aos-duration="1100">
+        <div class="box-row" *ngFor="let element of misPlanes" data-aos="fade-up" data-aos-duration="1100">
             <div class="box-info">
                 <div class="course">
                     <div class="course-img">
@@ -41,7 +41,7 @@
                         
                     </div>
                     <div class="contenedor-boton">
-                        <input (click)="cambiarComponente(true); cambiarIndice(element)" type="button" value="Ver curso  ▶" class="btn-verCurso">
+                        <input (click)="cambiarComponente(true); cambiarIndice(element)" type="button" value="Ver Actividades  ▶" class="btn-verCurso">
                     </div>       
                 </div>
             </div>

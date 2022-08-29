@@ -33,18 +33,20 @@ export class DashboardComponent implements OnInit {
     this.rolUsuario = sessionStorage.getItem("rol") || "Usuario";
 
     this.menuOpciones.push({icono:this.faHome, nombre:"Inicio"})
-    // if(sessionStorage.getItem("rol") == "cliente"){
+    if(sessionStorage.getItem("rol") == "cliente"){
       this.menuOpciones.push({icono:this.faPlanAlimenticio, nombre:"Planes alimenticios", habilitado:true})
       this.menuOpciones.push({icono:this.faPlanEjercicio, nombre:"Planes ejercicios", habilitado:true})
       this.menuOpciones.push({icono:this.faProfesionales, nombre:"Profesionales", habilitado:true})
+      this.menuOpciones.push({icono:this.faMisPlanes, nombre:"Mis planes", habilitado:true})
       this.menuOpciones.push({icono:this.faEstadisticas, nombre:"Estadísticas", habilitado:true})
       this.menuOpciones.push({icono:this.faChat, nombre:"Chat", habilitado:false})
       this.menuOpciones.push({icono:this.faExperiencias, nombre:"Experiencias", habilitado:false})
-    // }
+    }
   }
 
   //Inidice para mostrar componentes dentro del dashboard
-  cambiarIndice(indice: any){
+  cambiarIndice(indice: number){
+    console.log(indice)
     this.indice = indice;
   }
 
@@ -76,6 +78,7 @@ export class DashboardComponent implements OnInit {
   faEstadisticas = iconos.faChartSimple;
   faExperiencias = iconos.faUsersLine;
   faChat = iconos.faComments;
+  faMisPlanes = iconos.faHeart;
 
 
 
