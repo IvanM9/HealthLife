@@ -2,7 +2,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConexionService } from 'src/conexion/conexion.service';
 import { LoginDto, usuarioDto } from './dtos/usuario.dto';
-import { hash, compare } from 'bcrypt';
+import { hash, compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { ProfesionalDto } from './dtos/profesional.dto';
 import { ClienteDto } from './dtos/cliente.dto';
@@ -62,14 +62,5 @@ export class SessionService {
         return { "mensaje": retorno.rol.toString().trim() + ' logueado correctamente', token_id, rol: retorno.rol.toString().trim(), nombres: retorno.nombres.trim() };
     }
 
-    // TODO: Reubicar esta funcion en un servicio aparte
-    async obtenerPerfil(correo: string) {
-        const retorno = (await this.conexion.executeProcedure('obtener_cliente', [correo]));
-        if (!retorno) throw new HttpException('Usuario no existe', 500);
-        return {
-            "nombres": retorno.nombres.toString().trim(),
-            "apellidos": retorno.apellidos.toString().trim(),
-            "correo": retorno.correo.toString().trim(),
-        };
-    }
+    
 }

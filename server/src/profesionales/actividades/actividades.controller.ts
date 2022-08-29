@@ -13,23 +13,24 @@ import { PlanesDto, UpdatePlanesDto } from './dtos/planes.dto';
 @Controller('actividades')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class ActividadesController {
-    constructor(private servicio:ActividadesService) {}
+    constructor(private servicio: ActividadesService) { }
 
     @Post('crearPlan')
     @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
-    async crearActividad(@Body() plan:PlanesDto, @Req() req) {
+    async crearActividad(@Body() plan: PlanesDto, @Req() req) {
         plan.publico = req.user.roles[0] == Role.Admin ? true : plan.publico;
         return this.servicio.crearPlan(plan, req.user.roles[0] == Role.Admin ? null : req.user.id);
     }
 
     @Get('obtener_planes/:idprofesional')
-    async obtenerPlan(@Param('idprofesional') id:number, @Req() req) {
-        const identficador = req.user.roles[0] == Role.Entrenador || req.user.roles[0] == Role.Nutricionista || req.user.roles[0] == Role.Admin ? req.user.id : id; 
+    async obtenerPlan(@Param('idprofesional') id: number, @Req() req) {
+        let identficador = req.user.roles[0] == Role.Entrenador || req.user.roles[0] == Role.Nutricionista || req.user.roles[0] == Role.Admin ? req.user.id : id;
+        identficador = identficador == 0 ? "null" : identficador;
         return this.servicio.obtenerPlan(identficador);
     }
 
     @Get('obtener_actividades/:idplan')
-    async obtenerActividades(@Param('idplan') id:number) {
+    async obtenerActividades(@Param('idplan') id: number) {
         return this.servicio.obtenerActividades(id);
     }
 
@@ -41,7 +42,7 @@ export class ActividadesController {
     // TODO: Realizar funciones de eliminar planes
     @Put('modificar_plan/:idplan')
     @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
-    async modificarPlan(@Param('idplan') id:number, @Body() plan:UpdatePlanesDto) {
+    async modificarPlan(@Param('idplan') id: number, @Body() plan: UpdatePlanesDto) {
         return this.servicio.modificarPlan(plan, id);
     }
 

@@ -1,0 +1,180 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box; 
+}
+
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  /*background-color: #77dd77;*/
+
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.box-courses-wrapper {
+  /*max-width: 1070px;
+  margin: auto;
+  padding: 1rem;*/
+  margin-right: -2.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+.boton-regresar{
+  margin-top: -35px;
+  background-color: rgba(146, 146, 146, 0.068);
+  margin-bottom: 15px;
+  text-align: end;
+  width: 100%;
+}
+
+.btn-Volver{
+  display: inline-block;
+  width: 7%;
+  height: 30px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+}
+
+
+.card{
+  border-radius: 25px;
+  background-color: #FFF;
+  margin: 10px;
+}
+
+.image-content,
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+
+.card-content h2{
+  margin-bottom: 4px;
+}
+
+.card-content .rol{
+  margin-bottom: 15px;
+}
+
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #a5eea0;
+  border-radius: 25px 25px 0 25px;
+}
+
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #a5eea0;
+}
+
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+
+.card-image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #42ab49;
+}
+
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.description{
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+
+.submit{
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: #000;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit:hover{
+  background: #42ab49;
+}
+.boton-regresar{
+  margin-top: -35px;
+  background-color:  rgba(146, 146, 146, 0.068);
+  margin-bottom: 15px;
+  text-align: end;
+}
+
+.btn-Volver{
+  display: inline-block;
+  width: 7%;
+  height: 30px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+}

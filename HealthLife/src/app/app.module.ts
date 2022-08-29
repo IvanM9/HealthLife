@@ -14,12 +14,21 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './Cliente/dashboard/dashboard.component';
-import { PlanesAlimenticiosComponent } from './Cliente/planes-alimenticios/planes-alimenticios.component';
-import { PlanesEjerciciosComponent } from './Cliente/planes-ejercicios/planes-ejercicios.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContenidoInicioComponent } from './Cliente/contenido-inicio/contenido-inicio.component';
 import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.component';
+import { PerfilUsuarioComponent } from './Cliente/perfil-usuario/perfil-usuario.component';
+import { PlanesComponent } from './Cliente/planes/planes.component';
+import { ProfesionalesComponent } from './Cliente/profesionales/profesionales.component';
+
+import { InicioProfesionalesComponent } from './Profesional/inicio-profesionales/inicio-profesionales.component';
+import { ClientesAdminProfesionalesComponent } from './Profesional/clientes-admin-profesionales/clientes-admin-profesionales.component';
+import { PlanesAdminProfesionalesComponent } from './Profesional/planes-admin-profesionales/planes-admin-profesionales.component';
+import { PerfilProfesionalComponent } from './Profesional/perfil-profesional/perfil-profesional.component';
+import { ActividadesComponent } from './Cliente/actividades/actividades.component';
+import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
+
 
 
 @NgModule({
@@ -29,10 +38,18 @@ import { DetallePlanComponent } from './Cliente/detalle-plan/detalle-plan.compon
     DashboardAdminComponent,
     InicioComponent,
     DashboardComponent,
-    PlanesAlimenticiosComponent,
-    PlanesEjerciciosComponent,
     ContenidoInicioComponent,
-    DetallePlanComponent
+    DetallePlanComponent,
+    PerfilUsuarioComponent,
+    PlanesComponent,
+    ProfesionalesComponent,
+    InicioProfesionalesComponent,
+    ClientesAdminProfesionalesComponent,
+    PlanesAdminProfesionalesComponent,
+    PerfilProfesionalComponent,
+    ActividadesComponent,
+    MisPlanesComponent
+
   ],
   imports: [
     BrowserModule,

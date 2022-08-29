@@ -1,0 +1,239 @@
+<link rel="stylesheet" href="/src/assets/JS/adminlte.min.css">
+
+<div class="wrapper fondo">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10">
+                                <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                            class="form-control form-control-sm" placeholder=""
+                                            aria-controls="example1"></label></div>
+                            </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#agregarPlanes">Crear nuevo plan</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                                    aria-describedby="example1_info">
+                                    <thead>
+                                        <tr>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+                                                rowspan="1" colspan="1" aria-sort="ascending"
+                                                aria-label="Nombre del plan: activate to sort column descending">
+                                                Nombre del plan</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Edad recomendada activate to sort column ascending">
+                                                Edad recomendada</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1"
+                                                aria-label="IMC recomendado: activate to sort column ascending">
+                                                IMC recomendado</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Etiquetas: activate to sort column ascending">
+                                                Etiquetas</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1"
+                                                aria-label="¿Es público?: activate to sort column ascending">
+                                                ¿Es público?</th>
+                                            <th>
+                                                Opciones
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd" *ngFor="let element of planes; count as i">
+                                            <td class="dtr-control sorting_1" tabindex="0">{{element.nombre}}</td>
+                                            <td>{{element.edad_recomendada}}</td>
+                                            <td>{{element.imc}}</td>
+                                            <td>
+                                                <ul>
+                                                    <li *ngFor="let tags of element.etiquetas">{{tags}}</li>
+                                                </ul>
+                                            </td>
+                                            <td>{{element.publico}}</td>
+                                            <td>
+                                                <button class=" btn btn-sm btn-primary mx-1">Modificar</button>
+                                                <button class="btn btn-sm btn-danger mx-1">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">Nombre del plan</th>
+                                            <th rowspan="1" colspan="1">Edad recomendada</th>
+                                            <th rowspan="1" colspan="1">IMC recomendado</th>
+                                            <th rowspan="1" colspan="1">Etiquetas</th>
+                                            <th rowspan="1" colspan="1">¿Es público?</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <!--                         <div class="row">
+                            
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="example1_previous">
+                                            <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                                class="page-link">Anterior</a></li>
+                                        <li class="paginate_button page-item active" *ngFor="let pag of"><a href="#"
+                                                aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                                class="page-link">1</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="example1"
+                                                data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                        <li class="paginate_button page-item next" id="example1_next"><a href="#"
+                                                aria-controls="example1" data-dt-idx="7" tabindex="0"
+                                                class="page-link">Siguiente</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+ -->
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+<div class="modal fade" id="agregarPlanes" tabindex="-1" aria-labelledby="agregarPlanesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cree un nuevo plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="nuevosPlanes">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" placeholder="Título"
+                            formControlName="nombre">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="estado"
+                            formControlName="estado">
+                        <label class="form-check-label" for="estado">
+                            ¿Desea que esté activo?
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="false" id="publico"
+                            formControlName="publico">
+                        <label class="form-check-label" for="publico">
+                            ¿Es público?
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Objetivos</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            formControlName="objetivos"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Edad recomendada</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Edad"
+                            formControlName="edad">
+                    </div>
+                    <div class="mb-3">
+                        <label for="etiquetas" class="form-label">Etiquetas</label>
+                        <div *ngFor="let control of nuevosPlanes.controls['etiquetas'].controls; index as i" class="mb-2">
+
+                            <input type="text" class="form-control" placeholder="#Etiqueta"
+                                [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]">
+                        </div>
+                        <button type="button" class=" btn btn-outline-primary" (click)="agregarEtiqueta()"> Agregar otra etiqueta</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imcRecomendada" class="form-label">IMC recomendada</label>
+                        <input type="number" class="form-control" id="imcRecomendada" placeholder="IMC"
+                            formControlName="IMC">
+                    </div>
+                    <div class="mb-3">
+                        <label for="enfermedades" class="form-label">Enfermedades</label>
+                        <textarea class="form-control" id="enfermedades" rows="3"
+                            formControlName="enfermedades"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#agregarActividades">Agregar Actividades</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="agregarActividades" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar actividades</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let control of nuevosPlanes.controls['actividades'].controls; index as i" class=" mb-2">
+                    <h4>Actividad #{{i+1}}</h4>
+                    <form [formGroup]="nuevosPlanes.controls['actividades'].controls[i]">
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Título</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" formControlName="titulo">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputDia" class="col-sm-2 col-form-label">Dia</label>
+                            <select id="inputDia" class="col-sm-10" formControlName="dia">
+                                <option value="1" selected>Lunes</option>
+                                <option value="2">Martes</option>
+                                <option value="3">Miércoles</option>
+                                <option value="4">Jueves</option>
+                                <option value="5">Viernes</option>
+                                <option value="6">Sábado</option>
+                                <option value="7">Domingo</option>
+                            </select>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="detalles" class="form-label">Detalles</label>
+                            <textarea class="form-control" id="detalles" rows="3" formControlName="detalles"></textarea>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+                <button type="button" class="btn btn-outline-primary"
+                    (click)="agregarActividades()">Agregar Otra actividad</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#agregarPlanes">Atrás</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="crearPlan()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/src/assets/JS/adminlte.min.js"></script>
