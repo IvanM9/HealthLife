@@ -1,25 +1,53 @@
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+* {
+  box-sizing: border-box; 
 }
 
-body{
+body, html {
+  width: 100%;
   min-height: 100vh;
-  display: flex;
+  /*background-color: #77dd77;*/
+
   align-items: center;
   justify-content: center;
-  /*background-color: #EFEFEF;*/
+  font-family: "Poppins", sans-serif;
 }
 
-.box-courses-wrapper{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.box-courses-wrapper {
+  /*max-width: 1070px;
+  margin: auto;
+  padding: 1rem;*/
+  margin-right: -2.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
+
+
+.boton-regresar{
+  margin-top: -35px;
+  background-color: rgba(146, 146, 146, 0.068);
+  margin-bottom: 15px;
+  text-align: end;
+  width: 100%;
+}
+
+.btn-Volver{
+  display: inline-block;
+  width: 7%;
+  height: 30px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+}
+
 
 .card{
   border-radius: 25px;
@@ -104,7 +132,7 @@ body{
   text-align: center;
 }
 
-.button{
+.submit{
   border: none;
   font-size: 16px;
   color: #FFF;
@@ -116,7 +144,7 @@ body{
   transition: all 0.3s ease;
 }
 
-.button:hover{
+.submit:hover{
   background: #42ab49;
 }
 .boton-regresar{
