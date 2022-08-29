@@ -42,6 +42,11 @@ export class DashboardComponent implements OnInit {
       this.menuOpciones.push({icono:this.faChat, nombre:"Chat", habilitado:false})
       this.menuOpciones.push({icono:this.faExperiencias, nombre:"Experiencias", habilitado:false})
     }
+    else{
+      this.menuOpciones.push({icono:this.faMisPlanes, nombre:"Planes", habilitado:true})
+      this.menuOpciones.push({icono:this.faUserPerfil, nombre:"Mi perfil", habilitado:true})
+      this.menuOpciones.push({icono:this.faProfesionales, nombre:"Clientes suscritos", habilitado:true})
+    }
   }
 
   //Inidice para mostrar componentes dentro del dashboard

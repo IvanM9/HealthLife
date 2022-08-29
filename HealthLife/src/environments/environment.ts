@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  //api:"http://localhost:3000/"
-  api:"http://192.168.0.111:3000/"
+  api:"http://localhost:3000/"
+  //api:"http://192.168.0.111:3000/"
   // api:"https://healthlifeserver.herokuapp.com/"
 
 };
