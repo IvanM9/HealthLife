@@ -52,6 +52,7 @@
         <main [ngSwitch]="indice">
             <!--*ngIf="rolUsuario == 'cliente'; else profesional"-->
             <div *ngIf="this.rolUsuario == 'cliente'; else profesional">
+                <h1 *ngSwitchCase="0" id="mensaje-bienvenida">Hola, bienvenido a HealthLife</h1>
                 <app-planes *ngSwitchCase="0"></app-planes>
                 <!-- <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan> -->
                 <app-planes *ngSwitchCase="1" [tipo]="2"></app-planes>
@@ -59,6 +60,8 @@
                 <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
                 <app-profesionales *ngSwitchCase="3"></app-profesionales>
                 <app-actividades *ngSwitchCase="4"></app-actividades>
+                <app-estadisticas *ngSwitchCase="5"></app-estadisticas>
+                <app-chat *ngSwitchCase="6"></app-chat>
             </div> 
             
             <ng-template #profesional>

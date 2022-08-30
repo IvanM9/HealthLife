@@ -119,6 +119,10 @@
     font-size: 20px;
 }
 
+#mensaje-bienvenida{
+    margin-bottom: 10px;
+}
+
 #nav-toggle:checked+.sidebar .sidebar-brand,
 #nav-toggle:checked+.sidebar li{
     padding-left: 0rem;
