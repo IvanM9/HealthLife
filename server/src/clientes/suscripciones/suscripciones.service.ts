@@ -66,4 +66,14 @@ export class SuscripcionesService {
             throw new HttpException("Erorr: " + error, 500)
         }
     }
+
+    async planesSuscritos(id:number){
+        try {
+            const datos = await this.conexion.executeProcedure('get_planes_suscritos', [id]);
+            if(datos.length<=0)
+                throw new HttpException('No hay planes suscritos', 400)
+            return datos;
+        }
+        catch (error) {}
+    }
 }

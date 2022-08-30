@@ -35,10 +35,10 @@ export class ConexionService {
             }
         }
         this.database = new Pool(this.config);
-        // if(this.database.connect())
-        //     console.log('Conexion exitosa');
-        // else
-        //     console.log('Conexion fallida');
+        if(this.database.connect())
+            console.log('Conexion exitosa');
+        else
+            console.log('Conexion fallida');
     }
 
     private async queryWithValues(query: string, params: any[]): Promise<any> {

@@ -38,5 +38,11 @@ export class SuscripcionesController {
         return this.servicio.modificar_suscripcion(req.user.id, datos);
     }
 
+    @Get('planes_suscritos')
+    async planesSuscritos(@Req() req:any){
+        return this.servicio.planesSuscritos(req.user.id);
+    }
+
+
     // TODO: Realizar funciones de eliminar suscripciones
 }

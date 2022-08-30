@@ -8,7 +8,7 @@ export class ActividadesService {
 
     constructor(private conexion: ConexionService) { }
 
-    verificarRespuesta(respuesta: any): any{
+    private verificarRespuesta(respuesta: any): any{
         const aux = respuesta.length!= undefined && respuesta.length > 0;
         if(!aux && Object.keys(respuesta).length <=0)   return null;
         if(!aux) return [respuesta]
@@ -91,6 +91,18 @@ export class ActividadesService {
             if (!retorno) throw new HttpException("Error al modificar el plan", 400);
             return { mensaje: "Plan modificado correctamente" };
         } catch (error) {
+            throw new HttpException(error, 500);
+        }
+    }
+
+    async obtenerClientesSuscritos(id:number){
+        try {
+            const retorno = await this.conexion.executeProcedure("get_clientes_suscritos", [id]);
+            const aux = this.verificarRespuesta(retorno);
+            if (aux == null) throw new HttpException("No se pudo obtener los clientes", 500);
+            console.log(aux);
+            return aux;
+        }catch (error){
             throw new HttpException(error, 500);
         }
     }
