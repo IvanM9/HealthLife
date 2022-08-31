@@ -26,7 +26,7 @@
             <h2>
                 <label for="nav-toggle">
                     <fa-icon [icon]="faBars" id="logo-menu"></fa-icon>
-                    <span id ="fecha">ㅤfecha</span>
+                    <span id ="fecha">ㅤ{{fecha}}</span>
                 </label> 
             </h2>
 
@@ -41,8 +41,8 @@
                 <div class="menu-perfil">
                     <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
-                        <li (click)="cambiarIndice(7)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
-                        <li (click)="cambiarIndice(8)"><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
+                        <li (click)="cambiarIndice(8)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
+                        <li><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
                         <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -57,9 +57,9 @@
                 <!-- <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan> -->
                 <app-planes *ngSwitchCase="1" [tipo]="2"></app-planes>
                 <app-planes *ngSwitchCase="2" [tipo]="1"></app-planes>
-                <app-perfil-usuario *ngSwitchCase="7"></app-perfil-usuario>
+                <app-perfil-usuario *ngSwitchCase="8"></app-perfil-usuario>
                 <app-profesionales *ngSwitchCase="3"></app-profesionales>
-                <app-actividades *ngSwitchCase="4"></app-actividades>
+                <app-mis-planes *ngSwitchCase="4"></app-mis-planes>
                 <app-estadisticas *ngSwitchCase="5"></app-estadisticas>
                 <app-chat *ngSwitchCase="6"></app-chat>
             </div> 

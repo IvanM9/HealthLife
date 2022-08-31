@@ -71,10 +71,13 @@ export class SuscripcionesService {
         try {
             const datos = await this.conexion.executeProcedure('get_planes_suscritos', [id]);
             const aux = this.verificarRespuesta(datos);
+            console.log(aux)
             if (aux == null)
                 throw new HttpException('No hay planes suscritos', 400)
-            return datos;
+            return aux;
         }
-        catch (error) { }
+        catch (error) { 
+            throw new HttpException(error,500)
+        }
     }
 }

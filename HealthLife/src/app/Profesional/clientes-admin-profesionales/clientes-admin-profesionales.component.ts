@@ -16,9 +16,8 @@ export class ClientesAdminProfesionalesComponent implements OnInit {
   ngOnInit(): void {
     this.api.get("actividades/obtenerClientesSuscritos").subscribe(res => {
       const aux = Object.assign(res)
-      aux.forEach((element: any) => {
-        this.clients.push(element);
-      });
+      console.log(res);
+      this.clients=aux;
     }, error => {
       console.log(error);
     })
@@ -27,6 +26,7 @@ export class ClientesAdminProfesionalesComponent implements OnInit {
   mostrarPerfil(id: number): void {
     this.idUsuario = id;
     this.mostrarDatos(true)
+    console.log(this.idUsuario)
   }
 
   mostrarDatos(cargar:boolean){

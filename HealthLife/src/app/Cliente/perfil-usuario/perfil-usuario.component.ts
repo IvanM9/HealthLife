@@ -14,6 +14,7 @@ export class PerfilUsuarioComponent implements OnInit {
   ngOnInit(): void {
 
       this.api.get("cliente/perfil/" + (this.id || 0)).subscribe(res => {
+        console.log(res)
         this.datos = Object.assign(res);
       }, error=>{
         console.log(error.error)

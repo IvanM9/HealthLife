@@ -19,6 +19,13 @@ export class MisPlanesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.api.get("suscripciones/planes_suscritos").subscribe(res=>{
+      const aux = Object.assign(res);
+      console.log(res)
+      this.misPlanes = aux;
+    }, error=>{
+      alert("No hay planes suscritos")
+    });
   }
 
 

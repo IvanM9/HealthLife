@@ -4,7 +4,8 @@ import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 import {CargarScriptsJSService} from '../../cargar-scripts-js.service';
 import { refresh } from 'aos';
-
+import * as moment from 'moment'
+ 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   rolUsuario = "rol";
   idPlan=0
   menuOpciones: any[] = []
+  fecha:any;
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService, private ruta:Router) {
@@ -25,6 +27,9 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    moment.locale('ES')
+    this.fecha=moment().format("dddd").toUpperCase();
+   
     /*if(sessionStorage.getItem("token_id") == undefined){
       this.ruta.navigateByUrl('/inicio');
     }*/

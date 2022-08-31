@@ -62,12 +62,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div *ngIf="cargarDatos">
+                <div *ngIf="this.cargarDatos">
                     <app-perfil-usuario [id]="this.idUsuario"></app-perfil-usuario>
                 </div>
             </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-<script src="/src/assets/JS/niceadmin/main.js"></script>
