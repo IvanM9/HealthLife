@@ -123,6 +123,15 @@
     margin-bottom: 10px;
 }
 
+.imagenes-portada{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.imagenes-portada img{
+    border-radius: 5px;
+}
+
 #nav-toggle:checked+.sidebar .sidebar-brand,
 #nav-toggle:checked+.sidebar li{
     padding-left: 0rem;

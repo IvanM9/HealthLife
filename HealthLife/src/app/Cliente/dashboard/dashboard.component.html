@@ -42,19 +42,26 @@
                     <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
                         <li (click)="cambiarIndice(8)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
-                        <li><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
+                        <li (click)="mensajeMantenimiento()"><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
                         <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
+
         <main [ngSwitch]="indice">
-            <!--*ngIf="rolUsuario == 'cliente'; else profesional"-->
             <div *ngIf="this.rolUsuario == 'cliente'; else profesional">
-                <h1 *ngSwitchCase="0" id="mensaje-bienvenida">Hola, bienvenido a HealthLife</h1>
+
+                <h4 *ngSwitchCase="0" id="mensaje-bienvenida">Hola, bienvenido a HealthLife</h4>
+                <div *ngSwitchCase="0" class="imagenes-portada">
+                    <img style="width: 95%; height: 95%;" src="../../../assets/img/cursos/portada-inicio-comidas.jpg" alt="imagen-inicio-nutricion">
+                    <img style="width: 95%; height: 95%;" src="../../../assets/img/cursos/portada-inicio-fitness.jpg" alt="imagen-inicio-fitness">
+                </div>
+                <br *ngSwitchCase="0"/>
+                <h4 *ngSwitchCase="0" id="mensaje-bienvenida">Algunos planes recomendados para ti:</h4>
                 <app-planes *ngSwitchCase="0"></app-planes>
-                <!-- <app-detalle-plan *ngSwitchCase="0"></app-detalle-plan> -->
+
                 <app-planes *ngSwitchCase="1" [tipo]="2"></app-planes>
                 <app-planes *ngSwitchCase="2" [tipo]="1"></app-planes>
                 <app-perfil-usuario *ngSwitchCase="8"></app-perfil-usuario>

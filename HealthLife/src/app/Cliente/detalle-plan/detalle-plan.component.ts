@@ -16,7 +16,8 @@ export class DetallePlanComponent implements OnInit {
   @Input()
   plan!: any;
 
-  detallePlan:any[] =[]
+  detallePlan:any[] = []
+
   
   constructor(private api:Connection) { }
 
@@ -27,6 +28,8 @@ export class DetallePlanComponent implements OnInit {
       const aux = Object.assign(res)
       aux.forEach((element: any) => {
          this.detallePlan.push(element)
+
+ 
       });
       console.log(this.detallePlan)
     })
@@ -55,7 +58,13 @@ export class DetallePlanComponent implements OnInit {
     })
   }
 
-  
+  noSePuedeObtenerProfesionales() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos :(',
+      text: 'No se ha podido obtener la información de los profesionales',
+    })
+  }
 
   /*obtenerDetallePlan(){
     this.api.get("suscripciones/obtener_planes_generales").subscribe(res=>{

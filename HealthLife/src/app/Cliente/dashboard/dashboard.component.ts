@@ -5,6 +5,7 @@ import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 import {CargarScriptsJSService} from '../../cargar-scripts-js.service';
 import { refresh } from 'aos';
 import * as moment from 'moment'
+import Swal from 'sweetalert2'
  
 @Component({
   selector: 'app-dashboard',
@@ -64,13 +65,23 @@ export class DashboardComponent implements OnInit {
     this.idPlan = id;
   }
 
-  
-
   //Para cerrar la sesion
   cerrarSesion(){
     sessionStorage.clear();
     this.ruta.navigateByUrl('/login');
   }
+
+  mensajeMantenimiento(){
+    Swal.fire({
+      title: '¡Lo sentimos!',
+      text: 'Esta opción aún no está disponible, seguiremos trabajando en futuras actualizaciones. Gracias por su comprensión.',
+      imageUrl: 'https://ventaserviciospc.files.wordpress.com/2015/07/1.png?w=352&h=248',
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: 'Custom image',
+    })
+  }
+
 
   //Iconos para el menú de la parte superior
   faBars = iconos.faBars;

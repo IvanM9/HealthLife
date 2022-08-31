@@ -7,9 +7,10 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="" alt="Profile" class="rounded-circle">
-                        <h2>{{datos.nombres}}</h2>
-                        <h3>{{datos.rol}}</h3>
+                        <img class="rounded-circle mt-4" width="150px" src="../../../assets/img/inicio/person_2.jpg">
+                        <br/>
+                        <h3>{{datos.nombres}}</h3>
+                        <h5>{{datos.rol}}</h5>
 
                     </div>
                 </div>
@@ -25,7 +26,7 @@
 
                             <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab"
-                                    data-bs-target="#profile-overview">Overview</button>
+                                    data-bs-target="#profile-overview">Descripción</button>
                             </li>
 
                             <li class="nav-item">
@@ -42,35 +43,35 @@
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                <h5 class="card-title">Descripción</h5>
+                                <br/>
                                 <p class="small fst-italic">{{datos.descripcion}}</p>
-
+                                <br/>
                                 <h5 class="card-title">Detalles del perfil</h5>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label ">Nombres y apellidos</div>
+                                    <div class="col-lg-3 col-md-4 label "><b>Nombre: </b></div>
                                     <div class="col-lg-9 col-md-8">{{datos.nombres}} {{datos.apellidos}}</div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Sexo</div>
+                                    <div class="col-lg-3 col-md-4 label"><b>Sexo:</b></div>
                                     <div class="col-lg-9 col-md-8">{{datos.sexo}}</div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Tipo de profesional</div>
+                                    <div class="col-lg-3 col-md-4 label"><b>Tipo:</b></div>
                                     <div class="col-lg-9 col-md-8">{{datos.rol}}</div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Correo</div>
+                                    <div class="col-lg-3 col-md-4 label"><b>Correo:</b></div>
                                     <div class="col-lg-9 col-md-8">{{datos.correo}}</div>
                                 </div>
 
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="col-lg-3 col-md-4 label">Perfiles</div>
                                     <div class="col-lg-9 col-md-8">Links</div>
-                                </div>
+                                </div>-->
 
 
 

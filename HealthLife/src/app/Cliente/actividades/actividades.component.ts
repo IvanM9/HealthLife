@@ -18,7 +18,7 @@ export class ActividadesComponent implements OnInit {
 
   ngOnInit(): void {
     //cambiar este /10 por el id traido del plan
-    this.api.get("actividades/obtener_actividades/10").subscribe(res=>{
+    this.api.get("actividades/obtener_actividades/"+this.id).subscribe(res=>{
       //this.actividades.push(res);
       const aux = Object.assign(res)
       aux.forEach((element: any) => {
