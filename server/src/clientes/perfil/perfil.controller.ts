@@ -8,21 +8,20 @@ import { RolesGuard } from 'src/auth/session/roles.guard';
 import { PerfilService } from './perfil.service';
 
 @ApiBearerAuth()
-@Controller('perfil')
-@ApiTags('perfil')
+@Controller('cliente/perfil')
+@ApiTags('perfil - cliente')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(Role.Cliente)
 export class PerfilController {
-    constructor(private servicio:PerfilService) {}
+    constructor(private servicio: PerfilService) { }
 
     @Get('imc/:talla/:peso')
-    async obtenerIMC(@Param('talla') talla:number, @Param('peso') peso: number){
+    async obtenerIMC(@Param('talla') talla: number, @Param('peso') peso: number) {
         return this.servicio.obtenerIMC(talla, peso);
     }
 
-    @Roles(Role.Cliente)
-    @Get()
-    async perfil(@Req() req) {
-        return this.servicio.obtenerDatosPerfil(req.user.id);
+    @Get('/:id')
+    async perfil(@Req() req, @Param('id') id: number) {
+        return this.servicio.obtenerDatosPerfil(req.user.roles[0] == Role.Cliente ? req.user.id : id);
     }
 }

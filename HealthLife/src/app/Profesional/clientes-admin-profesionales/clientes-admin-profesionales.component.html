@@ -39,7 +39,9 @@
                         <td>{{cliente.sexo}}</td>
                         <td>{{cliente.nombre}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detallesCliente">Ver Información</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#detallesCliente" (click)="mostrarPerfil(cliente.id_cliente)">Ver
+                                Información</button>
                         </td>
                     </tr>
 
@@ -50,24 +52,22 @@
 </div>
 
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="detallesCliente" tabindex="-1" aria-labelledby="detallesClienteLabel" aria-hidden="true">
+
+<!-- Modal -->
+<div class="modal fade" id="detallesCliente" tabindex="-1" aria-labelledby="detallesClienteLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="cargarDatos">
+                    <app-perfil-usuario [id]="this.idUsuario"></app-perfil-usuario>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <app-perfil-usuario></app-perfil-usuario>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 <script src="/src/assets/JS/niceadmin/main.js"></script>

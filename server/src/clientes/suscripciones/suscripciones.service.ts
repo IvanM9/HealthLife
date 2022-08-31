@@ -8,14 +8,14 @@ import { ModificarSuscripcionDto } from './dtos/suscripcion.dto';
 export class SuscripcionesService {
     constructor(private conexion: ConexionService) { }
 
-    verificarRespuesta(respuesta: any): any{
-        const aux = respuesta.length!= undefined && respuesta.length > 0;
-        if(!aux && Object.keys(respuesta).length <=0)   return null;
-        if(!aux) return [respuesta]
+    private verificarRespuesta(respuesta: any): any {
+        const aux = respuesta.length != undefined && respuesta.length > 0;
+        if (!aux && Object.keys(respuesta).length <= 0) return null;
+        if (!aux) return [respuesta]
         return respuesta;
     }
 
-    async obtenerPlanesGenerales(tipo:number) {
+    async obtenerPlanesGenerales(tipo: number) {
         try {
             const retorno = await this.conexion.executeProcedure('get_planes_generales', [tipo]);
             const aux = this.verificarRespuesta(retorno)
@@ -60,20 +60,21 @@ export class SuscripcionesService {
             const imc = new IMC(datos.talla, datos.peso);
             const retorno = await this.conexion.executeProcedure('get_planes_recomendados', [imc.calcularIMC()]);
             const aux = this.verificarRespuesta(retorno)
-            if(aux==null) throw new HttpException('No hay planes recomendados', 400)
+            if (aux == null) throw new HttpException('No hay planes recomendados', 400)
             return aux;
         } catch (error) {
             throw new HttpException("Erorr: " + error, 500)
         }
     }
 
-    async planesSuscritos(id:number){
+    async planesSuscritos(id: number) {
         try {
             const datos = await this.conexion.executeProcedure('get_planes_suscritos', [id]);
-            if(datos.length<=0)
+            const aux = this.verificarRespuesta(datos);
+            if (aux == null)
                 throw new HttpException('No hay planes suscritos', 400)
             return datos;
         }
-        catch (error) {}
+        catch (error) { }
     }
 }

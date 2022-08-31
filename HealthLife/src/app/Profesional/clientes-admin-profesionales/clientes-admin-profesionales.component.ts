@@ -8,19 +8,30 @@ import { Connection } from 'src/app/connection';
 })
 export class ClientesAdminProfesionalesComponent implements OnInit {
 
-  constructor(private api:Connection) { }
+  constructor(private api: Connection) { }
 
-  clients:any[] = [];
+  clients: any[] = [];
+  idUsuario: number = 0;
+  cargarDatos=false;
   ngOnInit(): void {
-    this.api.get("actividades/obtenerClientesSuscritos").subscribe(res=>{
+    this.api.get("actividades/obtenerClientesSuscritos").subscribe(res => {
       const aux = Object.assign(res)
-      console.log(res);
-      aux.forEach((element: any)=>{
+      aux.forEach((element: any) => {
         this.clients.push(element);
       });
-    }, error=>{
+    }, error => {
       console.log(error);
     })
+  }
+
+  mostrarPerfil(id: number): void {
+    this.idUsuario = id;
+    this.mostrarDatos(true)
+  }
+
+  mostrarDatos(cargar:boolean){
+    this.cargarDatos=cargar
+
   }
 
 }
