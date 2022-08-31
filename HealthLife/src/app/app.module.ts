@@ -28,6 +28,8 @@ import { PlanesAdminProfesionalesComponent } from './Profesional/planes-admin-pr
 import { PerfilProfesionalComponent } from './Profesional/perfil-profesional/perfil-profesional.component';
 import { ActividadesComponent } from './Cliente/actividades/actividades.component';
 import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
+import { EstadisticasComponent } from './Cliente/estadisticas/estadisticas.component';
+import { ChatComponent } from './Cliente/chat/chat.component';
 
 
 
@@ -48,7 +50,9 @@ import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
     PlanesAdminProfesionalesComponent,
     PerfilProfesionalComponent,
     ActividadesComponent,
-    MisPlanesComponent
+    MisPlanesComponent,
+    EstadisticasComponent,
+    ChatComponent
 
   ],
   imports: [
