@@ -101,3 +101,30 @@ body{
 .accordion-button{
     background-color: rgba(146, 146, 146, 0.123);
 }
+
+
+.footer-card{
+    background-color: #77dd77;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.contenedor-boton{
+    text-align: center;
+}
+
+.btn-suscribirse{
+    width: 32.5%;
+    height: 40px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.3s;
+}

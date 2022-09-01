@@ -1,0 +1,50 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  
+}
+
+.value-container2{
+  margin-left: 38%;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.box-courses-wrapper{
+  background-color: #cfffcf;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.circular-progress {
+  position: relative;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-left: 20%;
+}
+
+.circular-progress:before {
+  content: "";
+  position: absolute;
+  height: 84%;
+  width: 84%;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.value-container {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 50px;
+  color: #231c3d;
+}

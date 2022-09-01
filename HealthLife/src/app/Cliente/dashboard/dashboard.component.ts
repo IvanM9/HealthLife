@@ -4,7 +4,9 @@ import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as iconosfab from '@fortawesome/free-brands-svg-icons';
 import {CargarScriptsJSService} from '../../cargar-scripts-js.service';
 import { refresh } from 'aos';
-
+import * as moment from 'moment'
+import Swal from 'sweetalert2'
+ 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,6 +20,7 @@ export class DashboardComponent implements OnInit {
   rolUsuario = "rol";
   idPlan=0
   menuOpciones: any[] = []
+  fecha:any;
 
   //Llamando a la función para poder cargar el JS que hace la animación del menú en la página de incio
   constructor(private _cargarScripts:CargarScriptsJSService, private ruta:Router) {
@@ -25,6 +28,9 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    moment.locale('ES')
+    this.fecha=moment().format("dddd").toUpperCase();
+   
     /*if(sessionStorage.getItem("token_id") == undefined){
       this.ruta.navigateByUrl('/inicio');
     }*/
@@ -59,13 +65,23 @@ export class DashboardComponent implements OnInit {
     this.idPlan = id;
   }
 
-  
-
   //Para cerrar la sesion
   cerrarSesion(){
     sessionStorage.clear();
     this.ruta.navigateByUrl('/login');
   }
+
+  mensajeMantenimiento(){
+    Swal.fire({
+      title: '¡Lo sentimos!',
+      text: 'Esta opción aún no está disponible, seguiremos trabajando en futuras actualizaciones. Gracias por su comprensión.',
+      imageUrl: 'https://ventaserviciospc.files.wordpress.com/2015/07/1.png?w=352&h=248',
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: 'Custom image',
+    })
+  }
+
 
   //Iconos para el menú de la parte superior
   faBars = iconos.faBars;

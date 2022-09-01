@@ -46,4 +46,10 @@ export class ActividadesController {
         return this.servicio.modificarPlan(plan, id);
     }
 
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
+    @Get('obtenerClientesSuscritos')
+    async obtenerClientesSuscritos(@Req() req:any){
+        return this.servicio.obtenerClientesSuscritos(req.user.id);
+    }
+
 }

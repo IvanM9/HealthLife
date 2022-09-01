@@ -1,4 +1,3 @@
-
 <body>
     <div class="box-courses-wrapper" *ngIf="!detalle; else detallesplan ">
        <!--El que se debe esconder al poner el detalle--> 
@@ -6,7 +5,7 @@
             <div class="box-info">
                 <div class="course">
                     <div class="course-img">
-                        <img src="../../../assets/img/cursos/verduras.jpg" alt="">
+                        <img  [src]="tipo==2 ? portadaNutricion: portadaEjercicios" alt="">
                     </div>
 
                     <div class="course-detail">
@@ -14,7 +13,7 @@
                             <p><a href="#"> <b>{{element.nombre}}</b></a></p>
                             </div>
                         <div class="course-author">
-                            <p><b>Por:</b> {{element.id}}</p>
+                            <p><b>Por:</b> {{element.nombres}}</p>
                         </div>
                         <div class="course-desc">
                             <p>{{element.objetivos}}</p>

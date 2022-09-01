@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as AOS from 'aos';
 import { Connection } from 'src/app/connection';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-mis-planes',
@@ -10,15 +11,37 @@ import { Connection } from 'src/app/connection';
 })
 export class MisPlanesComponent implements OnInit {
 
+  portadaNutricion = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002549/healthlife/portada-plan-comidas_u3vrmz.png"
+  portadaEjercicios = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002548/healthlife/portada-plan-entreanamientos_wnlujj.png"
+
   plan: any;
   detalle:boolean=false;
   misPlanes:any[] =[]
-
+  nombreProfesional: any;
   constructor(private api:Connection) { 
     
   }
 
   ngOnInit(): void {
+    this.api.get("suscripciones/planes_suscritos").subscribe(res=>{
+      const aux = Object.assign(res);
+      console.log(res)
+      this.misPlanes = aux;
+      
+      this.misPlanes.forEach((element: any) => {
+        this.api.get("profesional/perfil/"+element.id_profesional).subscribe(res=>{
+          const aux2 = Object.assign(res);
+          element.nombres = aux2.nombres + " " + aux2.apellidos;
+        }, error=>{
+          this.noSePuedeObtenerProfesionales();
+        });
+     });
+
+      
+
+    }, error=>{
+      alert("No hay planes suscritos")
+    });
   }
 
 
@@ -28,6 +51,14 @@ export class MisPlanesComponent implements OnInit {
   }
   cambiarComponente(activo:boolean){
     this.detalle = activo;
+  }
+
+  noSePuedeObtenerProfesionales() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos :(',
+      text: 'No se ha podido obtener la información de los profesionales',
+    })
   }
 
 

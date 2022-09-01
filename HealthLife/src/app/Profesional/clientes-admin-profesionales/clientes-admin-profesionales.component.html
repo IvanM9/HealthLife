@@ -4,77 +4,67 @@
     <h5 class="card-title">Clientes suscritos</h5>
     <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
         <div class="dataTable-top">
-            <div class="dataTable-dropdown"><label><select class="dataTable-selector">
-                        <option value="5">5</option>
-                        <option value="10" selected="">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                        <option value="25">25</option>
-                    </select> entries per page</label></div>
-            <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div>
+            <div class="dataTable-search"><input class="dataTable-input" placeholder="Buscar..." type="text"></div>
         </div>
         <div class="dataTable-container">
             <table class="table datatable dataTable-table">
                 <thead>
                     <tr>
-                        <th scope="col" data-sortable="" style="width: 5.69358%;"><a href="#"
-                                class="dataTable-sorter">#</a></th>
-                        <th scope="col" data-sortable="" style="width: 27.9503%;"><a href="#"
-                                class="dataTable-sorter">Name</a></th>
-                        <th scope="col" data-sortable="" style="width: 37.7847%;"><a href="#"
-                                class="dataTable-sorter">Position</a></th>
-                        <th scope="col" data-sortable="" style="width: 9.21325%;"><a href="#"
-                                class="dataTable-sorter">Age</a></th>
-                        <th scope="col" data-sortable="" style="width: 19.3582%;"><a href="#"
-                                class="dataTable-sorter">Start Date</a></th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            #</th>
+
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            Nombres</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            Apellidos</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            Sexo</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            Plan</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Nombre del plan: activate to sort column descending">
+                            Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Brandon Jacob</td>
-                        <td>Designer</td>
-                        <td>28</td>
-                        <td>2016-05-25</td>
+                    <tr *ngFor="let cliente of clients; index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{cliente.nombres}}</td>
+                        <td>{{cliente.apellidos}}</td>
+                        <td>{{cliente.sexo}}</td>
+                        <td>{{cliente.nombre}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#detallesCliente" (click)="mostrarPerfil(cliente.id_cliente)">Ver
+                                Información</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Bridie Kessler</td>
-                        <td>Developer</td>
-                        <td>35</td>
-                        <td>2014-12-05</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Ashleigh Langosh</td>
-                        <td>Finance</td>
-                        <td>45</td>
-                        <td>2011-08-12</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Angus Grady</td>
-                        <td>HR</td>
-                        <td>34</td>
-                        <td>2012-06-11</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Raheem Lehner</td>
-                        <td>Dynamic Division Officer</td>
-                        <td>47</td>
-                        <td>2011-04-19</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
-        <div class="dataTable-bottom">
-            <div class="dataTable-info">Showing 1 to 5 of 5 entries</div>
-            <nav class="dataTable-pagination">
-                <ul class="dataTable-pagination-list"></ul>
-            </nav>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="detallesCliente" tabindex="-1" aria-labelledby="detallesClienteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="this.cargarDatos">
+                    <app-perfil-usuario [id]="this.idUsuario"></app-perfil-usuario>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-<script src="/src/assets/JS/niceadmin/main.js"></script>

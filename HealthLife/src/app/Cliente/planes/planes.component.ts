@@ -3,6 +3,7 @@ import { CargarScriptsJSService } from 'src/app/cargar-scripts-js.service';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as AOS from 'aos';
 import { Connection } from 'src/app/connection';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -12,6 +13,8 @@ import { Connection } from 'src/app/connection';
 })
 export class PlanesComponent implements OnInit {
 
+  portadaNutricion = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002549/healthlife/portada-plan-comidas_u3vrmz.png"
+  portadaEjercicios = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002548/healthlife/portada-plan-entreanamientos_wnlujj.png"
   plan: any;
   planes: any[] = []
   detalle: boolean = false;
@@ -33,16 +36,28 @@ export class PlanesComponent implements OnInit {
           console.log(aux)
           aux.forEach((element: any) => {
             this.planes.push(element)
+
+            this.api.get("profesional/perfil/"+element.id_profesional).subscribe(res=>{
+              const aux2 = Object.assign(res);
+              element.nombres = aux2.nombres + " " + aux2.apellidos;
+            }, error=>{
+              this.noSePuedeObtenerProfesionales();
+            });
           });
         });
       else
         this.api.get("suscripciones/obtener_planes_recomendados").subscribe(res => {
-          // console.log(res)
-          // this.planes.push(res)
           const aux = Object.assign(res)
           console.log(aux)
           aux.forEach((element: any) => {
-            this.planes.push(element)
+            this.planes.push(element) 
+
+            this.api.get("profesional/perfil/"+element.id_profesional).subscribe(res=>{
+              const aux2 = Object.assign(res);
+              element.nombres = aux2.nombres + " " + aux2.apellidos;
+            }, error=>{
+              this.noSePuedeObtenerProfesionales();
+            });
           });
         });
     }
@@ -53,15 +68,25 @@ export class PlanesComponent implements OnInit {
         console.log(aux)
         aux.forEach((element: any) => {
           this.planes.push(element)
+
+          this.api.get("profesional/perfil/"+element.id_profesional).subscribe(res=>{
+            const aux2 = Object.assign(res);
+            element.nombres = aux2.nombres + " " + aux2.apellidos;
+          }, error=>{
+            this.noSePuedeObtenerProfesionales();
+          });
         });
       });
     }
 
-    // this.planes.push({id:1})
-    // this.planes.push({id:2})
-    // this.planes.push({id:3})
-    // this.planes.push({id:4})
+  }
 
+  noSePuedeObtenerProfesionales() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos :(',
+      text: 'No se ha podido obtener la información de los profesionales',
+    })
   }
 
   //Inidice para mostrar componentes dentro del dashboard
@@ -73,7 +98,6 @@ export class PlanesComponent implements OnInit {
   }
 
   faUsuario = iconos.faUser;
-
   faVerificado = iconos.faCircleCheck;
   faReloj = iconos.faClock;
   faGratis = iconos.faUnlock;

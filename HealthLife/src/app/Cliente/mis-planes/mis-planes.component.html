@@ -6,7 +6,7 @@
             <div class="box-info">
                 <div class="course">
                     <div class="course-img">
-                        <img src="../../../assets/img/cursos/verduras.jpg" alt="">
+                        <img [src]="portadaNutricion" alt="">
                     </div>
 
                     <div class="course-detail">
@@ -14,10 +14,10 @@
                             <p><a href="#"> <b>{{element.nombre}}</b></a></p>
                             </div>
                         <div class="course-author">
-                            <p><b>Por:</b> {{element.id}}</p>
+                            <p><b>Por:</b> {{element.nombres}}</p>
                         </div>
                         <div class="course-desc">
-                            <p>{{element.objetivos}}</p>
+                            <p><b>Descripción: </b>{{element.objetivos}}</p>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
         <div class="boton-regresar" (click)="cambiarComponente(false)">
             <input type="submit" value="Volver" class="btn-Volver" id="iniciar"> 
         </div>
-        <app-detalle-plan [plan]="plan"></app-detalle-plan>
+        <app-actividades [id]="plan.id_planes"></app-actividades>
     </ng-template>
 
 </body>
