@@ -63,6 +63,7 @@
                 <app-mis-planes *ngSwitchCase="4"></app-mis-planes>
                 <app-estadisticas *ngSwitchCase="5"></app-estadisticas>
                 <app-chat *ngSwitchCase="6"></app-chat>
+                
             </div> 
             
             <ng-template #profesional>
@@ -71,7 +72,7 @@
                 <app-perfil-profesional *ngSwitchCase="2"></app-perfil-profesional>
                 <app-clientes-admin-profesionales *ngSwitchCase="3"></app-clientes-admin-profesionales>
             </ng-template>
-            <h1 *ngSwitchDefault>No implementado</h1>
+            <h4 *ngSwitchDefault>Lo sentimos, esta opción aún no está disponible en tu región :(</h4>
 
         </main>
     </div>

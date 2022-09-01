@@ -177,4 +177,13 @@ body, html {
   .swiper-navBtn{
     display: none;
   }
+  
+  .box-courses-wrapper {
+    /*max-width: 1070px;
+    margin: auto;
+    padding: 1rem;*/
+    margin-right: -2.5%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
