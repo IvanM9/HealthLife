@@ -2,6 +2,7 @@ import { Connection } from './../../connection';
 import { Component, Input, OnInit } from '@angular/core';
 import * as iconos from '@fortawesome/free-solid-svg-icons';
 import * as AOS from 'aos';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-actividades',
@@ -26,6 +27,16 @@ export class ActividadesComponent implements OnInit {
       });
     })
   }
+
+  completarActividades() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Esta actividad se ha registrado como Completada',
+      showConfirmButton: false,
+      timer: 1700
+    })
+  }
+
 
   faVerificado = iconos.faCircleCheck;
 

@@ -13,6 +13,8 @@ import Swal from 'sweetalert2'
 })
 export class PlanesComponent implements OnInit {
 
+  portadaNutricion = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002549/healthlife/portada-plan-comidas_u3vrmz.png"
+  portadaEjercicios = "https://res.cloudinary.com/dfzyxagbc/image/upload/v1662002548/healthlife/portada-plan-entreanamientos_wnlujj.png"
   plan: any;
   planes: any[] = []
   detalle: boolean = false;

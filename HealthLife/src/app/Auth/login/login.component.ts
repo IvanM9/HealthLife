@@ -153,6 +153,44 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  politicasPrivacidadUsuarios(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Politicas de privacidad',
+      html: '<p style="text-align: justify;"> 1. Aceptar que HealthLife recopile su información personal para poder registrarlo/a en la base de datos.</p>' + 
+            '<p style="text-align: justify;"> 2. Aceptar que no se puede tomar la información de los cursos de los profesionales para usarlas o duplicarlas en otros sitios. </p>'+
+            '<p style="text-align: justify;"> 3. Aceptar que HealthLife es un sistema web gratuito con funcionalidades básicas para un grupo de usuarios.</p>' +
+            '<p style="text-align: justify;"> 4. Se puede tomar de manera libre el código de HealthLife y colobarar en el sistema para incluir mejoras.</p>' +
+            '<p style="text-align: justify;"> 5. Aceptar que HealthLife no se responsabiliza por robo de información que se haya introducido en el sistema.</p>' + 
+            '<p style="text-align: justify;"> 6. Aceptar que HealthLife puede estar en mantenimiento en cualquier momento por ser un software libre y de versión 1.0.</p>'            
+    })
+  }
+
+  politicasPrivacidadProfesionales(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Politicas de privacidad',
+      html: '<p style="text-align: justify;"> 1. Aceptar que HealthLife recopile su información personal para poder registrarlo/a en la base de datos.</p>' + 
+            '<p style="text-align: justify;"> 2. Aceptar que no se puede tomar la información de los usuarios inscritos en HealthLife para cualquier tipo de actividad. </p>'+
+            '<p style="text-align: justify;"> 3. Aceptar que HealthLife es un sistema web gratuito con funcionalidades básicas para un grupo de usuarios.</p>' +
+            '<p style="text-align: justify;"> 4. Se puede tomar de manera libre el código de HealthLife y colobarar en el sistema para incluir mejoras.</p>' +
+            '<p style="text-align: justify;"> 5. Aceptar que HealthLife no se responsabiliza por robo de información que se haya introducido en el sistema.</p>' + 
+            '<p style="text-align: justify;"> 6. Aceptar que HealthLife puede estar en mantenimiento en cualquier momento por ser un software libre y de versión 1.0.</p>'            
+    })
+  }
+
+
+  obtenerAyuda(){
+    Swal.fire({
+      title: '¡Lo sentimos!',
+      text: 'Por el momento no contamos con un personal que recepte solicitudes de ayudas :(. Gracias por su comprensión.',
+      imageUrl: 'https://www.questionpro.com/qp_userimages/sub-3/2800039/calculadora-margen-de-error.png',
+      imageWidth: 200,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    })
+  }
+
   public verificarPassword(password1: string, password2: String) {
     if (password1 != password2) {
       this.mensaje_Error("Las contraseñas no son iguales, intente otra vez");
