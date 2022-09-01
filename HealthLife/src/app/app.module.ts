@@ -30,6 +30,7 @@ import { ActividadesComponent } from './Cliente/actividades/actividades.componen
 import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
 import { EstadisticasComponent } from './Cliente/estadisticas/estadisticas.component';
 import { ChatComponent } from './Cliente/chat/chat.component';
+import { InicioDashboardComponent } from './Cliente/inicio-dashboard/inicio-dashboard.component';
 
 
 
@@ -52,7 +53,8 @@ import { ChatComponent } from './Cliente/chat/chat.component';
     ActividadesComponent,
     MisPlanesComponent,
     EstadisticasComponent,
-    ChatComponent
+    ChatComponent,
+    InicioDashboardComponent
 
   ],
   imports: [

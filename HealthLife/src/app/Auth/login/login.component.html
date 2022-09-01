@@ -50,7 +50,7 @@
               <!--Texto por si olvidó la contraseña-->
               <p class="text">
                 ¿Olvidaste tu contraseña?
-                <a href="#">Obtener ayuda</a>
+                <a (click)="obtenerAyuda()">Obtener ayuda</a>
               </p>
             </div>
           </form>
@@ -234,7 +234,7 @@
               <p class="text">
                 <input #checkbox
                 type="checkbox"> He leído y acepto las 
-                <a href="#"> Políticas de privacidad para usuarios</a>
+                <a (click)="politicasPrivacidadUsuarios()"> Políticas de privacidad para usuarios</a>
               </p>
               <br/>
 
@@ -336,7 +336,7 @@
           <!--Formulario para el registro de PROFESIONALES PARTE 2-->
           <form [formGroup]="registroProfesionalesForm" (ngSubmit)="registrarProfesionales(registroProfesionalesForm.value, checkbox2.checked)" autocomplete="off" class="formulario-registro4" id="formulario-registro2">
             <div class="heading">
-              <h2>Una paso más! <fa-icon [icon]="faZapato"></fa-icon></h2>
+              <h2>Un paso más! <fa-icon [icon]="faZapato"></fa-icon></h2>
             </div>
 
             <div class="actual-form">
@@ -398,7 +398,7 @@
                 <input 
                 #checkbox2
                 type="checkbox"> He leído y acepto las 
-                <a href="#"> Políticas de privacidad para profesionales</a>
+                <a (click)="politicasPrivacidadProfesionales()"> Políticas de privacidad para profesionales</a>
               </p>
               <br/>
 
@@ -442,3 +442,4 @@
     </div>
   </main>
 </body>
+

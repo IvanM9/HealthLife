@@ -53,14 +53,8 @@
         <main [ngSwitch]="indice">
             <div *ngIf="this.rolUsuario == 'cliente'; else profesional">
 
-                <h4 *ngSwitchCase="0" id="mensaje-bienvenida">Hola, bienvenido a HealthLife</h4>
-                <div *ngSwitchCase="0" class="imagenes-portada">
-                    <img style="width: 95%; height: 95%;" src="../../../assets/img/cursos/portada-inicio-comidas.jpg" alt="imagen-inicio-nutricion">
-                    <img style="width: 95%; height: 95%;" src="../../../assets/img/cursos/portada-inicio-fitness.jpg" alt="imagen-inicio-fitness">
-                </div>
-                <br *ngSwitchCase="0"/>
-                <h4 *ngSwitchCase="0" id="mensaje-bienvenida">Algunos planes recomendados para ti:</h4>
-                <app-planes *ngSwitchCase="0"></app-planes>
+                <app-inicio-dashboard *ngSwitchCase="0"></app-inicio-dashboard>
+                
 
                 <app-planes *ngSwitchCase="1" [tipo]="2"></app-planes>
                 <app-planes *ngSwitchCase="2" [tipo]="1"></app-planes>
@@ -72,7 +66,7 @@
             </div> 
             
             <ng-template #profesional>
-                <h1 *ngSwitchCase="0"> Inicio </h1>
+                <app-inicio-profesionales *ngSwitchCase="0"> Inicio </app-inicio-profesionales>
                 <app-planes-admin-profesionales *ngSwitchCase="1"></app-planes-admin-profesionales>
                 <app-perfil-profesional *ngSwitchCase="2"></app-perfil-profesional>
                 <app-clientes-admin-profesionales *ngSwitchCase="3"></app-clientes-admin-profesionales>

@@ -24,6 +24,9 @@ main {
   justify-content: center;
 }
 
+a{
+    cursor: pointer;
+}
 
 .caja-exterior {
   position: relative;
@@ -199,11 +202,13 @@ label {
 .text a {
     color: rgb(156, 156, 156);
     transition: 0.3s;
-    color: #707070;;
+    color: #707070;
+    text-decoration: underline;
 }
   
 .text a:hover {
     color: #6853f1;
+    cursor: pointer;
 }
 
 main.sign-up-mode form.formulario-iniciar-sesion{

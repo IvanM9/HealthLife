@@ -11,6 +11,12 @@ body {
   
 }
 
+.value-container2{
+  margin-left: 38%;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
 .box-courses-wrapper{
   background-color: #cfffcf;
   display: grid;
