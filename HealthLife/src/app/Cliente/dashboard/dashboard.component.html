@@ -43,7 +43,7 @@
                     <ul>
                         <li (click)="cambiarIndice(8)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
                         <li (click)="mensajeMantenimiento()"><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
-                        <li><fa-icon [icon]="faCerrarSesion"></fa-icon><a routerLink="/login">Cerrar Sesión</a></li>
+                        <li (click)="cerrarSesion()"><fa-icon [icon]="faCerrarSesion"></fa-icon><a>Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>

@@ -61,12 +61,14 @@
                                             </td>
                                             <td>{{element.publico}}</td>
                                             <td>
-                                                <button (click)="mensajeMantenimiento()" class=" btn btn-sm btn-primary mx-1">Modificar</button>
-                                                <button (click)="mensajeMantenimiento()" class="btn btn-sm btn-danger mx-1">Eliminar</button>
+                                                <button (click)="mensajeMantenimiento()"
+                                                    class=" btn btn-sm btn-primary mx-1">Modificar</button>
+                                                <button (click)="mensajeMantenimiento()"
+                                                    class="btn btn-sm btn-danger mx-1">Eliminar</button>
                                             </td>
                                         </tr>
                                     </tbody>
-                                    
+
                                 </table>
                             </div>
                         </div>
@@ -150,12 +152,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="etiquetas" class="form-label">Etiquetas</label>
-                        <div *ngFor="let control of nuevosPlanes.controls['etiquetas'].controls; index as i" class="mb-2">
+                        <div *ngFor="let control of nuevosPlanes.controls['etiquetas'].controls; index as i"
+                            class="mb-2">
 
                             <input type="text" class="form-control" placeholder="#Etiqueta"
                                 [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]">
                         </div>
-                        <button type="button" class=" btn btn-outline-primary" (click)="agregarEtiqueta()"> Agregar otra etiqueta</button>
+                        <button type="button" class=" btn btn-outline-primary" (click)="agregarEtiqueta()"> Agregar otra
+                            etiqueta</button>
                     </div>
                     <div class="mb-3">
                         <label for="imcRecomendada" class="form-label">IMC recomendada</label>
@@ -214,15 +218,19 @@
                             <textarea class="form-control" id="detalles" rows="3" formControlName="detalles"></textarea>
                         </div>
                     </form>
+                    <button type="button" class=" btn btn-outline-secondary" (click)="eliminarActividad(i)">
+                        Eliminar Actividad
+                    </button>
                     <hr>
                 </div>
-                <button type="button" class="btn btn-outline-primary"
-                    (click)="agregarActividades()">Agregar Otra actividad</button>
+                <button type="button" class="btn btn-outline-primary" (click)="agregarActividades()">Agregar Otra
+                    actividad</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
                     data-bs-target="#agregarPlanes">Atrás</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="crearPlan()">Guardar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="crearPlan()">Guardar</button>
             </div>
         </div>
     </div>
