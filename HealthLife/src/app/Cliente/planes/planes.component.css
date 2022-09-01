@@ -281,11 +281,13 @@ fa-icon{
     .course-img{
         width: 100%;
         height: 30%;
+        text-align: center;
     }
 
     .course-img img{
-        width: 100%;
+        width: 60%;
         border-radius: 10px;
+        margin-left: 20%;
     }
 
     .course-detail{
@@ -386,6 +388,11 @@ fa-icon{
         text-align: center;
         margin: auto; 
     }
+
+    .course-img img{
+        width: 60%;
+    }
+    
     .course-detail {
         width: 100%;
         margin: 1rem 0px; 
