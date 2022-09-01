@@ -15,12 +15,12 @@ export class SessionService {
         console.log(datos, rol);
         datos.clave = await hash(datos.clave, 10);
         const retorno = await this.conexion.executeProcedure('insert_usuario', [
-            datos.nombres,
-            datos.apellidos,
+            datos.nombres.trim(),
+            datos.apellidos.trim(),
             datos.correo.toLowerCase().trim(),
             datos.clave,
-            rol,
-            datos.sexo
+            rol.trim(),
+            datos.sexo.trim()
         ]);
         if (!retorno) throw new HttpException('Error al registrar el usuario', 400);
         return retorno;

@@ -17,10 +17,7 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
   ngOnInit(): void {
     this.api.get("actividades/obtener_planes/1").subscribe(res => {
       console.log(res)
-      const aux = Object.assign(res);
-      aux.forEach((element: any) => {
-        this.planes.push(element)
-      });
+      this.planes = Object.assign(res);
     })
   }
 
@@ -69,12 +66,17 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
     )
   }
 
+  eliminarActividad(actividad:number){
+    this.nuevosPlanes.controls['actividades'].removeAt(actividad);
+  }
+
   crearPlan() {
     console.log(this.nuevosPlanes.controls['IMC'].value?.toString())
     this.nuevosPlanes.controls['IMC'].setValue(this.nuevosPlanes.controls['IMC'].value?.toString() || '0')
     console.log(this.nuevosPlanes.value)
     this.api.post("actividades/crearPlan", this.nuevosPlanes.value).subscribe(res => {
       console.log(res)
+      this.nuevosPlanes.reset();
       this.ngOnInit()
     }, error => {
       console.log(error)

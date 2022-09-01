@@ -14,11 +14,6 @@ const routes: Routes = [
   {path: "login", component:LoginComponent},
   {path:"inicio", component:InicioComponent},
   {path:"dashboard", component:DashboardComponent},
-  {path: "detalle-plan", component:DetallePlanComponent},
-  {path: "profesionales", component:ProfesionalesComponent},
-  {path: "actividades", component:ActividadesComponent},
-  {path:"inicio-profesional", component:InicioProfesionalesComponent}
-
 ];
 
 @NgModule({
