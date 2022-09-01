@@ -48,3 +48,14 @@ body {
   font-size: 50px;
   color: #231c3d;
 }
+
+@media (max-width: 768px) {
+  box-courses-wrapper {
+    /*max-width: 1070px;
+    margin: auto;
+    padding: 1rem;*/
+    margin-right: -2.5%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
