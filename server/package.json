@@ -34,6 +34,7 @@
     "dotenv": "^16.0.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
     "npm-check-updates": "^16.0.5",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
