@@ -3,9 +3,12 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { ConexionService } from 'src/conexion/conexion.service';
 import { IMC } from '../IMC';
 import { ModificarSuscripcionDto } from './dtos/suscripcion.dto';
+import * as momentt from 'moment-timezone'
 
 @Injectable()
 export class SuscripcionesService {
+
+    private tiempo: any = momentt.tz('America/Guayaquil');
     constructor(private conexion: ConexionService) { }
 
     private verificarRespuesta(respuesta: any): any {
@@ -31,13 +34,15 @@ export class SuscripcionesService {
 
     async suscribirse(id_usuario: number, id_plan: number) {
         try {
-            const retorno = await this.conexion.executeProcedure('suscribirse', [id_plan, id_usuario]);
-            if (retorno == null) {
+            // console.log();
+            console.log();
+            const retorno = await this.conexion.executeProcedure('suscribirse', [id_plan, id_usuario, this.tiempo.format('YYYY-MM-DD')]);
+            if (retorno == false) {
                 throw new HttpException('No se pudo suscribir', 400);
             }
             return retorno;
         } catch (error) {
-            throw new HttpException("Erorr: " + error, 500)
+            throw new HttpException(error, 500)
         }
     }
 
@@ -76,8 +81,20 @@ export class SuscripcionesService {
                 throw new HttpException('No hay planes suscritos', 400)
             return aux;
         }
-        catch (error) { 
-            throw new HttpException(error,500)
+        catch (error) {
+            return error;
+        }
+    }
+
+    async obtenerActividadesSuscritasPorDia(idplan: number, idcliente: number) {
+        try {
+            console.log(this.tiempo.day())
+            const retorno = await this.conexion.executeProcedure("get_actividades_por_dia", [idplan, idcliente, this.tiempo.day()]);
+            const aux = this.verificarRespuesta(retorno);
+            if (aux == null) throw new HttpException("No hay actividades para hoy", 400);
+            return aux;
+        } catch (error) {
+            throw new HttpException(error, 500)
         }
     }
 }

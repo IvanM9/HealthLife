@@ -13,34 +13,39 @@ import { SuscripcionesService } from './suscripciones.service';
 @ApiTags('Suscripciones')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class SuscripcionesController {
-    constructor(private servicio:SuscripcionesService){}
+    constructor(private servicio: SuscripcionesService) { }
 
     @Post('suscribirse')
     @Roles(Role.Cliente)
-    async suscribirse(@Body() datos:SuscripcionDto, @Req() req:any){
-       return  this.servicio.suscribirse(req.user.id, datos.id_plan);
+    async suscribirse(@Body() datos: SuscripcionDto, @Req() req: any) {
+        return this.servicio.suscribirse(req.user.id, datos.id_plan);
     }
 
     @Get('obtener_planes_generales/:tipo')
-    async obtenerPlanesGenerales(@Param('tipo') tipo:number){
+    async obtenerPlanesGenerales(@Param('tipo') tipo: number) {
         return this.servicio.obtenerPlanesGenerales(tipo);
     }
 
     @Get('obtener_planes_recomendados')
     @Roles(Role.Cliente)
-    async obtenerPlanesRecomendados(@Req() req:any){
+    async obtenerPlanesRecomendados(@Req() req: any) {
         console.log(req.user)
         return this.servicio.obtenerPlanesRecomendados(req.user.id);
     }
 
     @Put('modificar_suscripcion')
-    async modificarSuscripcion(@Body() datos:ModificarSuscripcionDto, @Req() req:any){
+    async modificarSuscripcion(@Body() datos: ModificarSuscripcionDto, @Req() req: any) {
         return this.servicio.modificar_suscripcion(req.user.id, datos);
     }
 
     @Get('planes_suscritos')
-    async planesSuscritos(@Req() req:any){
+    async planesSuscritos(@Req() req: any) {
         return this.servicio.planesSuscritos(req.user.id);
+    }
+
+    @Get('actividades_suscritas/:idplan')
+    async obtenerActividadesSuscritas(@Param('idplan') idplan: number, @Req() req) {
+        return this.servicio.obtenerActividadesSuscritasPorDia(idplan, req.user.id);
     }
 
 

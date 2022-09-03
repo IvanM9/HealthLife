@@ -11,21 +11,33 @@ import Swal from 'sweetalert2'
 })
 export class ActividadesComponent implements OnInit {
 
-  @Input() id!:number;
-  actividades:any[] =[]
+  @Input() id!: number;
+  actividades: any[] = []
+  @Input() suscritos!: boolean;
 
 
-  constructor(private api:Connection) { }
+  constructor(private api: Connection) { }
 
   ngOnInit(): void {
     //cambiar este /10 por el id traido del plan
-    this.api.get("actividades/obtener_actividades/"+this.id).subscribe(res=>{
-      //this.actividades.push(res);
-      const aux = Object.assign(res)
-      aux.forEach((element: any) => {
-        this.actividades.push(element)
-      });
-    })
+    if (this.suscritos != null && this.suscritos == true) {
+      this.api.get("suscripciones/actividades_suscritas/" + this.id).subscribe(res => {
+        // console.log(res)
+        //this.actividades.push(res);
+        const aux = Object.assign(res)
+        this.actividades = aux;
+      }, error=>{
+        console.error(error)
+        alert(error.error.message);
+      })
+    }
+    else {
+      this.api.get("actividades/obtener_actividades/" + this.id).subscribe(res => {
+        //this.actividades.push(res);
+        const aux = Object.assign(res)
+        this.actividades = aux;
+      })
+    }
   }
 
   completarActividades() {
