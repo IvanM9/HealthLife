@@ -37,12 +37,12 @@ export class SuscripcionesService {
             // console.log();
             console.log();
             const retorno = await this.conexion.executeProcedure('suscribirse', [id_plan, id_usuario, this.tiempo.format('YYYY-MM-DD')]);
-            if (retorno == null) {
+            if (retorno == false) {
                 throw new HttpException('No se pudo suscribir', 400);
             }
             return retorno;
         } catch (error) {
-            throw new HttpException("Erorr: " + error, 500)
+            throw new HttpException(error, 500)
         }
     }
 
@@ -88,9 +88,10 @@ export class SuscripcionesService {
 
     async obtenerActividadesSuscritasPorDia(idplan: number, idcliente: number) {
         try {
+            console.log(this.tiempo.day())
             const retorno = await this.conexion.executeProcedure("get_actividades_por_dia", [idplan, idcliente, this.tiempo.day()]);
             const aux = this.verificarRespuesta(retorno);
-            if (aux != 0) throw new HttpException("No hay actividades para hoy", 400);
+            if (aux == null) throw new HttpException("No hay actividades para hoy", 400);
             return aux;
         } catch (error) {
             throw new HttpException(error, 500)
