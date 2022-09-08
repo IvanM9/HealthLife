@@ -124,7 +124,7 @@
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título</label>
                         <input type="text" class="form-control" id="titulo" placeholder="Título"
-                            formControlName="nombre">
+                            formControlName="nombre" required aria-required="true">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="true" id="estado"
@@ -154,9 +154,10 @@
                         <label for="etiquetas" class="form-label">Etiquetas</label>
                         <div *ngFor="let control of nuevosPlanes.controls['etiquetas'].controls; index as i"
                             class="mb-2">
-
                             <input type="text" class="form-control" placeholder="#Etiqueta"
-                                [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]">
+                                [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]" required>
+                            <button type="button" class="btn btn-danger mt-1" (click)="eliminarEtiqueta(i)">Borrar</button>
+                            <hr>
                         </div>
                         <button type="button" class=" btn btn-outline-primary" (click)="agregarEtiqueta()"> Agregar otra
                             etiqueta</button>
@@ -164,7 +165,7 @@
                     <div class="mb-3">
                         <label for="imcRecomendada" class="form-label">IMC recomendada</label>
                         <input type="number" class="form-control" id="imcRecomendada" placeholder="IMC"
-                            formControlName="IMC">
+                            formControlName="IMC" required>
                     </div>
                     <div class="mb-3">
                         <label for="enfermedades" class="form-label">Enfermedades</label>
@@ -198,12 +199,12 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" formControlName="titulo">
+                                <input type="text" class="form-control" formControlName="titulo" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputDia" class="col-sm-2 col-form-label">Dia</label>
-                            <select id="inputDia" class="col-sm-10" formControlName="dia">
+                            <select id="inputDia" class="col-sm-10" formControlName="dia" required> 
                                 <option value="1" selected>Lunes</option>
                                 <option value="2">Martes</option>
                                 <option value="3">Miércoles</option>
@@ -215,7 +216,7 @@
                         </div>
                         <div class="row mb-3">
                             <label for="detalles" class="form-label">Detalles</label>
-                            <textarea class="form-control" id="detalles" rows="3" formControlName="detalles"></textarea>
+                            <textarea class="form-control required" id="detalles" rows="3" formControlName="detalles" required></textarea>
                         </div>
                     </form>
                     <button type="button" class=" btn btn-outline-secondary" (click)="eliminarActividad(i)">

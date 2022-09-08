@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { IsString, IsEmail} from 'class-validator'
+import { IsString, IsEmail, MinLength} from 'class-validator'
 export class usuarioDto {
     @ApiProperty()
     @IsString()
@@ -13,6 +13,7 @@ export class usuarioDto {
     readonly correo: string;
     @ApiProperty()
     @IsString()
+    @MinLength(5)
     clave: string;
 
     @ApiProperty({examples: ['f = femenino', 'm = masculino']})

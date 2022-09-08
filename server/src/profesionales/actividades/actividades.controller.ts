@@ -39,7 +39,6 @@ export class ActividadesController {
         return this.servicio.obtenerProfesionales();
     }
 
-    // TODO: Realizar funciones de eliminar planes
     @Put('modificar_plan/:idplan')
     @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     async modificarPlan(@Param('idplan') id: number, @Body() plan: UpdatePlanesDto) {
