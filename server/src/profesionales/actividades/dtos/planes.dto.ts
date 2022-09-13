@@ -5,7 +5,7 @@ import { IsInt, IsNumber, IsPositive, IsString, Max, Min, MinLength, ValidateNes
 export class Actividades {
     @ApiProperty()
     @IsString()
-    @MinLength(5)
+    @MinLength(1)
     titulo: string;
     @ApiProperty()
     @IsInt()
