@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDecimal, IsString } from "class-validator";
+import { IsDecimal, IsString, MinLength } from "class-validator";
 import { usuarioDto } from "./usuario.dto";
 
 export class ClienteDto extends usuarioDto {
@@ -14,6 +14,7 @@ export class ClienteDto extends usuarioDto {
 
     @ApiProperty()
     @IsString()
+    @MinLength(5)
     habitos: string;
 
     @ApiProperty()
