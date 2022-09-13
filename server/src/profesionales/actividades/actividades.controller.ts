@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/session/jwt-auth.guard';
 import { Role } from 'src/auth/session/role.enum';
 import { Roles } from 'src/auth/session/roles.decorator';
 import { RolesGuard } from 'src/auth/session/roles.guard';
 import { ActividadesService } from './actividades.service';
-import { PlanesDto, UpdatePlanesDto } from './dtos/planes.dto';
+import { Actividades, PlanesDto, UpdatePlanesDto } from './dtos/planes.dto';
 
 @ApiBearerAuth()
 @ApiTags('actividades')
@@ -47,8 +47,19 @@ export class ActividadesController {
 
     @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
     @Get('obtenerClientesSuscritos')
-    async obtenerClientesSuscritos(@Req() req:any){
+    async obtenerClientesSuscritos(@Req() req: any) {
         return this.servicio.obtenerClientesSuscritos(req.user.id);
+    }
+
+    @Roles(Role.Entrenador, Role.Nutricionista, Role.Admin)
+    @Delete('eliminarActividad/:idactividad')
+    async eliminarActividad(@Param('idactividad') id: number) {
+        return this.servicio.eliminarActividad(id);
+    }
+
+    @Post('nuevaActividad/:idPlan')
+    async insertarNuevaActividad(@Param('idPlan') idplan:number, @Body() actividades: Actividades[]){
+        return this.servicio.crearNuevaActividad(actividades,idplan)
     }
 
 }

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty, OmitType } from "@nestjs/swagger";
 import { IsInt, IsNumber, IsPositive, IsString, Max, Min, MinLength, ValidateNested} from "class-validator";
-class Actividades {
+export class Actividades {
     @ApiProperty()
     @IsString()
     @MinLength(5)
