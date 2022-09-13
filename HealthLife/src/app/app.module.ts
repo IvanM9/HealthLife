@@ -31,6 +31,7 @@ import { MisPlanesComponent } from './Cliente/mis-planes/mis-planes.component';
 import { EstadisticasComponent } from './Cliente/estadisticas/estadisticas.component';
 import { ChatComponent } from './Cliente/chat/chat.component';
 import { InicioDashboardComponent } from './Cliente/inicio-dashboard/inicio-dashboard.component';
+import { ActividadesAdminProfesionalesComponent } from './Profesional/actividades-admin-profesionales/actividades-admin-profesionales.component';
 
 
 
@@ -54,7 +55,8 @@ import { InicioDashboardComponent } from './Cliente/inicio-dashboard/inicio-dash
     MisPlanesComponent,
     EstadisticasComponent,
     ChatComponent,
-    InicioDashboardComponent
+    InicioDashboardComponent,
+    ActividadesAdminProfesionalesComponent
 
   ],
   imports: [

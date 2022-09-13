@@ -20,67 +20,69 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 style="font-size: 30px;" style="margin-left: 10px;" class="text-right">Mi perfil</h4>
                 </div>
-
-                <div class="row mt-2">
-                    <div class="col-md-6">
-                        <label class="labels" style="font-size: 16px;">Nombres:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" placeholder="Jordan Fabian"
-                            [value]="datos.nombres" [disabled]="this.id!=null">
-                    </div>
-                    <div class="col-md-6"><label class="labels" style="font-size: 16px;">Apellidos:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.apellidos"
-                            placeholder="Vera Coello" [disabled]="this.id!=null">
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <label class="labels" style="font-size: 16px;">Email:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control"
-                            placeholder="usuario@uteq.edu.ec" [value]="datos.correo" disabled>
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <label style="font-size: 16px;" class="labels">Estatura (metros):</label>
-                        <input style="font-size: 14px;" type="number" class="form-control" placeholder="1.70"
-                            [value]="datos.talla" [disabled]="this.id!=null">
-                    </div>
-                    <div class="col-md-6">
-                        <label style="font-size: 16px;" class="labels">Peso (Kilogramos):</label>
-                        <input style="font-size: 14px;" type="number" class="form-control" [value]="datos.peso"
-                            placeholder="55" [disabled]="this.id!=null">
-                    </div>
-                </div>
-
-                <div class="row mt-1">
-                    <div class="mt-3 col-md-12">
-                        <label style="font-size: 16px;" class="labels">Sexo:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.sexo" disabled>
+                <form [formGroup]="nuevoDatos" (ngSubmit)="modificarDatos()">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels" style="font-size: 16px;">Nombres:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control" placeholder="Jordan Fabian"
+                                formControlName="nombres" [disabled]="this.id!=null">
+                        </div>
+                        <div class="col-md-6"><label class="labels" style="font-size: 16px;">Apellidos:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control" formControlName="apellidos"
+                                placeholder="Vera Coello" [disabled]="this.id!=null">
+                        </div>
                     </div>
 
-                    <div class="mt-3 col-md-12">
-                        <label style="font-size: 16px;" class="labels">Hábitos:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.habitos"
-                            [disabled]="this.id!=null">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <label class="labels" style="font-size: 16px;">Email:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control"
+                                placeholder="usuario@uteq.edu.ec" [value]="datos.correo" disabled>
+                        </div>
                     </div>
 
-                    <div class=" mt-3 col-md-12">
-                        <label style="font-size: 16px;" class="labels">Alergias:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.alergias"
-                            [disabled]="this.id!=null">
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <label style="font-size: 16px;" class="labels">Estatura (metros):</label>
+                            <input style="font-size: 14px;" type="number" class="form-control" placeholder="1.70"
+                            formControlName="talla" [disabled]="this.id!=null">
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-size: 16px;" class="labels">Peso (Kilogramos):</label>
+                            <input style="font-size: 14px;" type="number" class="form-control" formControlName="peso"
+                                placeholder="55" [disabled]="this.id!=null">
+                        </div>
                     </div>
-                    <div class="mt-3 col-md-12">
-                        <label style="font-size: 16px;" class="labels">Enfermedades:</label>
-                        <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.enfermedades"
-                            [disabled]="this.id!=null">
-                    </div>
-                </div>
 
-                <div class="mt-5 text-center" style="width: 100%;" *ngIf="this.id==null">
-                    <button style="width: 30%" class="btn btn-primary profile-button" type="button">Guardar</button>
-                </div>
+                    <div class="row mt-1">
+                        <div class="mt-3 col-md-12">
+                            <label style="font-size: 16px;" class="labels">Sexo:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control" [value]="datos.sexo"
+                                disabled>
+                        </div>
+
+                        <div class="mt-3 col-md-12">
+                            <label style="font-size: 16px;" class="labels">Hábitos:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control" formControlName="habitos"
+                                [disabled]="this.id!=null">
+                        </div>
+
+                        <div class=" mt-3 col-md-12">
+                            <label style="font-size: 16px;" class="labels">Alergias:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control" formControlName="alergias"
+                                [disabled]="this.id!=null">
+                        </div>
+                        <div class="mt-3 col-md-12">
+                            <label style="font-size: 16px;" class="labels">Enfermedades:</label>
+                            <input style="font-size: 14px;" type="text" class="form-control"
+                            formControlName="enfermedades" [disabled]="this.id!=null">
+                        </div>
+                    </div>
+
+                    <div class="mt-5 text-center" style="width: 100%;" *ngIf="this.id==null">
+                        <button style="width: 30%" class="btn btn-primary profile-button" type="submit">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

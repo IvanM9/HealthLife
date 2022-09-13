@@ -11,7 +11,7 @@ export class ActividadesService {
 
     async registrarActividadRealizada(idcliente: number, registro: RegistrosDto) {
         try {
-            const retorno = await this.conexion.executeProcedure("insert_registro_actividades", [
+            const retorno = await this.conexion.executeProcedure("update_registro_actividades", [
                 idcliente,
                 registro.idActividad,
                 registro.realizado,

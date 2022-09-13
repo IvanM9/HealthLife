@@ -44,6 +44,8 @@ export class PlanesComponent implements OnInit {
               /*this.noSePuedeObtenerProfesionales();*/
             });
           });
+        }, error=>{
+          alert("No se encontraron planes")
         });
       else
         this.api.get("suscripciones/obtener_planes_recomendados").subscribe(res => {

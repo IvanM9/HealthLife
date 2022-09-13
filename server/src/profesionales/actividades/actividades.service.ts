@@ -40,6 +40,7 @@ export class ActividadesService {
 
     async crearPlan(planes: PlanesDto, idProfesional: number) {
         try {
+            console.log(planes)
             let auxTags = "{";
             for (const elements of planes.etiquetas) {
                 auxTags += elements + ","
