@@ -9,11 +9,7 @@
 
                     <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
-                            <div class="col-sm-12 col-md-10">
-                                <div id="example1_filter" class="dataTables_filter"><label>Buscar:<input type="search"
-                                            class="form-control form-control-sm" placeholder=""
-                                            aria-controls="example1"></label></div>
-                            </div>
+                            
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#agregarPlanes">Nuevo plan</button>
@@ -61,8 +57,8 @@
                                             </td>
                                             <td>{{element.publico}}</td>
                                             <td>
-                                                <button (click)="mensajeMantenimiento()"
-                                                    class=" btn btn-sm btn-primary mx-1">Modificar</button>
+                                                <button (click)="abrirActividad(element.id_planes)"
+                                                    class=" btn btn-sm btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#actividadesPlan">Ver</button>
                                                 <button (click)="mensajeMantenimiento()"
                                                     class="btn btn-sm btn-danger mx-1">Eliminar</button>
                                             </td>
@@ -236,5 +232,24 @@
         </div>
     </div>
 </div>
+
+<!-- Modal actividades -->
+<div class="modal fade" id="actividadesPlan" tabindex="-1" aria-labelledby="actividadesPlanLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actividades</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="idplan!= 0">
+          <app-actividades-admin-profesionales [idplan]="idplan"></app-actividades-admin-profesionales>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" disabled>Agregar nueva actividad</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="abrirActividad(0)">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script src="/src/assets/JS/adminlte.min.js"></script>

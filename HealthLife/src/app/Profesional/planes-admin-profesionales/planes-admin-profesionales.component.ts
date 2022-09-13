@@ -87,4 +87,9 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
     this.nuevosPlanes.reset();
 
   }
+
+  idplan:number=0;
+  abrirActividad(id:number){
+    this.idplan = id
+  }
 }
