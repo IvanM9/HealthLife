@@ -32,7 +32,7 @@
 
             <div class="action">
                 <div class="perfil">
-                    <img src="../../../assets/img/inicio/person_2.jpg" alt="foto-perfil-usuario">
+                    <img src="../../../assets/img/cursos/user-profile.png" alt="foto-perfil-usuario">
                 </div>
                 <div class="info-usuario"  onclick="mostrarMenu()">
                     <span>ㅤ{{nomUsuario}} <fa-icon [icon]="faFlechaAbajo"></fa-icon></span>
@@ -41,9 +41,11 @@
                 <div class="menu-perfil">
                     <h3>{{nomUsuario}}<br/><span>{{rolUsuario}}</span></h3>
                     <ul>
-                        <li (click)="cambiarIndice(8)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
+
+                        <li (click)="cambiarIndice(100)"><fa-icon [icon]="faUserPerfil"></fa-icon><a routerLink="/perfil">Mi perfil</a></li>
                         <li (click)="mensajeMantenimiento()"><fa-icon [icon]="faConfiguracion"></fa-icon><a routerLink="/configuracion">Configuración</a></li>
                         <li (click)="cerrarSesion()"><fa-icon [icon]="faCerrarSesion"></fa-icon><a>Cerrar Sesión</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -58,7 +60,7 @@
 
                 <app-planes *ngSwitchCase="1" [tipo]="2"></app-planes>
                 <app-planes *ngSwitchCase="2" [tipo]="1"></app-planes>
-                <app-perfil-usuario *ngSwitchCase="8"></app-perfil-usuario>
+                <app-perfil-usuario *ngSwitchCase="100"></app-perfil-usuario>
                 <app-profesionales *ngSwitchCase="3"></app-profesionales>
                 <app-mis-planes *ngSwitchCase="4"></app-mis-planes>
                 <app-estadisticas *ngSwitchCase="5"></app-estadisticas>
@@ -69,10 +71,12 @@
             <ng-template #profesional>
                 <app-inicio-profesionales *ngSwitchCase="0"> Inicio </app-inicio-profesionales>
                 <app-planes-admin-profesionales *ngSwitchCase="1"></app-planes-admin-profesionales>
-                <app-perfil-profesional *ngSwitchCase="2"></app-perfil-profesional>
-                <app-clientes-admin-profesionales *ngSwitchCase="3"></app-clientes-admin-profesionales>
+                <app-perfil-profesional *ngSwitchCase="100"></app-perfil-profesional>
+                <app-perfil-profesional *ngSwitchCase="3"></app-perfil-profesional>
+
+                <app-clientes-admin-profesionales *ngSwitchCase="2"></app-clientes-admin-profesionales>
             </ng-template>
-            <h4 *ngSwitchDefault>Lo sentimos, esta opción aún no está disponible en tu región :(</h4>
+            <h4 *ngSwitchDefault>Lo sentimos, esta opción aún no está disponible :(</h4>
 
         </main>
     </div>

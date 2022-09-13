@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/session/jwt-auth.guard';
 import { Role } from 'src/auth/session/role.enum';
 import { Roles } from 'src/auth/session/roles.decorator';
 import { RolesGuard } from 'src/auth/session/roles.guard';
+import { UpdateClienteDto } from './dtos/UpdateCliente.dto';
 import { PerfilService } from './perfil.service';
 
 @ApiBearerAuth()
@@ -23,5 +24,10 @@ export class PerfilController {
     @Get('/:id')
     async perfil(@Req() req, @Param('id') id: number) {
         return this.servicio.obtenerDatosPerfil(req.user.roles[0] == Role.Cliente ? req.user.id : id);
+    }
+
+    @Put('/modificarPerfil')
+    async modificarPerfil(@Req() req, @Body() datos: UpdateClienteDto) {
+        return this.servicio.modificarPerfil(req.user.id, datos, req.user.email);
     }
 }

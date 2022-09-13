@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Connection } from 'src/app/connection';
-import { FormGroup, FormControl, FormArray } from '@angular/forms'
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms'
 import Swal from 'sweetalert2'
 
 
@@ -22,7 +22,7 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
   }
 
 
-  mensajeMantenimiento(){
+  mensajeMantenimiento() {
     Swal.fire({
       title: '¡Lo sentimos!',
       text: 'Esta opción aún no está disponible, seguiremos trabajando en futuras actualizaciones. Gracias por su comprensión.',
@@ -34,19 +34,19 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
   }
 
   nuevosPlanes = new FormGroup({
-    nombre: new FormControl(),
+    nombre: new FormControl(null, Validators.required),
     estado: new FormControl(true),
     publico: new FormControl(false),
-    objetivos: new FormControl(),
-    edad: new FormControl(0),
+    objetivos: new FormControl(null, Validators.required),
+    edad: new FormControl(0, Validators.required),
     etiquetas: new FormArray([new FormControl('#')]),
-    IMC: new FormControl('0'),
-    enfermedades: new FormControl(),
+    IMC: new FormControl(0, Validators.required),
+    enfermedades: new FormControl(null),
     actividades: new FormArray([
       new FormGroup({
-        titulo: new FormControl(''),
-        dia: new FormControl(1),
-        detalles: new FormControl()
+        titulo: new FormControl(null, Validators.required),
+        dia: new FormControl(1, Validators.required),
+        detalles: new FormControl(null, Validators.required)
       })])
   })
 
@@ -59,27 +59,37 @@ export class PlanesAdminProfesionalesComponent implements OnInit {
   agregarActividades() {
     this.nuevosPlanes.controls['actividades'].push(
       new FormGroup({
-        titulo: new FormControl(''),
+        titulo: new FormControl(),
         dia: new FormControl(1),
         detalles: new FormControl()
       })
     )
   }
 
-  eliminarActividad(actividad:number){
+  eliminarActividad(actividad: number) {
     this.nuevosPlanes.controls['actividades'].removeAt(actividad);
   }
 
+  eliminarEtiqueta(etiqueta: number) {
+    this.nuevosPlanes.controls['etiquetas'].removeAt(etiqueta);
+  }
+
   crearPlan() {
-    console.log(this.nuevosPlanes.controls['IMC'].value?.toString())
-    this.nuevosPlanes.controls['IMC'].setValue(this.nuevosPlanes.controls['IMC'].value?.toString() || '0')
     console.log(this.nuevosPlanes.value)
     this.api.post("actividades/crearPlan", this.nuevosPlanes.value).subscribe(res => {
       console.log(res)
-      this.nuevosPlanes.reset();
+      alert("Se creó el plan correctamente")
       this.ngOnInit()
     }, error => {
+      alert("No se ha podido crear el plan")
       console.log(error)
     })
+    this.nuevosPlanes.reset();
+
+  }
+
+  idplan:number=0;
+  abrirActividad(id:number){
+    this.idplan = id
   }
 }

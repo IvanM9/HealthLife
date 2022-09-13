@@ -1,0 +1,36 @@
+<table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+aria-describedby="example1_info">
+<thead>
+    <tr>
+        <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
+            rowspan="1" colspan="1" aria-sort="ascending"
+            aria-label="Nombre del plan: activate to sort column descending">
+            Nombre de la actividad</th>
+        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1"
+            aria-label="Edad recomendada activate to sort column ascending">
+            Detalles</th>
+        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+            colspan="1"
+            aria-label="IMC recomendado: activate to sort column ascending">
+            Día</th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr class="odd" *ngFor="let element of actividades; count as i">
+        <td class="dtr-control sorting_1" tabindex="0">{{element.titulo}}</td>
+        <td>{{element.detalles}}</td>
+        <td>{{element.dia}}</td>
+
+        <td>
+            <button 
+                class="btn btn-sm btn-danger mx-1" (click)="eliminarActividad(element.id_detalles_plan)">Eliminar</button>
+        </td>
+    </tr>
+</tbody>
+
+</table>
+

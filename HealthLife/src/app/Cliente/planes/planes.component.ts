@@ -41,9 +41,11 @@ export class PlanesComponent implements OnInit {
               const aux2 = Object.assign(res);
               element.nombres = aux2.nombres + " " + aux2.apellidos;
             }, error=>{
-              this.noSePuedeObtenerProfesionales();
+              /*this.noSePuedeObtenerProfesionales();*/
             });
           });
+        }, error=>{
+          alert("No se encontraron planes")
         });
       else
         this.api.get("suscripciones/obtener_planes_recomendados").subscribe(res => {
@@ -56,7 +58,7 @@ export class PlanesComponent implements OnInit {
               const aux2 = Object.assign(res);
               element.nombres = aux2.nombres + " " + aux2.apellidos;
             }, error=>{
-              this.noSePuedeObtenerProfesionales();
+              /*this.noSePuedeObtenerProfesionales();*/
             });
           });
         });
@@ -73,7 +75,7 @@ export class PlanesComponent implements OnInit {
             const aux2 = Object.assign(res);
             element.nombres = aux2.nombres + " " + aux2.apellidos;
           }, error=>{
-            this.noSePuedeObtenerProfesionales();
+            /*this.noSePuedeObtenerProfesionales();*/
           });
         });
       });
@@ -81,13 +83,13 @@ export class PlanesComponent implements OnInit {
 
   }
 
-  noSePuedeObtenerProfesionales() {
+  /*noSePuedeObtenerProfesionales() {
     Swal.fire({
       icon: 'error',
       title: 'Lo sentimos :(',
       text: 'No se ha podido obtener la información de los profesionales',
     })
-  }
+  }*/
 
   //Inidice para mostrar componentes dentro del dashboard
   cambiarIndice(plan: any) {

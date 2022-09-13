@@ -1,5 +1,4 @@
-<body>
-    <div *ngFor="let element of actividades" class="box-courses-wrapper">
+    <div *ngFor="let element of actividades" class="box-courses-wrapper"  >
         <!--Cabecera del plan-->
         <div class="cabecera-plan">
             <div class="info-cabecera">
@@ -13,11 +12,10 @@
             </div>
         </div>
 
-        <div class="footer-card">
+        <div class="footer-card" *ngIf="this.suscritos != null && this.suscritos">
             <div class="contenedor-boton">
-              <input (click)="completarActividades()" type="submit" value="Actividad Completada" class="btn-suscribirse">
+              <button (click)="completarActividades(element.id_detalles_plan)" type="submit" class="btn-suscribirse" [disabled]="this.actividadesCompletadas.includes(element.id_detalles_plan)">Actividad Completada</button>
             </div>
           </div>
     </div>
     
-</body>

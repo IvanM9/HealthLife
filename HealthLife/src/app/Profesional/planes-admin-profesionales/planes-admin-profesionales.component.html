@@ -9,11 +9,7 @@
 
                     <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
-                            <div class="col-sm-12 col-md-10">
-                                <div id="example1_filter" class="dataTables_filter"><label>Buscar:<input type="search"
-                                            class="form-control form-control-sm" placeholder=""
-                                            aria-controls="example1"></label></div>
-                            </div>
+                            
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#agregarPlanes">Nuevo plan</button>
@@ -61,8 +57,8 @@
                                             </td>
                                             <td>{{element.publico}}</td>
                                             <td>
-                                                <button (click)="mensajeMantenimiento()"
-                                                    class=" btn btn-sm btn-primary mx-1">Modificar</button>
+                                                <button (click)="abrirActividad(element.id_planes)"
+                                                    class=" btn btn-sm btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#actividadesPlan">Ver</button>
                                                 <button (click)="mensajeMantenimiento()"
                                                     class="btn btn-sm btn-danger mx-1">Eliminar</button>
                                             </td>
@@ -124,7 +120,7 @@
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título</label>
                         <input type="text" class="form-control" id="titulo" placeholder="Título"
-                            formControlName="nombre">
+                            formControlName="nombre" required aria-required="true">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="true" id="estado"
@@ -154,9 +150,10 @@
                         <label for="etiquetas" class="form-label">Etiquetas</label>
                         <div *ngFor="let control of nuevosPlanes.controls['etiquetas'].controls; index as i"
                             class="mb-2">
-
                             <input type="text" class="form-control" placeholder="#Etiqueta"
-                                [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]">
+                                [formControl]="nuevosPlanes.controls['etiquetas'].controls[i]" required>
+                            <button type="button" class="btn btn-danger mt-1" (click)="eliminarEtiqueta(i)">Borrar</button>
+                            <hr>
                         </div>
                         <button type="button" class=" btn btn-outline-primary" (click)="agregarEtiqueta()"> Agregar otra
                             etiqueta</button>
@@ -164,7 +161,7 @@
                     <div class="mb-3">
                         <label for="imcRecomendada" class="form-label">IMC recomendada</label>
                         <input type="number" class="form-control" id="imcRecomendada" placeholder="IMC"
-                            formControlName="IMC">
+                            formControlName="IMC" required>
                     </div>
                     <div class="mb-3">
                         <label for="enfermedades" class="form-label">Enfermedades</label>
@@ -198,24 +195,24 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" formControlName="titulo">
+                                <input type="text" class="form-control" formControlName="titulo" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputDia" class="col-sm-2 col-form-label">Dia</label>
-                            <select id="inputDia" class="col-sm-10" formControlName="dia">
-                                <option value="1" selected>Lunes</option>
-                                <option value="2">Martes</option>
-                                <option value="3">Miércoles</option>
-                                <option value="4">Jueves</option>
-                                <option value="5">Viernes</option>
-                                <option value="6">Sábado</option>
-                                <option value="7">Domingo</option>
+                            <select id="inputDia" class="col-sm-10" formControlName="dia" required> 
+                                <option [ngValue]=1 selected>Lunes</option>
+                                <option [ngValue]=2>Martes</option>
+                                <option [ngValue]=3>Miércoles</option>
+                                <option [ngValue]=4>Jueves</option>
+                                <option [ngValue]=5>Viernes</option>
+                                <option [ngValue]=6>Sábado</option>
+                                <option [ngValue]=7>Domingo</option>
                             </select>
                         </div>
                         <div class="row mb-3">
                             <label for="detalles" class="form-label">Detalles</label>
-                            <textarea class="form-control" id="detalles" rows="3" formControlName="detalles"></textarea>
+                            <textarea class="form-control required" id="detalles" rows="3" formControlName="detalles" required></textarea>
                         </div>
                     </form>
                     <button type="button" class=" btn btn-outline-secondary" (click)="eliminarActividad(i)">
@@ -235,5 +232,24 @@
         </div>
     </div>
 </div>
+
+<!-- Modal actividades -->
+<div class="modal fade" id="actividadesPlan" tabindex="-1" aria-labelledby="actividadesPlanLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actividades</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="idplan!= 0">
+          <app-actividades-admin-profesionales [idplan]="idplan"></app-actividades-admin-profesionales>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" disabled>Agregar nueva actividad</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="abrirActividad(0)">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script src="/src/assets/JS/adminlte.min.js"></script>
