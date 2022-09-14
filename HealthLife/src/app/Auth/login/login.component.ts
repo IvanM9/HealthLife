@@ -7,6 +7,7 @@ import * as AOS from 'aos';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { SpinnerService } from 'src/app/loader/spinner.service';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { InterceptorService } from './loader/interceptor.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //importando servivicio para poder ejecutar los JS
@@ -73,6 +73,7 @@ import { ActividadesAdminProfesionalesComponent } from './Profesional/actividade
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true},
     CargarScriptsJSService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
