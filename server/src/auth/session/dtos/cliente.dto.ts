@@ -13,8 +13,6 @@ export class ClienteDto extends usuarioDto {
     peso: string;
 
     @ApiProperty()
-    @IsString()
-    @MinLength(5)
     habitos: string;
 
     @ApiProperty()
