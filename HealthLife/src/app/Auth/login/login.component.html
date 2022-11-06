@@ -23,7 +23,7 @@
                 <input 
                   type="text" 
                   [minlength]="4"
-                  [maxlength]="20" 
+                  [maxlength]="40" 
                   class="campo-entrada" 
                   autocomplete="off" 
                   required
@@ -36,7 +36,7 @@
                 <input 
                   type="password" 
                   [minlength]="8"
-                  [maxlength]="12"
+                  [maxlength]="40"
                   class="campo-entrada" 
                   autocomplete="off" 
                   required
@@ -92,7 +92,7 @@
               <!--Campo para ingresar nombres-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="25"
+                  [maxlength]="35"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -104,7 +104,7 @@
               <!--Campo para ingresar apellidos-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="25"
+                  [maxlength]="35"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -116,7 +116,7 @@
               <!--Campo para ingresar email-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="20"
+                  [maxlength]="40"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -128,7 +128,7 @@
               <!--Campo para ingresar contraseña-->
               <div class="entrada-textos">
                 <input 
-                  [maxLength]="12"
+                  [maxLength]="40"
                   #clave1
                   id="clave1"
                   type="password" 
@@ -143,7 +143,7 @@
               <!--Campo para confirmar la contraseña-->
               <div class="entrada-textos">
                 <input
-                [maxLength]="12"
+                [maxLength]="40"
                   #clave2
                   id="clave2"
                   type="password" 
@@ -262,7 +262,7 @@
               <!--Campo para ingresar nombres-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="25"
+                  [maxlength]="35"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -274,7 +274,7 @@
               <!--Campo para ingresar Apellidos-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="25"
+                  [maxlength]="35"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -286,7 +286,7 @@
               <!--Campo para ingresar Email-->
               <div class="entrada-textos">
                 <input 
-                  [maxlength]="20"
+                  [maxlength]="40"
                   type="text" 
                   class="campo-entrada" 
                   autocomplete="off" 
@@ -298,7 +298,7 @@
               <!--Campo para ingresar contraseña-->
               <div class="entrada-textos">
                 <input 
-                  [maxLength]="12"
+                  [maxLength]="40"
                   #clave3
                   id="clave3"
                   type="password" 
@@ -313,7 +313,7 @@
               <!--Campo para confirmar la contraseña-->
               <div class="entrada-textos">
                 <input
-                  [maxlength]="15"
+                  [maxlength]="40"
                   #clave4
                   id="clave4"
                   type="password" 
@@ -381,24 +381,7 @@
                   formControlName="descripcion"></textarea>
                   <label><fa-icon [icon]="faDescripcionPerfil"></fa-icon>  ‍‍‍‍‍Descripción para su perfil</label>
               </div>
-
               
-
-              <!--Seleccionar los años de experiencia
-              <div class="entrada-textos">
-                <select 
-                  name="rol-profesional"
-                  class="campo-entrada"
-                  formControlName="rol">
-                  <option value="seleccione-rol" selected disabled>Seleccione años de experiencia</option>
-                  <option value="nutricionista">Menos de 2 años</option>
-                  <option value="entrenador">Entre 3 y 5 años</option>
-                  <option value="entrenador">Entre 5 y 7 años</option>
-                  <option value="entrenador">Entre 7 y 10 años</option>
-                  <option value="entrenador">Más de 10 años</option>
-                  </select>
-              </div>-->
-
               <!--Opción para aceptar los términos y condiciones-->
               <p class="text">
                 <input 
